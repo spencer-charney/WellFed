@@ -1,0 +1,19 @@
+.notification {
+    background-color: hsl(0, 0%, 89%);
+    height: 100px;
+}
+.message{
+    color: black;
+}
+.time{
+    color: gray;
+}
+.scroll { 
+    background-color: #e3e3e3; 
+    width: 50%; 
+    height: 100%;
+} 
+li{
+    list-style-type: none;
+    width: 100%;
+}
