@@ -1,23 +1,28 @@
-var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+require('mongoose-type-email');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+const userSchema = new Schema({
     username: {
         type: String, 
-        lowercase: true, 
         unique: true, 
-        required: [true, "can't be blank"], 
-        match: [/^[a-zA-Z0-9]+$/, "is invalid"], 
+        required: [true, "Username is required"], 
         index: true
     },
     email: {
-        type: String, 
-        lowercase: true, 
+        type: mongoose.SchemaTypes.Email, 
         unique: true, 
-        required: [true, "can't be blank"], 
-        match: [/\S+@\S+\.\S+/, "is invalid"], 
+        required: [true, "Email is required"], 
         index: true
-    }
+    },
+    hased_password: {
+        type: String,
+        required: [true, "Password is required"]
+    },
+    salt: String
 }, {timestamps: true});
+
+
+
+mongoose.model("User", userSchema);
