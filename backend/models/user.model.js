@@ -1,28 +1,31 @@
 const mongoose = require('mongoose');
-require('mongoose-type-email');
-
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: {
+    name: {
         type: String, 
-        unique: true, 
-        required: [true, "Username is required"], 
-        index: true
+        required: true,
     },
     email: {
-        type: mongoose.SchemaTypes.Email, 
-        unique: true, 
-        required: [true, "Email is required"], 
-        index: true
-    },
-    hased_password: {
         type: String,
-        required: [true, "Password is required"]
+        required: true
     },
-    salt: String
-}, {timestamps: true});
+    password: {
+        type: String,
+        required: true
+    },
+    dogears: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'post'
+        }
+    ],
+    date: {
+        type: Date,
+        default: Date.now
+    }
+});
 
 
 
-mongoose.model("User", userSchema);
+module.exports = User = mongoose.model('user', userSchema);
