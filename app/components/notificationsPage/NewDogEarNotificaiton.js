@@ -1,7 +1,7 @@
 import React from 'react';
-import '../css/Notification.css'
+import '../../css/Notification.css'
 
-class NewLikeNotification extends React.Component {
+class NewDogEarNotification extends React.Component {
     constructor(props){
         super(props);
         this.handleViewed = this.handleViewed.bind(this);
@@ -16,7 +16,7 @@ class NewLikeNotification extends React.Component {
         const time = this.props.time;
       return (
         <div>
-            <p className="message">{otherUser} liked your post</p>
+            <p className="message">{otherUser} dog earred your post</p>
             <p className="post">{post}</p>
             <p className="time">{time}</p>
         </div>
@@ -24,4 +24,4 @@ class NewLikeNotification extends React.Component {
     }
   }
   
-  export default NewLikeNotification;
+  export default NewDogEarNotification;

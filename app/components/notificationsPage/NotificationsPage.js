@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Notification.css'
+import '../../css/Notification.css'
 import NewFollowerNotification from './NewFollowerNotification';
 import Notification from './Notification'
 import NewLikeNotification from './NewLikeNotification';
