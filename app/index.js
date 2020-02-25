@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navigation from './components/Navigation'
-import Feed from './components/Feed'
+import Feed from './components/feedPage/Feed'
 import MyProfile from './components/MyProfile'
 import NotificationsPage from './components/notificationsPage/NotificationsPage'
 
