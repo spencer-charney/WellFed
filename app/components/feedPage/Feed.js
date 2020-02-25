@@ -1,5 +1,7 @@
 import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Discover from './Discover';
+import MyFeed from './MyFeed'
 
 class Feed extends React.Component {
   constructor(props){
@@ -11,7 +13,7 @@ class Feed extends React.Component {
     this.setState({feed: e.target.value})
   }
   render() {
-    const feedState = (this.state.feed=='Discover') ? <h1>D</h1> : <h1>M</h1> ;
+    const feedState = (this.state.feed=='Discover') ? <Discover /> : <MyFeed /> ;
     return (
       <center>
         <ButtonGroup>

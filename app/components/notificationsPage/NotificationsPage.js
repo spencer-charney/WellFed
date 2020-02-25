@@ -3,6 +3,8 @@ import '../../css/Notification.css'
 import NewFollowerNotification from './NewFollowerNotification';
 import Notification from './Notification'
 import NewLikeNotification from './NewLikeNotification';
+import NewCommentNotification from './NewCommentNotification';
+import NewDogEarNotification from './NewDogEarNotificaiton';
 
 class NotificationsPage extends React.Component {
     constructor(props){

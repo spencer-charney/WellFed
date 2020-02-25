@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Notification.css'
+import '../../css/Notification.css'
 
 class NewCommentNotification extends React.Component {
     constructor(props){
