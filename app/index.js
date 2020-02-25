@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navigation from './components/Navigation'
-import MyFeed from './components/MyFeed'
+import Feed from './components/Feed'
 import MyProfile from './components/MyProfile'
 import NotificationsPage from './components/NotificationsPage'
 
@@ -26,8 +26,8 @@ class App extends React.Component{
             page = <NotificationsPage />;
         }
         else {
-            //pageState == MyFeed
-            page = <MyFeed />;
+            //pageState == Feed
+            page = <Feed />;
         }
         return(
             <div>

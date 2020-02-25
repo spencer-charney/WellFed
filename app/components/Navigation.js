@@ -24,7 +24,7 @@ class Navigation extends React.Component {
               <button className="btn btn-light" value="Notifications" onClick={this.handleChange}>Notifications</button>
             </li>
             <li className={"nav-item active"}>
-              <button className="btn btn-light" value="MyFeed" onClick={this.handleChange}>My Feed</button>
+              <button className="btn btn-light" value="Feed" onClick={this.handleChange}>Feed</button>
             </li>          
           
           </ul>
