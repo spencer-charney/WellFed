@@ -1,5 +1,7 @@
 import React from 'react';
 import Post from './Post'
+import Recipe from './Recipe'
+import Review from './Review'
 
 class Discover extends React.Component {
     constructor(props){
@@ -7,7 +9,7 @@ class Discover extends React.Component {
     }
     render() {
       //const postList = this.props.postList;
-      const posts = [];
+      const posts = [<Recipe />,<Review />,<Recipe />];
       const postList = posts.map((post)=> 
         <li key={post.props.id}>
           <Post>{post}</Post>
