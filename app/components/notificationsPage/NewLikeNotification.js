@@ -17,7 +17,7 @@ class NewLikeNotification extends React.Component {
       return (
         <div>
             <p className="message">{otherUser} liked your post</p>
-            <p className="post">{post}</p>
+            <p className="postPicture">{post}</p>
             <p className="time">{time}</p>
         </div>
       )

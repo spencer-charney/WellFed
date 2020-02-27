@@ -2,6 +2,8 @@ import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Discover from './Discover';
 import MyFeed from './MyFeed'
+import '../../css/Post.css'
+
 
 class Feed extends React.Component {
   constructor(props){
@@ -15,13 +17,16 @@ class Feed extends React.Component {
   render() {
     const feedState = (this.state.feed=='Discover') ? <Discover /> : <MyFeed /> ;
     return (
-      <center>
-        <ButtonGroup>
-          <button className="btn btn-default" value="MyFeed" onClick={this.handleClick}>My Feed</button>
-          <button className="btn btn-default" value="Discover" onClick={this.handleClick}>Discover</button>
-        </ButtonGroup>
+      <div>
+        <center>
+          <ButtonGroup>
+            <button className="btn btn-default" value="MyFeed" onClick={this.handleClick}>My Feed</button>
+            <button className="btn btn-default" value="Discover" onClick={this.handleClick}>Discover</button>
+          </ButtonGroup>
+        </center>
         {feedState}
-      </center>
+      </div>
+      
     )
   }
 }

@@ -8,7 +8,6 @@ class Post extends React.Component {
     render() {
       return (
          <div>
-            <hr />
             <div className="post">{this.props.children}</div>
          </div>   
       )
