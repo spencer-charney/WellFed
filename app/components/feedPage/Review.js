@@ -8,12 +8,12 @@ class Review extends React.Component {
     return (
       <div>
         <center>
-          <h1>Restaurant</h1>
-          <h2>Dish</h2>
-          <h3><i>User</i></h3>
-          <p> of 5 stars</p>
-          <p>tags</p>
-          <p>review...</p>
+          <h1>{this.props.restaurant}</h1>
+          <h2>Dish: {this.props.dish}</h2>
+          <p><i>{this.props.user}</i></p>
+          <p>{this.props.rate} of 5 stars</p>
+          <p>{this.props.tag}</p>
+          <p>{this.props.review}</p>
         </center>
       </div>
     )

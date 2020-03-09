@@ -19,7 +19,7 @@ class Discover extends React.Component {
        "Meanwhile, start the sauce: Heat the olive oil in a large Dutch oven, pot, or saucepan (that has a cover) over medium heat. Add the cauliflower and cashews and saute for 4 minutes until lightly browned. Add the garlic and cook for 1 to 2 minutes until fragrant. Add the vegetable broth, onion powder, black pepper, nutmeg and 1/2 teaspoon kosher salt. Bring to a simmer, then cover and cook 6 to 7 minutes on medium high heat until the cauliflower is tender when pierced with a fork.",
        "IBlend the sauce: Carefully transfer the contents to a blender and add the remaining 1/2 teaspoon kosher salt and 1/4 teaspoon more black pepper. Blend on high until a smooth sauce forms.",
        "erve: Pour about 5 cups into 1 pound pasta (1 cup will be left over), or use it to taste. Top with finely chopped parsley and serve immediately."]}/>,
-       <Review />,
+       <Review restaurant={"Super Weenie Hut Juniors"} dish={"Corndog"} user={"Spongebob Squarepants"} rate={"5"} tag={"NOT VEGAN"} review={"This corndog was great!"}/>,
        <Recipe title={"Easy Vegan Tacos"} author={"Sonja and Ryan"} description={"Looking for easy vegan tacos? These “verde” vegan tacos are color-themed, featuring green lentils, green cabbage, and a bright green cilantro sauce."} 
       totalTime={"30 minutes"} serves={4} tags={["Vegan"]} ingredients={["1 1/2 cups green lentils","2 tablespoons olive oil", "1 teaspoon cumin", "1 teaspoon garlic powder",
     "3/4 teaspoon kosher salt","Fresh ground pepper","8 One Degree sprouted organic corn tortillas","2 green onions","1/2 small green cabbage","Salsa verde (purchased or homemade)",
