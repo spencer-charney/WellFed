@@ -11,12 +11,16 @@ class MyFeed extends React.Component {
     }
     render() {
       //const postList = this.props.postList;
-      const posts = [<Review />,<Recipe title={"WeedKrispies"} author={"Recipe by Briiiian"} description={"These tasty vegan snacks are sure to have you shmeezing"} 
-      totalTime={"4-5 hours"} serves={16} tags={["Vegan", "Gluten Free", "Edible"]} ingredients={["3.5 grams of gas","3/4ths of a cup of coconut oil", "5 cups of vegan marshmallows", "6 cups of puffed rice cereal"]}
-       directions={["Preheat oven to 240F","Grind weed and put on a pan or foil bowl","Put weed in the oven for 45 minutes to decarb","In a small pot, heat coconut oil to 185F-215F",
-       "When the weed is ready to come out of the oven, add it to the oil and let cook for 2 hours","After the 2 hours, add the marshmallows to a large pan and stir over low heat until melted",
-       "Strain the oil in order to remove all the flower, and add the oil to the marshmallows","Stir in the puffed rice cereal and continue to stir until evenly mixed",
-       "Transfer this mixture into a 13x9 pan and put in the refridgerator for 1-2 hours","Cut and enjoy"]}/>,<Review />];
+      const posts = [<Review />,<Recipe title={"Easy Vegan Tacos"} author={"Sonja and Ryan"} description={"Looking for easy vegan tacos? These “verde” vegan tacos are color-themed, featuring green lentils, green cabbage, and a bright green cilantro sauce."} 
+      totalTime={"30 minutes"} serves={4} tags={["Vegan"]} ingredients={["1 1/2 cups green lentils","2 tablespoons olive oil", "1 teaspoon cumin", "1 teaspoon garlic powder",
+    "3/4 teaspoon kosher salt","Fresh ground pepper","8 One Degree sprouted organic corn tortillas","2 green onions","1/2 small green cabbage","Salsa verde (purchased or homemade)",
+    "Creamy Cilantro Sauce, to serve", "Avocado or pickled jalapenos, optional"]}
+       directions={["Soak the cashews for the Creamy Cilantro Sauce for at least 30 minutes while making the remainder of the recipe (for a high speed blender), or soak them overnight or the morning of if you think of it. The longer the better! (You also can make the sauce ahead — see instructions in the cilantro sauce recipe!).",
+       "Place the lentils in a pot with 6 cups warm water. Bring to a low boil, then boil for about 15 to 20 minutes until just al dente (taste often to assess doneness). Drain, then stir in the olive oil, cumin, garlic powder, and kosher salt.",
+       "Thinly slice the green onions. Thinly slice the cabbage. If using, chop the avocado.",
+       "Meanwhile, make the Creamy Cilantro Sauce.",
+       "Warm the tortillas according to the package instructions*. (We typically char ours on an open flame, but that’s not the preferred method with the One Degree tortillas.) To serve, top the tortillas with lentils, green onions, green cabbage, salsa verde, torn cilantro leaves, and cilantro drizzle."]}/>,
+       <Review />];
       const postList = posts.map((post)=> 
         <li key={post.props.id}>
           <Post>{post}</Post>

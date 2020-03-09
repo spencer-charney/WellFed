@@ -74,21 +74,15 @@ class Recipe extends React.Component {
               <div className="col-auto">
                 <p>Vegan</p>
               </div>
-              <div className="col-auto">
-                <p>Gluten Free</p>
-              </div>
-              <div className="col-auto">
-                <p>Edible</p>
-              </div>
             </div>
           </center>
         </div>
         <div className="container">
-          <h2 onClick={this.handleClickIngredients}>Ingredients</h2>
+          <h2 className="expandable" onClick={this.handleClickIngredients}>Ingredients</h2>
           {ingredientsUl}
         </div>
         <div className="container">
-          <h2 onClick={this.handleClickDirections}>Directions</h2>
+          <h2 className="expandable" onClick={this.handleClickDirections}>Directions</h2>
           {directionsOl}
         </div>
       </div>
