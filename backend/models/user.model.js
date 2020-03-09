@@ -14,12 +14,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    dogears: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'post'
-        }
-    ],
     date: {
         type: Date,
         default: Date.now
