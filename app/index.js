@@ -4,7 +4,7 @@ import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navigation from './components/Navigation'
 import Feed from './components/feedPage/Feed'
-import MyProfile from './components/MyProfile'
+import MyProfile from './components/profilePage/MyProfile'
 import NotificationsPage from './components/notificationsPage/NotificationsPage'
 
 class App extends React.Component{
