@@ -28,7 +28,7 @@ app.use(expressValidator());
 app.use("/", postRoutes);
 app.use("/", authRoutes);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`A node js api is listening on port: ${port}`)
 })

@@ -5,53 +5,39 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	author: {
+		type: String,
+		required: true
+	},
 	body: {
 		type: String,
 		required: true
+	},
+	time: {
+		type: String,
+		required: true
+	},
+	serves: {
+		type: Number,
+		required: true
+	},
+	tags: {
+		type: [String],
+		required: true
+	},
+	ingredients: {
+		type: [String],
+		required: true
+	},
+	directions: {
+		type: [String],
+		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
 	}
+
 });
 
 module.exports = mongoose.model("Post", postSchema);
-
-
-// const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
-
-// const postSchema = new Schema({
-//     user: {
-//         type: Schema.Types.ObjectId,
-//         ref: 'users'
-//     },
-//     text: {
-//         type: String,
-//         required: true
-//     },
-//     name: {
-//         type: String
-//     },
-//     comments: [
-//         {
-//             user: {
-//                 type: Schema.Types.ObjectId,
-//                 ref: 'users'
-//             },
-//             text: {
-//                 type: String,
-//                 required: true
-//             },
-//             name: {
-//                 type: String
-//             },
-//             date: {
-//                 type: Date,
-//                 default: Date.now
-//             }
-//         }
-//     ],
-//     date: {
-//         type: Date,
-//         default: Date.now
-//     }
-// });
-
-// module.exports = Post = mongoose.model('posts', postSchema);

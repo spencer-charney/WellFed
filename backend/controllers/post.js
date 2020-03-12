@@ -2,7 +2,7 @@ const Post = require('../models/post')
 
 exports.getPosts = (req, res) => {
 	const posts = Post.find()
-	.select('_id title body')
+	.select('_id title author body time serves tags ingredients directions date')
 	.then((posts) => {
 		res.status(200).json({post: posts});
 	})
