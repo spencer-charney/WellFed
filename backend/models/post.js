@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema;
 
 const postSchema = new mongoose.Schema({
 	title: {
@@ -6,34 +7,33 @@ const postSchema = new mongoose.Schema({
 		required: true
 	},
 	author: {
-		type: String,
-		required: true
+		type: ObjectId,
+		ref: "User"
 	},
 	body: {
 		type: String,
 		required: true
 	},
+	photo: {
+		type: Buffer,
+		contentType: String
+	},
 	time: {
-		type: String,
-		required: true
+		type: String
 	},
 	serves: {
-		type: Number,
-		required: true
+		type: Number
 	},
 	tags: {
-		type: [String],
-		required: true
+		type: [String]
 	},
 	ingredients: {
-		type: [String],
-		required: true
+		type: [String]
 	},
 	directions: {
-		type: [String],
-		required: true
+		type: [String]
 	},
-	date: {
+	created: {
 		type: Date,
 		default: Date.now
 	}
