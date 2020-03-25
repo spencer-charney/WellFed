@@ -27,7 +27,7 @@ class Navigation extends React.Component {
               <button className="btn btn-light" value="Feed" onClick={this.handleChange}>Feed</button>
             </li>          
             <li className={"nav-item active"}>
-              <button className="btn btn-light" value="Post" onClick={this.handleChange}>Post</button>
+              <button className="btn btn-light" value="Post" onClick={this.handleChange}>Create New Post</button>
             </li>   
           </ul>
           <form className="form-inline my-2 my-lg-0">

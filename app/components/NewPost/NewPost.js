@@ -15,14 +15,16 @@ class NewPost extends React.Component {
     render() {
         const formState = (this.state.feed == 'recipe') ? <RecipeForm /> : <ReviewForm />;
         return (
-            <center>
-                <h1>Create New Post</h1>
-                <ButtonGroup>
-                    <button className="btn btn-default" value="recipe" onClick={this.handleClick}>Create New Recipe</button>
-                    <button className="btn btn-default" value="review" onClick={this.handleClick}>Create New Review</button>
-                </ButtonGroup>
+            <div>
+                <center>
+                    <h1>Create New Post</h1>
+                    <ButtonGroup>
+                        <button className="btn btn-default" value="recipe" onClick={this.handleClick}>Create New Recipe</button>
+                        <button className="btn btn-default" value="review" onClick={this.handleClick}>Create New Review</button>
+                    </ButtonGroup>
+                </center>
                 {formState}
-            </center>
+            </div>
         )
     }
 }
