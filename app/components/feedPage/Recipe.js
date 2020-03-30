@@ -1,5 +1,11 @@
 import React from 'react';
 import '../../css/Post.css'
+import { IconContext } from "react-icons";
+import { FaComment, FaBook } from 'react-icons/fa';
+import { FaBookmark } from 'react-icons/fa';
+import { FaTelegramPlane } from 'react-icons/fa';
+
+
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -28,7 +34,7 @@ class Recipe extends React.Component {
     }
   }
   render() {
-    const ingredientsList = this.props.ingredients.map((ingredient) => 
+    const ingredientsList = this.props.ingredients.map((ingredient) =>
       <li>{ingredient}</li>
     );
     let ingredientsUl;
@@ -40,9 +46,9 @@ class Recipe extends React.Component {
     else {
       ingredientsUl = <div></div>
     }
-    const directionsList = this.props.directions.map((direction) => 
+    const directionsList = this.props.directions.map((direction) =>
       <li>{direction}</li>
-    );    
+    );
     let directionsOl;
     if (this.state.directionsClicked) {
       directionsOl = <ol id="directions">
@@ -58,16 +64,16 @@ class Recipe extends React.Component {
           <center>
             <h1>{this.props.title}</h1>
             <p id="other-user"><i>{this.props.author}</i></p>
-    <p>{this.props.description}</p>
+            <p>{this.props.description}</p>
 
             <div className="row justify-content-md-center details">
               <div className="col-sm-auto">
                 <p>Total Time</p>
-    <p>{this.props.totalTime}</p>
+                <p>{this.props.totalTime}</p>
               </div>
               <div className="col-sm-auto">
                 <p>Serves</p>
-    <p>{this.props.serves}</p>
+                <p>{this.props.serves}</p>
               </div>
             </div>
             <div className="row justify-content-md-center">
@@ -84,6 +90,18 @@ class Recipe extends React.Component {
         <div className="container">
           <h2 className="expandable" onClick={this.handleClickDirections}>Directions</h2>
           {directionsOl}
+        </div>
+        <div className="row">
+          <IconContext.Provider value={{color: "blue", className: "icons global-class-name", size: '2em'}}>
+            <div>
+              <FaBookmark />
+            </div>
+          </IconContext.Provider>
+          <IconContext.Provider value={{ className: "icons global-class-name", size: '2em'}}>
+            <div>
+              <FaComment />
+            </div>
+          </IconContext.Provider>
         </div>
       </div>
     )

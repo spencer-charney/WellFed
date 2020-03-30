@@ -12,7 +12,7 @@ class Review extends React.Component {
           <h2>Dish: {this.props.dish}</h2>
           <p><i>{this.props.user}</i></p>
           <p>{this.props.rate} of 5 stars</p>
-          <p>{this.props.tag}</p>
+          <p>{this.props.tags}</p>
           <p>{this.props.review}</p>
         </center>
       </div>
