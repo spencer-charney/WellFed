@@ -18,7 +18,53 @@ class Review extends React.Component {
       commentClicked: false
     };
   }
+  handleClickBookmark() {
+    if (this.state.bookmarkClicked) {
+      this.setState({ bookmarkClicked: false });
+    }
+    else {
+      this.setState({ bookmarkClicked: true });
+    }
+  }
+  handleClickComment() {
+    if (this.state.commentClicked) {
+      this.setState({ commentClicked: false });
+    }
+    else {
+      this.setState({ commentClicked: true });
+    }
+  }
   render() {
+    let bookmark;
+    if (this.state.bookmarkClicked) {
+      bookmark = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
+        <div>
+          <FaBookmark />
+        </div>
+      </IconContext.Provider>
+    }
+    else {
+      bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
+        <div>
+          <FaBookmark />
+        </div>
+      </IconContext.Provider>
+    }
+    let comment;
+    if (this.state.commentClicked) {
+      comment = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
+        <div>
+          <FaComment />
+        </div>
+      </IconContext.Provider>
+    }
+    else {
+      comment = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
+        <div>
+          <FaComment />
+        </div>
+      </IconContext.Provider>
+    }
     return (
       <div>
         <center>
@@ -32,19 +78,11 @@ class Review extends React.Component {
         <Container>
           <Row className="userActionRow">
             <Col></Col>
-            <Col xs={1}>
-              <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
-                <div>
-                  <FaBookmark />
-                </div>
-              </IconContext.Provider>
+            <Col xs={1} onClick={this.handleClickBookmark}>
+              {bookmark}
             </Col>
-            <Col xs={1}>
-              <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
-                <div>
-                  <FaComment />
-                </div>
-              </IconContext.Provider>
+            <Col xs={1} onClick={this.handleClickComment}>
+              {comment}
             </Col>
           </Row>
         </Container>
