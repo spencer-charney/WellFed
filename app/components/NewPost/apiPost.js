@@ -1,9 +1,10 @@
-export const create = (userId, token, post) => {
+//ADD BACK IN THE TOKEN!!!!!!!!!!!!!!!!!!!!!!!!!!
+export const create = (userId, post) => {
     return fetch(`${process.env.REACT_APP_API_URL}/post/new/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
-            Authorization: `Bearer ${token}`
+            // Authorization: `Bearer ${token}`
         },
         body: post
     })

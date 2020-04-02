@@ -23,9 +23,9 @@ router.put("/post/uncomment", requireSignin, uncomment);
 
 
 router.get('/posts', getPosts);
+//TODO: ADD BACK IN THE REQUIRE SIGN IN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.post(
 	'/post/new/:userId', 
-	requireSignin, 
 	createPost,
 	createPostValidator
 );

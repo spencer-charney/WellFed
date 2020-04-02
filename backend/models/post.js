@@ -14,10 +14,6 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	photo: {
-		type: Buffer,
-		contentType: String
-	},
 	time: {
 		type: String
 	},
