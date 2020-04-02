@@ -7,6 +7,9 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Comments from './Comments'
+import CommentForm from './CommentForm';
+
 
 class Review extends React.Component {
   constructor(props) {
@@ -42,6 +45,7 @@ class Review extends React.Component {
           <FaBookmark />
         </div>
       </IconContext.Provider>
+      console.log("Bookmark Post");
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -51,12 +55,17 @@ class Review extends React.Component {
       </IconContext.Provider>
     }
     let comment;
+    var comments;
     if (this.state.commentClicked) {
       comment = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
         <div>
           <FaComment />
         </div>
       </IconContext.Provider>
+      comments = <div>
+        <Comments commenting={true} comments={[{userName:"Spencer Charney", comment:"L O L", time:"16:20:00"},{userName:"Karen Charney", comment:"OMG", time:"16:20:00"},{userName:"Josh Charney", comment:"OTPHJ", time:"16:20:00"}]}/>
+        <CommentForm />
+        </div>
     }
     else {
       comment = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -64,6 +73,8 @@ class Review extends React.Component {
           <FaComment />
         </div>
       </IconContext.Provider>
+      comments = <Comments commenting={false} comments={[{userName:"Spencer Charney", comment:"L O L", time:"16:20:00"},{userName:"Karen Charney", comment:"OMG", time:"16:20:00"},{userName:"Josh Charney", comment:"OTPHJ", time:"16:20:00"}]}/>
+
     }
     return (
       <div>
@@ -76,6 +87,7 @@ class Review extends React.Component {
           <p>{this.props.review}</p>
         </center>
         <Container>
+          {comments}
           <Row className="userActionRow">
             <Col></Col>
             <Col xs={1} onClick={this.handleClickBookmark}>

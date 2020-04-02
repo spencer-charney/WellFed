@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const {ObjectId} = mongoose.Schema;
 
-const postSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		required: true
@@ -10,29 +9,21 @@ const postSchema = new mongoose.Schema({
 		type: ObjectId,
 		ref: "User"
 	},
-	body: {
+	dish: {
 		type: String,
 		required: true
 	},
-	photo: {
-		type: Buffer,
-		contentType: String
-	},
-	time: {
-		type: String
-	},
-	serves: {
-		type: Number
+	rating: {
+		type: Number,
+		required: true
 	},
 	tags: {
 		type: [String]
-	},
-	ingredients: {
-		type: [String]
-	},
-	directions: {
-		type: [String]
-	},
+    },
+    body: {
+        type: String, 
+        required: true
+    },
 	created: {
 		type: Date,
 		default: Date.now
@@ -51,5 +42,4 @@ const postSchema = new mongoose.Schema({
 		}
 	]
 });
-
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model("Review", reviewSchema);

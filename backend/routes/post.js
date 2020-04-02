@@ -6,13 +6,21 @@ const {
 	postById,
 	isPoster,
 	deletePost,
-	updatePost
+	updatePost,
+	comment,
+	uncomment
 } = require('../controllers/post');
 const {requireSignin} = require('../controllers/auth');
 const {userById} = require('../controllers/user');
 const {createPostValidator} = require('../validator');
 
 const router = express.Router();
+
+
+router.put("/post/comment", requireSignin, comment);
+router.put("/post/uncomment", requireSignin, uncomment);
+
+
 
 router.get('/posts', getPosts);
 router.post(

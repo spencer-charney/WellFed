@@ -7,7 +7,8 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Comments from './Comments'
+import CommentForm from './CommentForm';
 
 
 class Recipe extends React.Component {
@@ -88,6 +89,8 @@ class Recipe extends React.Component {
           <FaBookmark />
         </div>
       </IconContext.Provider>
+      console.log("Bookmark Post");
+
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -97,12 +100,18 @@ class Recipe extends React.Component {
       </IconContext.Provider>
     }
     let comment;
+    let comments;
     if (this.state.commentClicked) {
       comment = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
         <div>
           <FaComment />
         </div>
       </IconContext.Provider>;
+      comments = <div>
+        <Comments commenting={true} comments={[]} />
+        <CommentForm />
+      </div>
+
     }
     else {
       comment = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -110,6 +119,8 @@ class Recipe extends React.Component {
           <FaComment />
         </div>
       </IconContext.Provider>;
+      comments = <Comments commenting={false} comments={[]} />
+
     }
     return (
       <div className="recipe">
@@ -145,6 +156,7 @@ class Recipe extends React.Component {
           {directionsOl}
         </div>
         <Container>
+          {comments}
           <Row className="userActionRow">
             <Col></Col>
             <Col xs={1} onClick={this.handleClickBookmark}>
