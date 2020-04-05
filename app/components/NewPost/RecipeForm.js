@@ -1,5 +1,8 @@
 import React from 'react';
 import { create } from './apiPost';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
 
 class RecipeForm extends React.Component {
     constructor(props) {
@@ -54,8 +57,8 @@ class RecipeForm extends React.Component {
 
     }
 
-    handleChangeTags(event){
-        this.setState({ tags: event.target.value});
+    handleChangeTags(event) {
+        this.setState({ tags: event.target.value });
     }
 
     handleChangeIngredients(event) {
@@ -70,58 +73,32 @@ class RecipeForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <center>
-                    <h2>New Recipe</h2>
-                </center>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label>
-                            Title:
-                        </label>
-                        <input type="text" value={this.state.title} onChange={this.handleChangeTitle} className="form-control" placeholder="Title of Recipe"/>
-                    </div>
-                    <div className="form-group">
-                        <label >
-                            Description:
-                        </label>
-                        <textarea value={this.state.description} onChange={this.handleChangeDescription} className="form-control" placeholder="Please describe your dish"/>
-                    </div>
-                    <div className="form-group">
-                        <label >
-                            Total Time:
-                        </label>
-                        <input type="text" value={this.state.totalTime} onChange={this.handleChangeTotalTime} className="form-control" placeholder="Please specify unit of time (minutes or hours)"/>
-                    </div>
-                    <div className="form-group">
-                        <label >
-                            Serves:
-                        </label>
-                        <input type="text" value={this.state.serves} onChange={this.handleChangeServes} className="form-control" placeholder="Servings"/>
-                    </div>
-                    <div className="form-group">
-                        <label>
-                            Tags:
-                        </label>
-                        <input type="text" value={this.state.tags} onChange={this.handleChangeTags} className="form-control" placeholder="Please separate values with a comma (eg. Vegan, Gluten Free, etc.)" />
-                    </div>
-                    <div className="form-group">
-                        <label >
-                            Ingredients:
-                        </label>
-                        <textarea value={this.state.ingredients} onChange={this.handleChangeIngredients} rows="6" className="form-control" placeholder="Please list each ingredient on a separate line"/>
-                    </div>
-                    <div className="form-group">
-                        <label>
-                            Directions:
-                        </label>
-                        <textarea value={this.state.directions} onChange={this.handleChangeDirections} rows="6" className="form-control" placeholder="Please number each direction and place it on a separate line"/>
-                    </div>
-                    <center>                    
-                        <input type="submit" value="Post" className="btn btn-primary"/>
-                    </center>
-                </form>
-            </div>
+            <Container fluid>
+                <Row><h3>New Recipe</h3></Row>
+                <Container fluid>
+                    <Row>Title:</Row>
+                    <Row><input type="text" value={this.state.title} onChange={this.handleChangeTitle} className="form-control" placeholder="Title of Recipe" /></Row>
+                    <Row>Description:</Row>
+                    <Row><textarea value={this.state.description} onChange={this.handleChangeDescription} className="form-control" placeholder="Please describe your dish" /></Row>
+
+                    <Row>Total Time:</Row>
+                    <Row><input type="text" value={this.state.totalTime} onChange={this.handleChangeTotalTime} className="form-control" placeholder="Please specify unit of time (minutes or hours)" /></Row>
+                    <Row>Serves:</Row>
+                    <Row><input type="text" value={this.state.serves} onChange={this.handleChangeServes} className="form-control" placeholder="Servings" /></Row>
+
+                    <Row>Tags:</Row>
+                    <Row><input type="text" value={this.state.tags} onChange={this.handleChangeTags} className="form-control" placeholder="Please separate values with a comma (eg. Vegan, Gluten Free, etc.)" /></Row>
+
+                    <Row>Ingredients:</Row>
+                    <Row><textarea value={this.state.ingredients} onChange={this.handleChangeIngredients} rows="6" className="form-control" placeholder="Please list each ingredient on a separate line" /></Row>
+
+                    <Row>Directions:</Row>
+                    <Row><textarea value={this.state.directions} onChange={this.handleChangeDirections} rows="6" className="form-control" placeholder="Please number each direction and place it on a separate line" /></Row>
+                    <Row>
+                        <Button onClick={this.handleSubmit}>Post</Button>
+                    </Row>
+                </Container>
+            </Container >
         )
     }
 }
