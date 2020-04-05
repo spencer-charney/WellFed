@@ -58,7 +58,7 @@ class Recipe extends React.Component {
   }
   render() {
 
-    let ingredient;
+    let ingredients;
     if (this.state.ingredientsClicked) {
     ingredients =  <Row>{this.props.ingredients}</Row>
     }
@@ -71,7 +71,7 @@ class Recipe extends React.Component {
     directions =  <Row>{this.props.directions}</Row>
     }
     else {
-      directionsOl = <div></div>
+      directions = <div></div>
     }
     let bookmark;
     if (this.state.bookmarkClicked) {
