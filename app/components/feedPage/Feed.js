@@ -1,34 +1,52 @@
 import React from 'react';
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Discover from './Discover';
 import MyFeed from './MyFeed'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import '../../css/Post.css'
+import NewPost from '../NewPost/NewPost';
 
 
 class Feed extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {feed: 'Discover'}
+    this.handleClickMyFeed = this.handleClickMyFeed.bind(this);
+    this.handleClickDiscover = this.handleClickDiscover.bind(this);
+    this.handleClickCreate = this.handleClickCreate.bind(this);
+    this.state = { feed: 'Discover' }
   }
-  handleClick(e){
-    this.setState({feed: e.target.value})
+  handleClickMyFeed() {
+    this.setState({ feed: 'MyFeed' })
+  }
+  handleClickDiscover() {
+    this.setState({ feed: 'Discover' })
+  }
+  handleClickCreate() {
+    this.setState({ feed: 'Create' })
   }
   render() {
-    const feedState = (this.state.feed=='Discover') ? <Discover /> : <MyFeed /> ;
+    let feedState;
+    if (this.state.feed == "MyFeed") {
+      feedState = <MyFeed />
+    }
+    else if (this.state.feed == "Discover") {
+      feedState = <Discover />
+    }
+    else {
+      feedState = <NewPost />
+    }
     return (
-      <div>
-        <center>
-          <ButtonGroup>
-            <button className="btn btn-default" value="MyFeed" onClick={this.handleClick}>My Feed</button>
-            <button className="btn btn-default" value="Discover" onClick={this.handleClick}>Discover</button>
-          </ButtonGroup>
-        </center>
+      <Container fluid>
+        <Row>
+          <Col onClick={this.handleClickMyFeed}>My Feed</Col>
+          <Col onClick={this.handleClickDiscover}>Discover</Col>
+          <Col onClick={this.handleClickCreate}>Create New Post</Col>
+        </Row>
         {feedState}
-      </div>
-      
+      </Container>
     )
   }
 }
-  
+
 export default Feed;
