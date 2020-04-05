@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MyBooks from './MyBooks';
+import MyPosts from './MyPosts';
 
 class MyProfile extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class MyProfile extends React.Component {
         <Container fluid>
           <Row><h4>My Posts</h4></Row>
           {
-            //This is where to put my posts
+            <MyPosts myPosts={this.props.myPosts} />
           }
         </Container>
       </Container>
