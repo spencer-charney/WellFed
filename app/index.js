@@ -23,7 +23,7 @@ class App extends React.Component {
         const pageState = this.state.pageState;
         let page;
         if (pageState == 'MyProfile') {
-            page = <MyProfile name="Brian Greeley" username="420PAWGlover" restrictions="Four Lokos, dry pussy" myBooks={[{
+            page = <MyProfile name="Brian Greeley" username="420PAWGlover" followers="69" following="96" restrictions="Four Lokos, dry pussy" myBooks={[{
                 name: "Kid1", posts: [
                     <Recipe title={"Vegan Fettuccine Alfredo"} author={"Sonja and Alex"} description={"WOW! This vegan fettuccine alfredo tastes decadent, but the creamy sauce is filled with healthy plant based ingredients. An easy dinner in under 30 minutes!"}
                         totalTime={"25 minutes"} serves={8} tags={["Vegan"]} ingredients={["1 pound fettuccine noodles (use gluten-free, legume, or zucchini noodles if desired)",
@@ -72,7 +72,13 @@ class App extends React.Component {
             ]}/>;
         }
         else if (pageState == 'Notifications') {
-            page = <NotificationsPage />;
+            page = <NotificationsPage notifications={[
+                {type:"newComment", username:"user1", time:"16:20:00", message:"Looks Great!"},
+                {type:"newBookmark", username:"user2", time:"16:20:00", message:"This is the title of the post"},
+                {type:"newFollow", username:"user3", time:"16:20:00", message:""},
+                {type:"newFollow", username:"user1", time:"16:20:00", message:""},
+                {type:"newFollow", username:"user1", time:"16:20:00", message:""}
+            ]}/>;
         }
         else if (pageState == 'Post') {
             page = <Post />;
