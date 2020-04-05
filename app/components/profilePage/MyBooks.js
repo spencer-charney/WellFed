@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import { Button } from 'react-bootstrap';
 import BookTop from './BookTop'
 import BookBottom from './BookBottom'
+import AddBook from './AddBook';
 
 class MyBooks extends React.Component {
     constructor(props) {
@@ -38,6 +39,7 @@ class MyBooks extends React.Component {
         }
         return (
             <Container fluid>
+                <Row><AddBook /></Row>
                 <Row>{
                     arrayOfTop
                 }
