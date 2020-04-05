@@ -3,7 +3,6 @@ import '../../css/Post.css'
 import { IconContext } from "react-icons";
 import { FaComment, FaBook } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
-import { FaTelegramPlane } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -58,26 +57,18 @@ class Recipe extends React.Component {
     }
   }
   render() {
-    const ingredientsList = this.props.ingredients.map((ingredient) =>
-      <li>{ingredient}</li>
-    );
-    let ingredientsUl;
+
+    let ingredient;
     if (this.state.ingredientsClicked) {
-      ingredientsUl = <ul id="ingredients">
-        {ingredientsList}
-      </ul>
+    ingredients =  <Row>{this.props.ingredients}</Row>
     }
     else {
-      ingredientsUl = <div></div>
+      ingredients = <div></div>
     }
-    const directionsList = this.props.directions.map((direction) =>
-      <li>{direction}</li>
-    );
-    let directionsOl;
+  
+    let directions;
     if (this.state.directionsClicked) {
-      directionsOl = <ol id="directions">
-        {directionsList}
-      </ol>
+    directions =  <Row>{this.props.directions}</Row>
     }
     else {
       directionsOl = <div></div>
@@ -123,39 +114,26 @@ class Recipe extends React.Component {
 
     }
     return (
-      <div className="recipe">
-        <div className="container">
-          <center>
-            <h1>{this.props.title}</h1>
-            <p id="other-user"><i>{this.props.author}</i></p>
-            <p>{this.props.description}</p>
-
-            <div className="row justify-content-md-center details">
-              <div className="col-sm-auto">
-                <p>Total Time</p>
-                <p>{this.props.totalTime}</p>
-              </div>
-              <div className="col-sm-auto">
-                <p>Serves</p>
-                <p>{this.props.serves}</p>
-              </div>
-            </div>
-            <div className="row justify-content-md-center">
-              <div className="col-auto">
-                <p>Vegan</p>
-              </div>
-            </div>
-          </center>
-        </div>
-        <div className="container">
-          <h2 className="expandable" onClick={this.handleClickIngredients}>Ingredients</h2>
-          {ingredientsUl}
-        </div>
-        <div className="container">
-          <h2 className="expandable" onClick={this.handleClickDirections}>Directions</h2>
-          {directionsOl}
-        </div>
-        <Container>
+      <Container fluid>
+        <Row><h1>{this.props.title}</h1></Row>
+        <Row><p><i>{this.props.author}</i></p></Row>
+        <Row><p>{this.props.description}</p></Row>
+        <Row>
+          <Col>
+          <Row><p>Total Time</p></Row>
+          <Row><p>{this.props.totalTime}</p></Row>
+          </Col>
+          <Col>
+          <Row><p>Serves</p></Row>
+          <Row><p>{this.props.serves}</p></Row>
+          </Col>
+        </Row>
+        <Row><p>{this.props.tags}</p></Row>
+        <Row onClick={this.handleClickIngredients}>Ingredients</Row>
+        {ingredients}
+        <Row onClick={this.handleClickDirections}>Directions</Row>
+        {directions}
+        <Container fluid>
           {comments}
           <Row className="userActionRow">
             <Col></Col>
@@ -167,8 +145,8 @@ class Recipe extends React.Component {
             </Col>
           </Row>
         </Container>
-      </div>
-    )
+      </Container>
+      )
   }
 }
 
