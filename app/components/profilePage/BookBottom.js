@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button } from 'react-bootstrap';
 
-class Book extends React.Component {
+class BookBottom extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -16,11 +16,10 @@ class Book extends React.Component {
         let arrayRows = [];
         for (var i = 0; i < len; i++) {
             arrayRows.push(
-                <Row>{this.props.posts[i]}</Row>
+                <Row key={i}>{this.props.posts[i]}</Row>
             )
         }
         return (
-
 
             <Container fluid> {arrayRows}</Container>
         )
@@ -28,4 +27,4 @@ class Book extends React.Component {
 }
 
 
-export default Book;
+export default BookBottom;

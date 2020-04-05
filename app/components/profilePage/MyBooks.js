@@ -10,8 +10,9 @@ import BookBottom from './BookBottom'
 class MyBooks extends React.Component {
     constructor(props) {
         super(props);
-        this.state ={
-            book:0
+        this.state = {
+            book: 0
+
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -27,25 +28,22 @@ class MyBooks extends React.Component {
         var arrayOfBottom = [];
         var len = this.props.myBooks.length;
         var number = this.state.book;
-        for(var i = 0; i< len; i++){
+        for (var i = 0; i < len; i++) {
             arrayOfTop.push(
-               <BookTop key={i} onComponentChange={this.handleClick} index={i} name={this.props.myBooks[i].name}></BookTop> 
+                <BookTop key={i} onComponentChange={this.handleClick} index={i} name={this.props.myBooks[i].name}></BookTop>
             );
             arrayOfBottom.push(
-                <BookBottom key={i} posts={this.props.myBooks[i].posts}></BookBottom> 
-            );       
+                <BookBottom key={i} posts={this.props.myBooks[i].posts}></BookBottom>
+            );
         }
         return (
             <Container fluid>
+                <Row>{
+                    arrayOfTop
+                }
+                </Row>
                 <Container fluid>
-                
-                    {
-                      arrayOfTop  
-                    }
-
-                </Container>
-                <Container fluid>
-                   
+                    <Row><h4>{arrayOfTop[number]}</h4></Row>
                     {
                         arrayOfBottom[number]
                     }

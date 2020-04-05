@@ -5,23 +5,23 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button } from 'react-bootstrap';
 
-class Book extends React.Component {
+class BookTop extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
     }
     //Array of columns
     //Retuirn keyvlaue when clicked
-    handleChange(e) {
-        this.props.onComponentChange(e);
+    handleChange() {
+        this.props.onComponentChange(this.props.index);
     }
 
     render() {
         return (
-        <Col onClick={this.handleChange(this.props.index)}>{this.props.name}</Col>      
+        <Col onClick={this.handleChange}>{this.props.name}</Col>      
         )
     }
 }
 
 
-export default Book;
+export default BookTop;
