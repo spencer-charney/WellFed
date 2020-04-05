@@ -63,7 +63,7 @@ class Review extends React.Component {
         </div>
       </IconContext.Provider>
       comments = <div>
-        <Comments commenting={true} comments={[{userName:"Spencer Charney", comment:"L O L", time:"16:20:00"},{userName:"Karen Charney", comment:"OMG", time:"16:20:00"},{userName:"Josh Charney", comment:"OTPHJ", time:"16:20:00"}]}/>
+        <Comments commenting={true} comments={this.props.comments}/>
         <CommentForm />
         </div>
     }
@@ -73,7 +73,7 @@ class Review extends React.Component {
           <FaComment />
         </div>
       </IconContext.Provider>
-      comments = <Comments commenting={false} comments={[{userName:"Spencer Charney", comment:"L O L", time:"16:20:00"},{userName:"Karen Charney", comment:"OMG", time:"16:20:00"},{userName:"Josh Charney", comment:"OTPHJ", time:"16:20:00"}]}/>
+      comments = <Comments commenting={false} comments={this.props.comments}/>
 
     }
     return (

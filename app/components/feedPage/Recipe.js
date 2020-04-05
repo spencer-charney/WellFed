@@ -99,7 +99,7 @@ class Recipe extends React.Component {
         </div>
       </IconContext.Provider>;
       comments = <div>
-        <Comments commenting={true} comments={[]} />
+        <Comments commenting={true} comments={this.props.comments} />
         <CommentForm />
       </div>
 
@@ -110,7 +110,7 @@ class Recipe extends React.Component {
           <FaComment />
         </div>
       </IconContext.Provider>;
-      comments = <Comments commenting={false} comments={[]} />
+      comments = <Comments commenting={false} comments={this.props.comments} />
 
     }
     return (
