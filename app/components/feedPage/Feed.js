@@ -28,10 +28,10 @@ class Feed extends React.Component {
   render() {
     let feedState;
     if (this.state.feed == "MyFeed") {
-      feedState = <MyFeed />
+      feedState = <MyFeed posts={this.props.myFeedPosts}/>
     }
     else if (this.state.feed == "Discover") {
-      feedState = <Discover />
+      feedState = <Discover posts={this.props.discoverPosts}/>
     }
     else {
       feedState = <NewPost />
