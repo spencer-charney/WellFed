@@ -19,6 +19,7 @@ class Discover extends React.Component {
       return (
         <Container fluid>
           <Row><h1>Discover</h1></Row>
+          <Row>This is where search for users will go</Row>
           {postArray}
         </Container>
       )

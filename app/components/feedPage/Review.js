@@ -77,16 +77,14 @@ class Review extends React.Component {
 
     }
     return (
-      <div>
-        <center>
-          <h1>{this.props.restaurant}</h1>
-          <h2>Dish: {this.props.dish}</h2>
-          <p><i>{this.props.user}</i></p>
-          <p>{this.props.rate} of 5 stars</p>
-          <p>{this.props.tags}</p>
-          <p>{this.props.review}</p>
-        </center>
-        <Container>
+      <Container fluid>
+        <Row><h1>{this.props.restaurant}</h1></Row>
+        <Row><h2>Dish: {this.props.dish}</h2></Row>
+        <Row><p><i>{this.props.user}</i></p></Row>
+        <Row><p>{this.props.rate} of 5 stars</p></Row>
+        <Row><p>{this.props.tags}</p></Row>
+        <Row><p>{this.props.review}</p></Row>
+        <Container fluid>
           {comments}
           <Row className="userActionRow">
             <Col></Col>
@@ -98,7 +96,7 @@ class Review extends React.Component {
             </Col>
           </Row>
         </Container>
-      </div>
+      </Container>
     )
   }
 }
