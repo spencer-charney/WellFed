@@ -1,40 +1,33 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import MyBooks from './MyBooks';
 
 class MyProfile extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+  
     return (
-      <center>
-        <h1>User's Name</h1>
-        <h2><i>username</i></h2>
-        <h3>My Restrictions</h3>
-        <div className="container-fluid">
-          <h3>My Recipe Books</h3>
-          <div className="row">
-            <div className="col-sm-3 k1">
-              <h4>Kid1</h4>
-              <p>tags</p>
-            </div>
-            <div className="col-sm-3 k2">
-              <h4>Kid2</h4>
-              <p>tags</p>
-            </div>
-            <div className="col-sm-3 sp">
-              <h4>Spounce</h4>
-              <p>tags</p>
-            </div>
-            <div className="col-sm-3 k1">
-              <h4>Kid1</h4>
-              <p>tags</p>
-            </div>
-          </div>
-        </div>
-        <div className="container-fluid">
-          <h3>My Posts</h3>
-          <div className="col-sm po">
-            <p>My Posts</p>
-          </div>
-        </div>
-      </center>
+      <Container fluid>
+        <Row><h1>{this.props.name}</h1></Row>
+        <Row><p><i>{this.props.username}</i></p></Row>
+        <Row><h4>{this.props.restrictions}</h4></Row>
+        <Container fluid>
+          <Row><h4>My Books</h4></Row>
+          {
+            <MyBooks myBooks={this.props.myBooks}/>
+          }
+        </Container>
+        <Container fluid>
+          <Row><h4>My Posts</h4></Row>
+          {
+            //This is where to put my posts
+          }
+        </Container>
+      </Container>
     )
   }
 }

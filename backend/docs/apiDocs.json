@@ -3,10 +3,15 @@
     "/api/signup": "signup",
     "/api/signin": "signin",
     "/api/signout": "signout",
+     "/api/social-login": "login through google",
     "/api/users": "get all users",
     "/api/user/:userId": "get/update/delete user",
     "/api/posts": "get all posts",
     "/api/post/new/:userId": "create new post",
     "/api/posts/by/:userId": "get posts by user",
-    "/api/post/:postId": "update/delete post"
+    "/api/post/:postId": "update/delete post",
+    "/api/post/comment": "comment on post",
+    "/api/post/uncomment": "remove comment on post",
+    "/api/user/follow": "follow a user",
+    "/api/user/unfollow": "unfollow a user"
 }
