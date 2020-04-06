@@ -1,9 +1,7 @@
 import React from 'react';
-import '../../css/Post.css'
 import { IconContext } from "react-icons";
 import { FaComment, FaBook } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
-import { FaTelegramPlane } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

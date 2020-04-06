@@ -1,9 +1,6 @@
-//This parant function will set a state variable and the render function will look for that same state variable and render that object. 
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Button } from 'react-bootstrap';
 import BookTop from './BookTop'
 import BookBottom from './BookBottom'
 import AddBook from './AddBook';
@@ -22,8 +19,6 @@ class MyBooks extends React.Component {
         this.setState({ book: i })
     }
 
-    //
-    //onlick
     render() {
         var arrayOfTop = [];
         var arrayOfBottom = [];

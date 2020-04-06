@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../css/Post.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Recipe from './Recipe'

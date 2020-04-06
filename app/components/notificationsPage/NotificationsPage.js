@@ -1,8 +1,6 @@
 import React from 'react';
-import '../../css/Notification.css'
 import Notification from './Notification'
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 class NotificationsPage extends React.Component {
     constructor(props){

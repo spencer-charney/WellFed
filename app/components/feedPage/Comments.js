@@ -1,9 +1,6 @@
 import React from 'react';
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import { FaTelegramPlane } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Comment from './Comment'
 
 class Comments extends React.Component {

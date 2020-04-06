@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../css/Post.css'
 import { IconContext } from "react-icons";
 import { FaComment, FaBook } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
