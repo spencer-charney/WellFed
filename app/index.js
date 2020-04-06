@@ -6,6 +6,8 @@ import Navigation from './components/Navigation'
 import Feed from './components/feedPage/Feed'
 import MyProfile from './components/profilePage/MyProfile'
 import NotificationsPage from './components/notificationsPage/NotificationsPage'
+import Container from 'react-bootstrap/Container'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -53,10 +55,10 @@ class App extends React.Component {
                 { type: "review", restaurant: "Krusty Krab", dish: "Pretty Patty", user: "Plankton", rate: "5", tags: "Vegan", review: "This is the most beautiful and tasty veggie patty I've ever had. I wish I had the recipe >:D", comments: [] }]} />;
         }
         return (
-            <div>
+            <Container fluid>
                 <Navigation onComponentChange={this.handleClick} />
                 {page}
-            </div>
+            </Container>
         )
     }
 }

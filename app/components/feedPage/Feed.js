@@ -4,7 +4,6 @@ import MyFeed from './MyFeed'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import '../../css/Post.css'
 import NewPost from '../NewPost/NewPost';
 
 
