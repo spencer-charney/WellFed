@@ -6,8 +6,6 @@ import Navigation from './components/Navigation'
 import Feed from './components/feedPage/Feed'
 import MyProfile from './components/profilePage/MyProfile'
 import NotificationsPage from './components/notificationsPage/NotificationsPage'
-import Recipe from './components/feedPage/Recipe'
-import Review from './components/feedPage/Review'
 
 class App extends React.Component {
     constructor(props) {
