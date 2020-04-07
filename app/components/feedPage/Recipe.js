@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Comments from './Comments'
 import CommentForm from './CommentForm';
 
+import '../../css/feed.css'
+
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -59,7 +61,7 @@ class Recipe extends React.Component {
 
     let ingredients;
     if (this.state.ingredientsClicked) {
-    ingredients =  <Row>{this.props.ingredients}</Row>
+    ingredients =  <Row >{this.props.ingredients}</Row>
     }
     else {
       ingredients = <div></div>
@@ -113,10 +115,10 @@ class Recipe extends React.Component {
 
     }
     return (
-      <Container fluid>
-        <Row><h1>{this.props.title}</h1></Row>
-        <Row><p><i>{this.props.author}</i></p></Row>
-        <Row><p>{this.props.description}</p></Row>
+      <Container fluid className="recipe-container">
+        <Row><Col /><Col xs={4}><h1 className="recipe-title">{this.props.title}</h1></Col><Col /></Row>
+        <Row><Col /><Col xs={4}><p className="recipe-author"><i>{this.props.author}</i></p></Col><Col /></Row>
+        <Row><Col /><Col xs={6}><p className="recipe-description">{this.props.description}</p></Col><Col /></Row>
         <Row>
           <Col>
           <Row><p>Total Time</p></Row>
@@ -128,9 +130,9 @@ class Recipe extends React.Component {
           </Col>
         </Row>
         <Row><p>{this.props.tags}</p></Row>
-        <Row onClick={this.handleClickIngredients}>Ingredients</Row>
+        <Row onClick={this.handleClickIngredients} className="ingredients-row">Ingredients</Row>
         {ingredients}
-        <Row onClick={this.handleClickDirections}>Directions</Row>
+        <Row onClick={this.handleClickDirections} className="directions-row">Directions</Row>
         {directions}
         <Container fluid>
           {comments}

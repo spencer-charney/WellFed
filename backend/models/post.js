@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema;
 
 const postSchema = new mongoose.Schema({
+	type: {
+		type: String,
+		required: true
+	},
 	title: {
 		type: String,
 		required: true
@@ -10,24 +14,24 @@ const postSchema = new mongoose.Schema({
 		type: ObjectId,
 		ref: "User"
 	},
-	body: {
+	description: {
 		type: String,
 		required: true
 	},
-	time: {
+	totalTime: {
 		type: String
 	},
 	serves: {
 		type: Number
 	},
 	tags: {
-		type: [String]
+		type: String
 	},
 	ingredients: {
-		type: [String]
+		type: String
 	},
 	directions: {
-		type: [String]
+		type: String
 	},
 	created: {
 		type: Date,

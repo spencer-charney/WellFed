@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import NewPost from '../NewPost/NewPost';
 
+import '../../css/feed.css'
 
 class Feed extends React.Component {
   constructor(props) {
@@ -27,20 +28,24 @@ class Feed extends React.Component {
   render() {
     let feedState;
     if (this.state.feed == "MyFeed") {
-      feedState = <MyFeed posts={this.props.myFeedPosts}/>
+      feedState = <MyFeed posts={this.props.myFeedPosts} />
     }
     else if (this.state.feed == "Discover") {
-      feedState = <Discover posts={this.props.discoverPosts}/>
+      feedState = <Discover posts={this.props.discoverPosts} />
     }
     else {
       feedState = <NewPost />
     }
     return (
       <Container fluid>
-        <Row>
-          <Col onClick={this.handleClickMyFeed}>My Feed</Col>
-          <Col onClick={this.handleClickDiscover}>Discover</Col>
-          <Col onClick={this.handleClickCreate}>Create New Post</Col>
+        <Row className="feed-button-row">
+          <Col></Col>
+
+          <Col xs={2} onClick={this.handleClickMyFeed} className="feed-button"><h2>My Feed</h2></Col>
+          <Col xs={2} onClick={this.handleClickDiscover} className="feed-button"><h2>Discover</h2></Col>
+          <Col xs={2} onClick={this.handleClickCreate} className="feed-button"><h2>Create New Post</h2></Col>
+          <Col></Col>
+
         </Row>
         {feedState}
       </Container>

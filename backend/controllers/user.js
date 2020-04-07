@@ -120,3 +120,21 @@ exports.removeFollower = (req, res) => {
             res.json(result);
         });
 };
+
+exports.addNotification = (req, res) => {
+    let notification = req.body.notification;
+    
+
+    User.findByIdAndUpdate(req.body.userId, { 
+        $push: {
+            notifications: {
+
+            } 
+        } 
+    }, 
+    (err, result) => {
+        if (err) {
+            return res.status(400).json({ error: err });
+        }
+    });
+};

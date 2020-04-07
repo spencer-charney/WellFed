@@ -23,7 +23,7 @@ exports.getPosts = (req, res) => {
 	.populate("postedBy", "_id name")
 	.populate('comments', 'text created')
 	.populate('comments.postedBy', '_id name')
-	.select('_id title body created')
+	.select('_id title description serves tags ingredients directions totalTime created')
 	.then((posts) => {
 		res.status(200).json({post: posts});
 	})
@@ -31,37 +31,41 @@ exports.getPosts = (req, res) => {
 }
 
 exports.createPost = (req, res, next) => {
-	let form = new formidable.IncomingForm();
-	form.keepExtensions = true;
-	form.parse(req, (err, fields, files) => {
+    // let form = new formidable.IncomingForm();
+    // form.keepExtensions = true;
+    // form.parse(req, (err, fields, files) => {
+    //     if (err) {
+    //         return res.status(400).json({
+    //             error: err
+    //         });
+    //     }
+    //     let post = new Post(fields);
+
+    //     req.profile.hashed_password = undefined;
+    //     req.profile.salt = undefined;
+    //     post.postedBy = req.profile;
+
+    //     post.save((err, result) => {
+    //         if (err) {
+    //             return res.status(400).json({
+    //                 error: err
+    //             });
+    //         }
+    //         res.json(result);
+    //     });
+	// });
+	const post = new Post(req.body);
+	post.postedBy = req.profile;
+    post.save((err,result) => {
 		if (err) {
 			return res.status(400).json({
-				error: "Image could not be uploaded"
+				error: err
 			});
 		}
-		let post = new Post(fields);
-		req.profile.hashed_password = undefined;
-		req.profile.salt = undefined;
-
-		post.postedBy = req.profile;
-		
-		post.save((err, result) => {
-			if (err) {
-				return res.status(400).json({
-					error: err
-				})
-			}
-			res.json(result);
-		});
-	});
-
-	const post = new Post(req.body);
-	post.save()
-	.then(result => {
-		res.status(200).json({
-			post: result
-		})
-	})
+        res.json({
+            post: result
+        });
+    });
 }
 
 exports.postsByUser = (req, res) => {

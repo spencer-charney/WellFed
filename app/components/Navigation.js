@@ -1,34 +1,43 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+import '../css/navigation.css'
 
 class Navigation extends React.Component {
   constructor(props){
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
+    this.state ={
+      page:"feed"
+    }
+    this.onClickProfile = this.onClickProfile.bind(this);
+    this.onClickNotification = this.onClickNotification.bind(this);
+    this.onClickFeed = this.onClickFeed.bind(this);
 
-  handleChange(e){
-    this.props.onComponentChange(e.target.value);
   }
-  
+  onClickProfile(){
+    this.props.onComponentChange('profile');
+  }
+  onClickNotification(){
+    this.props.onComponentChange('notifications');
+
+  }
+  onClickFeed(){
+    this.props.onComponentChange('feed');
+
+  }
+   
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">Well Fed</a>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className={"nav-item active"}>
-              <button className="btn btn-light" value="MyProfile" onClick={this.handleChange}>My Profile</button>
-            </li>
-            <li className={"nav-item active"}>
-              <button className="btn btn-light" value="Notifications" onClick={this.handleChange}>Notifications</button>
-            </li>
-            <li className={"nav-item active"}>
-              <button className="btn btn-light" value="Feed" onClick={this.handleChange}>Feed</button>
-            </li>           
-          </ul>
-        </div>
-      </nav>
+      <Container fluid>
+        <Row className="navbar-row">
+          <Col xs={1}>Well Fed</Col>
+          <Col xs={1} onClick={this.onClickProfile} className="navbar-col">My Profile</Col>
+          <Col xs={1} onClick={this.onClickNotification} className="navbar-col">Notifications</Col>
+          <Col xs={1} onClick={this.onClickFeed} className="navbar-col">Feed</Col>
+        </Row>
+      </Container>
     )
   }
 }

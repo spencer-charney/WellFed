@@ -1,13 +1,17 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Recipe from './Recipe'
 import Review from './Review'
+
+import '../../css/feed.css'
 
 class Discover extends React.Component {
     constructor(props){
       super(props);
     }
+
     render() {
       const len = this.props.posts.length; 
       let postArray = [];
@@ -27,8 +31,8 @@ class Discover extends React.Component {
       }
       return (
         <Container fluid>
-          <Row><h1>Discover</h1></Row>
-          <Row>This is where search for users will go</Row>
+          <Row className="discover-title"><Col /><Col xs={1}><h1>Discover</h1></Col><Col /></Row>
+          <Row><Col /><Col>This is where search for users will go</Col><Col /></Row>
           {postArray}
         </Container>
       )

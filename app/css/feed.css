@@ -1,0 +1,45 @@
+
+.feed-button-row{
+    padding-top: 2em;
+}
+.feed-button{
+    margin-left: 1em;
+    border-style: solid;
+    border-color: black;
+    border-width: 10%;
+    background-color: blanchedalmond;
+    text-align: center;
+}
+.discover-title{
+    padding-top: 2em;
+
+}
+
+.recipe-container{
+    margin-left: 15em;
+    margin-right: 15em;
+    border-style: solid;
+    border-color: black;
+    border-width: 10%;
+}
+.recipe-title{
+    text-align: center;
+}
+.recipe-author{
+    text-align: center;
+}
+
+.recipe-description{
+    text-align: center;
+}
+
+
+
+
+
+.ingredients-row{
+    background-color: lightgreen;
+}
+.directions-row{
+    background-color: lightgreen;
+}
