@@ -12,7 +12,6 @@ const {
 } = require('../controllers/post');
 const {requireSignin} = require('../controllers/auth');
 const {userById} = require('../controllers/user');
-const {createPostValidator} = require('../validator');
 
 const router = express.Router();
 
@@ -24,11 +23,7 @@ router.put("/post/uncomment", requireSignin, uncomment);
 
 router.get('/posts', getPosts);
 //TODO: ADD BACK IN THE REQUIRE SIGN IN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.post(
-	'/post/new/:userId', 
-	createPost,
-	createPostValidator
-);
+router.post('/post/new/:userId', createPost);
 router.get('/posts/by/:userId', requireSignin, postsByUser);
 router.put('/post/:postId', requireSignin, isPoster, updatePost);
 router.delete('/post/:postId', requireSignin, isPoster, deletePost);

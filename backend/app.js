@@ -27,6 +27,7 @@ mongoose.connection.on('error', err => {
 mongoose.set('useFindAndModify', false);
 
 //bring in routes
+const reviewRoutes = require('./routes/review');
 const postRoutes = require('./routes/post');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
@@ -51,6 +52,7 @@ app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(expressValidator());
 app.use(cors());
+app.use("/api", reviewRoutes);
 app.use("/api", postRoutes);
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
