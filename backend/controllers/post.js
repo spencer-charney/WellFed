@@ -23,7 +23,7 @@ exports.getPosts = (req, res) => {
 	.populate("postedBy", "_id name")
 	.populate('comments', 'text created')
 	.populate('comments.postedBy', '_id name')
-	.select('_id title description serves tags ingredients directions totalTime created')
+	.select('_id type title description serves tags ingredients directions totalTime created')
 	.then((posts) => {
 		res.status(200).json({post: posts});
 	})

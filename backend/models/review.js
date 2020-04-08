@@ -5,7 +5,7 @@ const reviewSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	title: {
+	restaurant: {
 		type: String,
 		required: true
 	},
@@ -17,14 +17,14 @@ const reviewSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	rating: {
-		type: Number,
+	rate: {
+		type: String,
 		required: true
 	},
 	tags: {
-		type: [String]
+		type: String
     },
-    body: {
+    review: {
         type: String, 
         required: true
     },
