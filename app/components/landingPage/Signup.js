@@ -8,8 +8,8 @@ class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            logEmail = '',
-            logPassword = ''
+            logEmail : '',
+            logPassword : ''
         }
         this.handleChangeLogEmail = this.handleChangeLogEmail.bind(this);
         this.handleChangeLogPassword = this.handleChangeLogPassword.bind(this);
@@ -25,8 +25,8 @@ class Signup extends React.Component {
     }
     handleSubmitLog() {
         //Send to server
-        console.log(this.state.logEmail)
-        console.log(this.state.logPassword)
+        this.props.sumbit("Sign Up", this.state.logEmail, this.state.logPassword);
+
     }
 
     render() {
