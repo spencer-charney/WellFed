@@ -1,5 +1,5 @@
 export const list = () => {
-    return fetch(`http://localhost:3000/api/posts`, {
+    return fetch(`${process.env.API_URL}/posts`, {
         method: "GET"
     })
         .then(response => {
@@ -10,7 +10,7 @@ export const list = () => {
 
 //ADD BACK IN THE TOKEN!!!!!!!!!!!!!!!!!!!!!!!!!!
 export const create = (userId, post) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/post/new/${userId}`, {
+    return fetch(`${process.env.API_URL}/post/new/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -26,7 +26,7 @@ export const create = (userId, post) => {
 
 
 export const bookmark = (userId, token, postId) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/post/bookmark`, {
+    return fetch(`${process.env.API_URL}/post/bookmark`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -42,7 +42,7 @@ export const bookmark = (userId, token, postId) => {
 };
 
 export const unbookmark = (userId, token, postId) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/post/unbookmark`, {
+    return fetch(`${process.env.API_URL}/post/unbookmark`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -58,7 +58,7 @@ export const unbookmark = (userId, token, postId) => {
 };
 
 export const comment = (userId, token, postId, comment) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/post/comment`, {
+    return fetch(`${process.env.API_URL}/post/comment`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -74,7 +74,7 @@ export const comment = (userId, token, postId, comment) => {
 };
 
 export const uncomment = (userId, token, postId, comment) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/post/uncomment`, {
+    return fetch(`${process.env.API_URL}/post/uncomment`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
