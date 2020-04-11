@@ -40,7 +40,7 @@ class LandingPage extends React.Component {
                     <Col className="landing-col"><Row><p className="landing-col-title">Share</p></Row><Row><p className="landing-col-desc">Users are able to share recipes that they love and which work for their dietary needs. Users are also able to post reviews of meals which fit their dietary needs from restaurants.</p></Row></Col>
                 </Row>
                 <Row><Col /><Col onClick={this.handleClickLogin} className="landing-log">Login</Col><Col onClick={this.handleClickSignUp} className="landing-sign">Sign Up</Col><Col /></Row>
-                <Row><Col /><Col>{form}</Col><Col /></Row>
+                <Row><Col /><Col xs={6}>{form}</Col><Col /></Row>
             </Container>
         )
     }
