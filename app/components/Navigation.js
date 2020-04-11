@@ -6,36 +6,36 @@ import Col from 'react-bootstrap/Col'
 import '../css/navigation.css'
 
 class Navigation extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={
-      page:"feed"
+    this.state = {
+      page: "feed"
     }
     this.onClickProfile = this.onClickProfile.bind(this);
     this.onClickNotification = this.onClickNotification.bind(this);
     this.onClickFeed = this.onClickFeed.bind(this);
 
   }
-  onClickProfile(){
+  onClickProfile() {
     this.props.onComponentChange('profile');
   }
-  onClickNotification(){
+  onClickNotification() {
     this.props.onComponentChange('notifications');
 
   }
-  onClickFeed(){
+  onClickFeed() {
     this.props.onComponentChange('feed');
 
   }
-   
+
   render() {
     return (
       <Container fluid>
         <Row className="navbar-row">
-          <Col xs={1}>Well Fed</Col>
           <Col xs={1} onClick={this.onClickProfile} className="navbar-col">My Profile</Col>
           <Col xs={1} onClick={this.onClickNotification} className="navbar-col">Notifications</Col>
           <Col xs={1} onClick={this.onClickFeed} className="navbar-col">Feed</Col>
+          <Col>Well Fed</Col>
         </Row>
       </Container>
     )

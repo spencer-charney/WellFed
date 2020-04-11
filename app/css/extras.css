@@ -1,0 +1,81 @@
+
+.feed-button-row{
+    background-color:  rgb(189, 236, 189);
+    position: fixed;
+    top: 3em;
+    width: 98%;
+    padding-top:1em;
+}
+.feed-button{
+margin-left: 1em;
+border-style: solid;
+border-color: black;
+border-width: 10%;
+background-color: blanchedalmond;
+text-align: center;
+}
+
+.recipe-container{
+margin-left: 15em;
+margin-right: 15em;
+border-style: solid;
+border-color: black;
+border-width: 10%;
+}
+.recipe-title{
+text-align: center;
+}
+.recipe-author{
+text-align: center;
+}
+
+.recipe-description{
+text-align: center;
+}
+
+.scroll {
+top: 7em;
+position: fixed;
+overflow-y: auto;
+overflow-x: hidden;
+}
+
+
+
+.ingredients-row{
+background-color: lightgreen;
+}
+.directions-row{
+background-color: lightgreen;
+}
+
+
+
+
+.page{
+    margin-top: 3em;
+
+}
+
+
+.navbar-row{
+    background-color: rgb(122, 53, 25);
+    height: 3em;
+    position: fixed;
+    top: 0;
+    width: 98%
+}
+
+.navbar-col{
+    background-color: burlywood;
+    margin-left: 1%;
+    border-radius: 20%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2%;
+    text-align: center;
+
+
+}
+
+

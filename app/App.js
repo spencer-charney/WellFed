@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import './css/app.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navigation from './components/Navigation'
 import Feed from './components/feedPage/Feed'
@@ -93,7 +93,7 @@ class App extends React.Component {
                     ]} />;
             }
             return (
-                <Container fluid className="app">
+                <Container fluid>
                     <Navigation onComponentChange={this.handleClick} />
                     <Container fluid className="page">
                         {page}

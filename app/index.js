@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import LandingPage from './components/landingPage/LandingPage'
 import App from './App'
+import './index.css'
 
 
 class Index extends React.Component {
@@ -28,7 +28,7 @@ class Index extends React.Component {
             page = <LandingPage sumbit={this.handleSubmit} />;
         }
         return (
-            <div>
+            <div className="index">
                 {page}
             </div>
         )

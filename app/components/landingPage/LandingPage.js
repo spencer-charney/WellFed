@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Login from './Login';
 import Signup from './Signup';
+import '../../css/landingPage.css';
 
 class LandingPage extends React.Component {
     constructor(props) {

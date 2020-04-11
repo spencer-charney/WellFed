@@ -116,9 +116,9 @@ class Recipe extends React.Component {
     }
     return (
       <Container fluid className="recipe-container">
-        <Row><Col /><Col xs={4}><h1 className="recipe-title">{this.props.title}</h1></Col><Col /></Row>
-        <Row><Col /><Col xs={4}><p className="recipe-author"><i>{this.props.author}</i></p></Col><Col /></Row>
-        <Row><Col /><Col xs={6}><p className="recipe-description">{this.props.description}</p></Col><Col /></Row>
+        <Row><h1 className="recipe-title">{this.props.title}</h1></Row>
+        <Row><p className="recipe-author"><i>{this.props.author}</i></p></Row>
+        <Row><p className="recipe-description">{this.props.description}</p></Row>
         <Row>
           <Col>
           <Row><p>Total Time</p></Row>

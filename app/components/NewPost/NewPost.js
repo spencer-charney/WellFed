@@ -4,6 +4,7 @@ import ReviewForm from './ReviewForm';
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import '../../css/feed.css'
 
 class NewPost extends React.Component {
     constructor(props) {
@@ -22,12 +23,13 @@ class NewPost extends React.Component {
         const formState = (this.state.feed == 'recipe') ? <RecipeForm /> : <ReviewForm />;
         return (
             <Container fluid>
-                <Row><h1>Create New Post</h1></Row>
                 <Row>
                     <Col onClick={this.handleClickRecipe}>Create New Recipe</Col>
                     <Col onClick={this.handleClickReview}>Create New Review</Col>
                 </Row>
-                {formState}
+                <div className="scroll">
+                    {formState}
+                </div>
             </Container>
         )
     }
