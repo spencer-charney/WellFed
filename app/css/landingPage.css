@@ -1,0 +1,66 @@
+.landing{
+    
+}
+
+.landing-title{
+    text-align: center;
+    color: rgb(61, 28, 0);
+    font-size: 4em;
+}
+
+.landing-desc{
+    text-align: center;
+    color: rgb(61, 28, 0);
+    font-size: 1.5em;
+}
+
+.landing-col{
+    background-color: rgb(189, 236, 189);
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+}
+
+.landing-col-title{
+    background-color: rgb(114, 241, 114);
+    text-align: center;
+    width: 100%;
+    color: rgb(61, 28, 0);
+    font-size: 2em;
+}
+
+.landing-col-desc{
+    text-align: center;
+    color: rgb(61, 28, 0);
+    font-size: 1em;
+}
+
+.landing-log{
+    margin-right:2em;
+    background-color: rgb(114, 241, 114);
+    text-align: center;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+    font-size: 1.5em;
+    border-radius: 50%;
+    height: 3em;
+}
+
+.landing-sign{
+    margin-left:2em;
+    background-color: rgb(114, 241, 114);
+    text-align: center;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+    font-size: 1.5em;
+    border-radius: 50%;
+
+}

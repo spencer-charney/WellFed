@@ -52,7 +52,7 @@ and (max-width : 320px) {
     background-color: rgb(189, 236, 189);
     margin-top: 5px;
     border-style: solid;
-    border-color: black;
+    border-color: rgb(7, 20, 0);
     border-width: 10%;
 }
 
@@ -62,7 +62,7 @@ and (max-width : 320px) {
 }
 
 .expandable{
-    background-color: green;
+    background-color: rgb(114, 241, 114);
 }
 
    

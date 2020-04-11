@@ -31,15 +31,15 @@ class LandingPage extends React.Component {
             form = <Signup sumbit={this.props.sumbit}/>
         }
         return (
-            <Container fluid>
-                <Row><Col /><Col><h1>Welcome to Well Fed!</h1></Col><Col /></Row>
-                <Row><Col />Welcome to Well Fed. Well Fed is a social media platform designed to connect people with similar dietary restrictions or preferences.<Col /></Row>
+            <Container fluid className="landing">
+                <Row><Col><p className="landing-title">Welcome to Well Fed!</p></Col></Row>
+                <Row><Col /><p className="landing-desc">Welcome to Well Fed. Well Fed is a social media platform designed to connect people with similar dietary restrictions or preferences.</p><Col /></Row>
                 <Row>
-                    <Col><Row>Connect</Row><Row><p>Users can follow other users with similar dietary needs as well as explore posts from popular accounts</p></Row></Col>
-                    <Col><Row>Save</Row><Row><p>Users can save the recipes or reviews that they like by bookmarking the posts. Users can also create multiple "Books" on their profiles for other people in their lives with dietary restrictions (children, spouse, etc.) </p></Row></Col>
-                    <Col><Row>Share</Row><Row><p>Users are able to share recipes that they love and which work for their dietary needs. Users are also able to post reviews of meals which fit their dietary needs from restaurants.</p></Row></Col>
+                    <Col className="landing-col"><Row><p className="landing-col-title">Connect</p></Row><Row><p className="landing-col-desc">Users can follow other users with similar dietary needs as well as explore posts from popular accounts</p></Row></Col>
+                    <Col className="landing-col"><Row><p className="landing-col-title">Save</p></Row><Row><p className="landing-col-desc">Users can save the recipes or reviews that they like by bookmarking the posts. Users can also create multiple "Books" on their profiles for other people in their lives with dietary restrictions (children, spouse, etc.) </p></Row></Col>
+                    <Col className="landing-col"><Row><p className="landing-col-title">Share</p></Row><Row><p className="landing-col-desc">Users are able to share recipes that they love and which work for their dietary needs. Users are also able to post reviews of meals which fit their dietary needs from restaurants.</p></Row></Col>
                 </Row>
-                <Row><Col /><Col onClick={this.handleClickLogin}>Login</Col><Col onClick={this.handleClickSignUp}>Sign Up</Col><Col /></Row>
+                <Row><Col /><Col onClick={this.handleClickLogin} className="landing-log">Login</Col><Col onClick={this.handleClickSignUp} className="landing-sign">Sign Up</Col><Col /></Row>
                 {form}
             </Container>
         )
