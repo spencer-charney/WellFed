@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import BookTop from './BookTop'
 import BookBottom from './BookBottom'
 import AddBook from './AddBook';
@@ -34,10 +35,9 @@ class MyBooks extends React.Component {
         }
         return (
             <Container fluid>
-                <Row><AddBook /></Row>
-                <Row>{
-                    arrayOfTop
-                }
+                <Row>
+                    <Col><AddBook /></Col>
+                    <Col>{arrayOfTop}</Col>
                 </Row>
                 <Container fluid>
                     <Row><h4>{arrayOfTop[number]}</h4></Row>

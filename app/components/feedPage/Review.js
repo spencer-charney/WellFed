@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Comments from './Comments'
 import CommentForm from './CommentForm';
 
+import '../../css/feed.css'
+
 
 class Review extends React.Component {
   constructor(props) {
@@ -75,13 +77,13 @@ class Review extends React.Component {
 
     }
     return (
-      <Container fluid>
-        <Row><h1>{this.props.restaurant}</h1></Row>
-        <Row><h2>Dish: {this.props.dish}</h2></Row>
-        <Row><p><i>{this.props.user}</i></p></Row>
-        <Row><p>{this.props.rate} of 5 stars</p></Row>
-        <Row><p>{this.props.tags}</p></Row>
-        <Row><p>{this.props.review}</p></Row>
+      <Container fluid className="post-container">
+        <Row><h1 className="details">{this.props.restaurant}</h1></Row>
+        <Row><h2 className="details">Dish: {this.props.dish}</h2></Row>
+        <Row><p className="details"><i>{this.props.user}</i></p></Row>
+        <Row><p className="details">{this.props.rate} of 5 stars</p></Row>
+        <Row><p className="details">{this.props.tags}</p></Row>
+        <Row><p className="details">{this.props.review}</p></Row>
         <Container fluid>
           {comments}
           <Row className="userActionRow">

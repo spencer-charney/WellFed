@@ -31,11 +31,7 @@ class Discover extends React.Component {
     }
     return (
       <Container fluid>
-        <div className="scroll">
           {postArray}
-          <Row><Col /><Col>This is the bottom of your Discover Feed</Col><Col /></Row>
-        </div>
-        
       </Container>
     )
   }

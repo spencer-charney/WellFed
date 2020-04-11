@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row';
 import MyBooks from './MyBooks';
 import MyPosts from './MyPosts';
 
+import '../../css/profile.css'
+
 class MyProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -11,19 +13,19 @@ class MyProfile extends React.Component {
   render() {
 
     return (
-      <Container fluid>
-        <Row><h1>{this.props.name}</h1></Row>
-        <Row><p><i>{this.props.username}</i></p></Row>
-        <Row><p><i>followers: {this.props.followers} following:{this.props.following}</i></p></Row>
-        <Row><h4>{this.props.restrictions}</h4></Row>
+      <Container fluid className="scroll">
+        <Row><h1 className="details">{this.props.name}</h1></Row>
+        <Row><p className="details"><i>{this.props.username}</i></p></Row>
+        <Row><p className="details"><i>followers: {this.props.followers} following:{this.props.following}</i></p></Row>
+        <Row><h4 className="details">{this.props.restrictions}</h4></Row>
         <Container fluid>
-          <Row><h4>My Books</h4></Row>
+          <Row><h4 className="details my-books">My Books</h4></Row>
           {
             <MyBooks myBooks={this.props.myBooks} />
           }
         </Container>
         <Container fluid>
-          <Row><h4>My Posts</h4></Row>
+          <Row><h4 className="details">My Posts</h4></Row>
           {
             <MyPosts myPosts={this.props.myPosts} />
           }

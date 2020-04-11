@@ -30,10 +30,7 @@ class MyFeed extends React.Component {
     }
     return (
       <Container fluid>
-        <div className="scroll">
           {postArray}
-          <Row><Col /><Col>This is the bottom of your My Feed. Follow user accounts from Discover!</Col><Col /></Row>
-        </div>
       </Container>
     )
   }

@@ -61,15 +61,15 @@ class Recipe extends React.Component {
 
     let ingredients;
     if (this.state.ingredientsClicked) {
-    ingredients =  <Row >{this.props.ingredients}</Row>
+      ingredients = <Row >{this.props.ingredients}</Row>
     }
     else {
       ingredients = <div></div>
     }
-  
+
     let directions;
     if (this.state.directionsClicked) {
-    directions =  <Row>{this.props.directions}</Row>
+      directions = <Row>{this.props.directions}</Row>
     }
     else {
       directions = <div></div>
@@ -115,24 +115,27 @@ class Recipe extends React.Component {
 
     }
     return (
-      <Container fluid className="recipe-container">
-        <Row><h1 className="recipe-title">{this.props.title}</h1></Row>
-        <Row><p className="recipe-author"><i>{this.props.author}</i></p></Row>
-        <Row><p className="recipe-description">{this.props.description}</p></Row>
+      <Container fluid className="post-container">
+        <Row><h1 className="details">{this.props.title}</h1></Row>
+        <Row><p className="details"><i>{this.props.author}</i></p></Row>
+        <Row><p className="details">{this.props.description}</p></Row>
         <Row>
-          <Col>
-          <Row><p>Total Time</p></Row>
-          <Row><p>{this.props.totalTime}</p></Row>
-          </Col>
-          <Col>
-          <Row><p>Serves</p></Row>
-          <Row><p>{this.props.serves}</p></Row>
-          </Col>
+          <Col />
+            <Col>
+              <Row><p className="details">Time</p></Row>
+              <Row><p className="details">{this.props.totalTime}</p></Row>
+            </Col>
+            <Col>
+              <Row><p className="details">Serves</p></Row>
+              <Row><p className="details">{this.props.serves}</p></Row>
+            </Col>
+            <Col />
+
         </Row>
-        <Row><p>{this.props.tags}</p></Row>
-        <Row onClick={this.handleClickIngredients} className="ingredients-row">Ingredients</Row>
+        <Row><p className="details">{this.props.tags}</p></Row>
+        <Row onClick={this.handleClickIngredients} className="expandable">Ingredients</Row>
         {ingredients}
-        <Row onClick={this.handleClickDirections} className="directions-row">Directions</Row>
+        <Row onClick={this.handleClickDirections} className="expandable">Directions</Row>
         {directions}
         <Container fluid>
           {comments}
@@ -147,7 +150,7 @@ class Recipe extends React.Component {
           </Row>
         </Container>
       </Container>
-      )
+    )
   }
 }
 

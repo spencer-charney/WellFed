@@ -31,7 +31,7 @@ class Navigation extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row className="navbar-row">
+        <Row className="navbar-row" >
           <Col xs={1} onClick={this.onClickProfile} className="navbar-col">My Profile</Col>
           <Col xs={1} onClick={this.onClickNotification} className="navbar-col">Notifications</Col>
           <Col xs={1} onClick={this.onClickFeed} className="navbar-col">Feed</Col>

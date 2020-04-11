@@ -1,0 +1,11 @@
+.scroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: lightgrey;
+    width: 100%;
+    height: 700px;
+}
+
+.my-books{
+    margin-top: 3%;
+}
