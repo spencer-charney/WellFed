@@ -8,8 +8,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            logEmail : '',
-            logPassword : ''
+            logEmail: '',
+            logPassword: ''
         }
         this.handleChangeLogEmail = this.handleChangeLogEmail.bind(this);
         this.handleChangeLogPassword = this.handleChangeLogPassword.bind(this);
@@ -30,10 +30,11 @@ class Login extends React.Component {
 
     render() {
         return (
-            <Container fluid>
-                <Row><Col>Email:</Col><Col><input type="text" value={this.state.logEmail} onChange={this.handleChangeLogEmail} /></Col></Row>
-                <Row><Col>Password:</Col><Col><input type="text" value={this.state.logPassword} onChange={this.handleChangeLogPassword} /></Col></Row>
-                <Row><Button onClick={this.handleSubmitLog}>submit</Button></Row>
+            <Container fluid className="landing-form">
+                <Row><p className="landing-form-title">Log In</p></Row>
+                <Row><p className="field">Email:</p><input type="text" value={this.state.logEmail} onChange={this.handleChangeLogEmail} className="textfield" /></Row>
+                <Row><p className="field">Password:</p><input type="text" value={this.state.logPassword} onChange={this.handleChangeLogPassword} className="textfield" /></Row>
+                <Row ><Col /><p onClick={this.handleSubmitLog} className="submit">log in</p><Col /></Row>
             </Container>
         )
     }
