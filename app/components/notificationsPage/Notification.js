@@ -11,28 +11,29 @@ class Notification extends React.Component {
       let notification;
       switch (this.props.type) {
          case "newComment":
-            notification = <Container fluid>
-               <Row>New Comment from {this.props.username}</Row>
-               <Row><i>{this.props.time}</i></Row>
-               <Row>{this.props.message}</Row>
+            notification = <Container fluid className="notification">
+               <Row><p className="notification-detail">New Comment from {this.props.username}</p></Row>
+               <Row><p className="notification-detail"><i>{this.props.time}</i></p></Row>
+               <Row><p className="notification-detail">{this.props.message}</p></Row>
             </Container>
             break;
          case "newBookmark":
-            notification = <Container fluid>
-               <Row>New Bookmark from {this.props.username}</Row>
-               <Row><i>{this.props.time}</i></Row>
-               <Row>{this.props.message}</Row>
+            notification = <Container fluid className="notification">
+               <Row><p className="notification-detail">New Bookmark from {this.props.username}</p></Row>
+               <Row><p className="notification-detail"><i>{this.props.time}</i></p></Row>
+               <Row ><p className="notification-detail">{this.props.message}</p></Row>
             </Container>
             break;
          case "newFollow":
-            notification = <Container fluid>
-               <Row>New Follow from {this.props.username}</Row>
-               <Row><i>{this.props.time}</i></Row>
+            notification = <Container fluid className="notification">
+               <Row><p className="notification-detail">New Follow from {this.props.username}</p></Row>
+               <Row><p className="notification-detail"><i>{this.props.time}</i></p></Row>
             </Container>
             break;
       }
       return (
-         <Row>{notification}</Row>
+         <div>         {notification}
+         </div>
       )
    }
 }

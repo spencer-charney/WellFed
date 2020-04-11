@@ -1,6 +1,9 @@
 import React from 'react';
 import Notification from './Notification'
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+
+import '../../css/notifications.css'
 
 class NotificationsPage extends React.Component {
     constructor(props){
@@ -15,8 +18,12 @@ class NotificationsPage extends React.Component {
         );
       }
       return (
-        <Container fluid>
+        <Container fluid >
+          <Col xs={1}/>
+          <Col className="scroll-notification">
           {notificationsArray}
+          </Col>
+          <Col xs={1}/>
         </Container>
       )
     }
