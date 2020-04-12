@@ -2,7 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button';
 import {signup} from './Auth'
 
 class Signup extends React.Component {
@@ -21,7 +20,7 @@ class Signup extends React.Component {
         this.handleChangeDiet = this.handleChangeDiet.bind(this);
         this.handleChangeEmail= this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleSubmitLog = this.handleSubmitLog.bind(this);
+        this.handleSubmitSign = this.handleSubmitSign.bind(this);
 
     }
 
@@ -40,7 +39,7 @@ class Signup extends React.Component {
     handleChangePassword(event) {
         this.setState({ password: event.target.value });
     }
-    handleSubmitLog() {
+    handleSubmitSign() {
         const { name, username, diet, email, password } = this.state;
         const user = {
             name,
@@ -81,7 +80,7 @@ class Signup extends React.Component {
                 <Row><p className="field">Dietary Restrictions:</p><input type="text" value={this.state.diet} onChange={this.handleChangeDiet} className="textfield" placeholder="Please separate values with a comma (eg. Vegan, Gluten Free, etc.)"/></Row>
                 <Row><p className="field">Email:</p><input type="text" value={this.state.email} onChange={this.handleChangeEmail} className="textfield" /></Row>
                 <Row><p className="field">Password:</p><input type="text" value={this.state.password} onChange={this.handleChangePassword} className="textfield" /></Row>
-                <Row><Col /><p onClick={this.handleSubmitLog} className="submit">sign up</p><Col /></Row>
+                <Row><Col /><p onClick={this.handleSubmitSign} className="submit">sign up</p><Col /></Row>
             </Container>
         )
     }

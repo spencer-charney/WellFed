@@ -36,4 +36,26 @@
     background-color: rgb(114, 241, 114);
 }
 
+.search-area{
+    top:110px;
+    position: fixed;
+    width: 100%;
+}
+
+.search-button{
+    margin-top: 1em;
+    width:50%;
+    text-align: center;
+    background-color: rgb(114, 241, 114);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+    font-size: 1em;
+}
+
+.search-text{
+    margin-top: 1em;
+    margin-left: 6em;
+}
    
