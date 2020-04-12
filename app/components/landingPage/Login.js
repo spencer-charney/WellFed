@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
+import {signin} from './Auth'
 
 class Login extends React.Component {
     constructor(props) {
@@ -24,6 +25,7 @@ class Login extends React.Component {
         this.setState({ logPassword: event.target.value });
     }
     handleSubmitLog() {
+        
         //Send to server
         this.props.sumbit("Login", this.state.logEmail, this.state.logPassword);
     }

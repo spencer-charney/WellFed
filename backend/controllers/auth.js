@@ -17,13 +17,12 @@ exports.signup = async (req, res) => {
 
 exports.signin = (req, res) => {
 	//get user from email
-
 	const {email, password} = req.body;
 	User.findOne({email}, (err, user) => {
 		//if error or no user matching
 		if (err || !user) {
 			return res.status(401).json({
-				error: "User with that email does not exist. Please sign in."
+				error: "User with that email does not exist. Please sign up."
 			})
 		}
 

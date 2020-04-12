@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema({
 		trim: true,
 		required: true
 	},
+	username: {
+		type: String,
+		required: true,
+	},
 	email: {
 		type: String,
 		trim: true,
@@ -24,6 +28,11 @@ const userSchema = new mongoose.Schema({
 		default: Date.now
 	},
 	updated: Date,
+	diet: [
+		{
+			type: String
+		}
+	],
 	following: [{type: ObjectId, ref: "User"}],
 	followers: [{type: ObjectId, ref: "User"}],
 	notifications: [

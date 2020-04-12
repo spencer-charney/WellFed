@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
+import {signup} from './Auth'
 
 class Signup extends React.Component {
     constructor(props) {
@@ -12,7 +13,8 @@ class Signup extends React.Component {
             username: '',
             diet: '',
             email: '',
-            password:''
+            password:'',
+            error: ''
         }
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeUsername= this.handleChangeUsername.bind(this);
@@ -39,6 +41,32 @@ class Signup extends React.Component {
         this.setState({ password: event.target.value });
     }
     handleSubmitLog() {
+        const { name, username, diet, email, password } = this.state;
+        const user = {
+            name,
+            username,
+            diet,
+            email,
+            password
+        };
+
+        signup(user).then(data => {
+            if (data.error) this.setState({ error: data.error });
+            else {
+                this.setState({
+                    name: '',
+                    username: '',
+                    diet: '',
+                    email: '',
+                    password:'',
+                    error: ''
+                });
+            }
+        });
+
+        if (this.state.error.length == 0) {
+            console.log(this.state.error);
+        }
         //Send to server
         this.props.sumbit("Sign Up", this.state.email, this.state.password);
 
