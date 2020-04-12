@@ -28,17 +28,11 @@ class Feed extends React.Component {
   render() {
     let feedState;
     if (this.state.feed == "My Feed") {
-      feedState =
-        <Col className="scroll">
-          <MyFeed posts={this.props.myFeedPosts} />;
-      </Col>
+      feedState = <MyFeed posts={this.props.myFeedPosts} />;
 
     }
     else if (this.state.feed == "Discover") {
-      feedState =
-        <Col className="scroll">
-          <Discover posts={this.props.discoverPosts} />;
-      </Col>
+      feedState = <Discover posts={this.props.discoverPosts} />;
 
     }
     else {
@@ -52,7 +46,6 @@ class Feed extends React.Component {
           <Col xs={1} onClick={this.handleClickMyFeed} className="feed-button"><h3>My Feed</h3></Col>
           <Col xs={1} onClick={this.handleClickDiscover} className="feed-button"><h3>Discover</h3></Col>
           <Col xs={1} onClick={this.handleClickCreate} className="feed-button"><h3>Create</h3></Col>
-          <Col><h1>{this.state.feed}</h1></Col>
           <Col xs={2}>This is where search for users will go</Col>
         </Row>
         <Row className="feed-state-row">
