@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Comments from './Comments'
 import CommentForm from './CommentForm';
+import Bookselector from './Bookselector';
 
 import '../../css/feed.css'
 
@@ -86,7 +87,7 @@ class Recipe extends React.Component {
         </div>
       </IconContext.Provider>
       console.log("Bookmark Post");
-      selector = <Row><Col /><Col xs={3}>Selector Object Here</Col></Row>
+      selector = <Bookselector myBooks={["book1", "book2", "book3"]}/>
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
