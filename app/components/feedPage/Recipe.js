@@ -78,6 +78,7 @@ class Recipe extends React.Component {
       toggleD = <FaChevronDown />
     }
     let bookmark;
+    let selector;
     if (this.state.bookmarkClicked) {
       bookmark = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
         <div>
@@ -85,7 +86,7 @@ class Recipe extends React.Component {
         </div>
       </IconContext.Provider>
       console.log("Bookmark Post");
-
+      selector = <Row><Col /><Col xs={3}>Selector Object Here</Col></Row>
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -93,6 +94,7 @@ class Recipe extends React.Component {
           <FaBookmark />
         </div>
       </IconContext.Provider>
+      selector = <div></div>
     }
     let comment;
     let comments;
@@ -144,7 +146,10 @@ class Recipe extends React.Component {
         <Container fluid>
           {comments}
           <Row className="userActionRow">
-            <Col></Col>
+            <Col />
+            <Col xs={1}>
+              {selector}
+            </Col>
             <Col xs={1} onClick={this.handleClickBookmark}>
               {bookmark}
             </Col>
