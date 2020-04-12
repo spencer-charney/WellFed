@@ -13,7 +13,7 @@ class MyProfile extends React.Component {
   render() {
 
     return (
-      <Container fluid className="scroll">
+      <Container fluid className="profile-page">
         <Row><h1 className="details">{this.props.name}</h1></Row>
         <Row><p className="details"><i>{this.props.username}</i></p></Row>
         <Row><p className="details"><i>followers: {this.props.followers} following:{this.props.following}</i></p></Row>

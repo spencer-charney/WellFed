@@ -2,18 +2,29 @@
     position: fixed;
     top: 50px;
     height: 50px;
-    width:98%;
+    width:97%;
+    background-color: rgba(165, 53, 1, 0.76);
+    opacity: 0.5;
+}
+.feed-button{
+    padding-top:.5em;
 }
 .feed-state-row{
     width:100%;
-    margin-top: 50px;
+    margin-top: 110px;
 }
+.feed-title{
+    font-size: 2em;
+    padding-left: 2em;
+}
+
 .post-container{
     background-color: rgb(189, 236, 189);
     margin-top: 5px;
     border-style: solid;
     border-color: rgb(7, 20, 0);
     border-width: 10%;
+    width:70%;
 }
 
 .details{

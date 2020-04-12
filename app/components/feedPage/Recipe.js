@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconContext } from "react-icons";
-import { FaComment, FaBook } from 'react-icons/fa';
-import { FaBookmark } from 'react-icons/fa';
+import { FaComment, FaBookmark, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -62,17 +61,21 @@ class Recipe extends React.Component {
     let ingredients;
     if (this.state.ingredientsClicked) {
       ingredients = <Row >{this.props.ingredients}</Row>
+      toggleI = <FaChevronUp />
     }
     else {
       ingredients = <div></div>
+      toggleI = <FaChevronDown />
     }
 
     let directions;
     if (this.state.directionsClicked) {
       directions = <Row>{this.props.directions}</Row>
+      toggleD = <FaChevronUp />
     }
     else {
       directions = <div></div>
+      toggleD = <FaChevronDown />
     }
     let bookmark;
     if (this.state.bookmarkClicked) {
@@ -93,6 +96,9 @@ class Recipe extends React.Component {
     }
     let comment;
     let comments;
+    let toggleI;
+    let toggleD;
+
     if (this.state.commentClicked) {
       comment = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
         <div>
@@ -103,7 +109,6 @@ class Recipe extends React.Component {
         <Comments commenting={true} comments={this.props.comments} />
         <CommentForm />
       </div>
-
     }
     else {
       comment = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -112,7 +117,6 @@ class Recipe extends React.Component {
         </div>
       </IconContext.Provider>;
       comments = <Comments commenting={false} comments={this.props.comments} />
-
     }
     return (
       <Container fluid className="post-container">
@@ -133,9 +137,9 @@ class Recipe extends React.Component {
 
         </Row>
         <Row><p className="details">{this.props.tags}</p></Row>
-        <Row onClick={this.handleClickIngredients} className="expandable">Ingredients</Row>
+        <Row onClick={this.handleClickIngredients} className="expandable"><Col xs={2}>Ingredients</Col><Col /><Col xs={1}>{toggleI}</Col></Row>
         {ingredients}
-        <Row onClick={this.handleClickDirections} className="expandable">Directions</Row>
+        <Row onClick={this.handleClickDirections} className="expandable"><Col xs={2}>Directions</Col><Col /><Col xs={1}>{toggleD}</Col></Row>
         {directions}
         <Container fluid>
           {comments}

@@ -18,7 +18,7 @@ class NotificationsPage extends React.Component {
         );
       }
       return (
-        <Container fluid >
+        <Container fluid className="notification-page">
           <Col xs={1}/>
           <Col className="scroll-notification">
           {notificationsArray}

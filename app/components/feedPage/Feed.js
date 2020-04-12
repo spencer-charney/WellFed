@@ -5,6 +5,12 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import NewPost from '../NewPost/NewPost';
+import { IconContext } from "react-icons";
+import { IoIosPerson, IoIosPeople } from "react-icons/io";
+import { AiOutlinePlus } from "react-icons/ai";
+import { GoSearch } from "react-icons/go";
+
+
 import '../../css/feed.css'
 
 
@@ -43,10 +49,35 @@ class Feed extends React.Component {
     return (
       <Container fluid>
         <Row className="feed-button-row">
-          <Col xs={1} onClick={this.handleClickMyFeed} className="feed-button"><h3>My Feed</h3></Col>
-          <Col xs={1} onClick={this.handleClickDiscover} className="feed-button"><h3>Discover</h3></Col>
-          <Col xs={1} onClick={this.handleClickCreate} className="feed-button"><h3>Create</h3></Col>
-          <Col xs={2}>This is where search for users will go</Col>
+        <Col><p className="feed-title">{this.state.feed}</p></Col>
+          <Col xs={1} onClick={this.handleClickMyFeed} className="feed-button">
+          <IconContext.Provider value={{ size: '2em' }}>
+              <div>
+                <IoIosPerson />
+              </div>
+            </IconContext.Provider>
+          </Col>
+          <Col xs={1} onClick={this.handleClickDiscover} className="feed-button">
+          <IconContext.Provider value={{ size: '2em' }}>
+              <div>
+                <IoIosPeople />
+              </div>
+            </IconContext.Provider>
+          </Col>
+          <Col xs={1} onClick={this.handleClickCreate} className="feed-button">
+          <IconContext.Provider value={{ size: '2em' }}>
+              <div>
+                <AiOutlinePlus />
+              </div>
+            </IconContext.Provider>
+          </Col>
+          <Col xs={1} onClick={this.handleClickMyFeed} className="feed-button">
+          <IconContext.Provider value={{ size: '2em' }}>
+              <div>
+                <GoSearch />
+              </div>
+            </IconContext.Provider>
+          </Col>
         </Row>
         <Row className="feed-state-row">
           <Col className="side" xs={1} />

@@ -2,8 +2,8 @@
     position: fixed;
     top: 0;
     height: 50px;
-    width: 98%;
-    background-color: white;
+    width: 99%;
+    background-color: rgba(165, 53, 1, 0.76);
     opacity: 0.5;
     padding-top: .5em;
 }
