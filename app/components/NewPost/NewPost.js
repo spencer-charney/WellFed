@@ -20,12 +20,26 @@ class NewPost extends React.Component {
         this.setState({ feed: 'review' })
     }
     render() {
-        const formState = (this.state.feed == 'recipe') ? <RecipeForm /> : <ReviewForm />;
+        let formState;
+        let recipeTab;
+        let reviewTab;
+        if (this.state.feed == 'recipe') {
+            formState = <RecipeForm />;
+            recipeTab = <Col onClick={this.handleClickRecipe} className="tab-clicked">Create New Recipe</Col>;
+            reviewTab = <Col onClick={this.handleClickReview} className="tab-not-clicked">Create New Review</Col>
+
+        }
+        else {
+            formState = <ReviewForm />;
+            recipeTab = <Col onClick={this.handleClickRecipe} className="tab-not-clicked">Create New Recipe</Col>;
+            reviewTab = <Col onClick={this.handleClickReview} className="tab-clicked">Create New Review</Col>
+
+        }
         return (
             <Container fluid>
                 <Row>
-                    <Col onClick={this.handleClickRecipe}>Create New Recipe</Col>
-                    <Col onClick={this.handleClickReview}>Create New Review</Col>
+                    {recipeTab}
+                    {reviewTab}
                 </Row>
                 <div className="scroll">
                     {formState}

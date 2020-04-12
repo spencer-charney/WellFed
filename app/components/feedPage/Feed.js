@@ -89,17 +89,17 @@ class Feed extends React.Component {
       <Container fluid>
         <Row className="feed-button-row">
           <Col><p className="feed-title">{this.state.feed}</p></Col>
-          <Col xs={1} onClick={this.handleClickMyFeed} className="feed-button">
-            <IconContext.Provider value={{ size: '2em' }}>
-              <div>
-                <IoIosPerson />
-              </div>
-            </IconContext.Provider>
-          </Col>
           <Col xs={1} onClick={this.handleClickDiscover} className="feed-button">
             <IconContext.Provider value={{ size: '2em' }}>
               <div>
                 <IoIosPeople />
+              </div>
+            </IconContext.Provider>
+          </Col>
+          <Col xs={1} onClick={this.handleClickMyFeed} className="feed-button">
+            <IconContext.Provider value={{ size: '2em' }}>
+              <div>
+                <IoIosPerson />
               </div>
             </IconContext.Provider>
           </Col>

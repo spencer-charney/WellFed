@@ -63,3 +63,37 @@
     padding: 1em;
 }
    
+.tab-clicked {
+    background-color: rgba(165, 53, 1, 0.76);
+    opacity: 0.5;
+    font-size: 1em;
+    padding: 1em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+}
+
+.tab-not-clicked {
+    font-size: 1em;
+    padding: 1em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+}
+
+.create-title{
+    width:100%;
+    text-align: center;
+    padding-top: 2em;
+}
+
+.create-name{
+    width:100%;
+    text-align: center;
+    font-size: 2em;
+    padding : 1em;
+}
+
+
+
+

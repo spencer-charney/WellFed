@@ -2,6 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import '../../css/feed.css'
+
 
 class RecipeForm extends React.Component {
     constructor(props) {

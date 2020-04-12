@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import '../../css/feed.css'
+
 
 class ReviewForm extends React.Component {
   constructor(props) {
