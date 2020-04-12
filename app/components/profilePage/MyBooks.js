@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import BookTop from './BookTop'
 import BookBottom from './BookBottom'
 import AddBook from './AddBook';
+import '../../css/profile.css'
+
 
 class MyBooks extends React.Component {
     constructor(props) {
@@ -23,9 +25,13 @@ class MyBooks extends React.Component {
     render() {
         var arrayOfTop = [];
         var arrayOfBottom = [];
+        var arrayOfNames = [];
         var len = this.props.myBooks.length;
         var number = this.state.book;
         for (var i = 0; i < len; i++) {
+            arrayOfNames.push(
+                this.props.myBooks[i].name
+            );
             arrayOfTop.push(
                 <BookTop key={i} onComponentChange={this.handleClick} index={i} name={this.props.myBooks[i].name}></BookTop>
             );
@@ -35,12 +41,12 @@ class MyBooks extends React.Component {
         }
         return (
             <Container fluid>
-                <Row>
-                    <Col><AddBook /></Col>
-                    <Col>{arrayOfTop}</Col>
+                <Row className="my-books">
+                    <Col className="book-col"><AddBook /></Col>
+                    {arrayOfTop}
                 </Row>
                 <Container fluid>
-                    <Row><h4>{arrayOfTop[number]}</h4></Row>
+                    <Row><h4 className="book-name">{arrayOfNames[number]}</h4></Row>
                     {
                         arrayOfBottom[number]
                     }

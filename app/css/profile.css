@@ -3,5 +3,55 @@
 }
 
 .my-books{
-    margin-top: 3%;
+    padding:2em;
+}
+
+.my-books-container{
+    padding:2em;
+}
+
+.book-col{
+    background-color: rgba(165, 53, 1, 0.76);
+    opacity: 0.5;
+    font-size: 2em;
+    padding: 1em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+        margin:1em;
+}
+
+.book-row{
+    margin: 1em;
+}
+
+.book-clicked {
+    background-color: rgba(165, 53, 1, 0.76);
+    opacity: 0.5;
+    font-size: 2em;
+    padding: 1em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+}
+
+.book-not-clicked {
+    font-size: 2em;
+    padding: 1em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+}
+
+.book-title{
+    width:100%;
+    text-align: center;
+    padding-top: 2em;
+}
+
+.book-name{
+    width:100%;
+    text-align: center;
+    font-size: 2em;
+    padding : 1em;
 }

@@ -2,6 +2,8 @@
 import React from 'react';
 
 import Col from 'react-bootstrap/Col';
+import '../../css/profile.css'
+
 
 
 class BookTop extends React.Component {
@@ -16,7 +18,7 @@ class BookTop extends React.Component {
 
     render() {
         return (
-        <Col onClick={this.handleChange}>{this.props.name}</Col>      
+        <Col onClick={this.handleChange} className="book-col"><p className="book-title">{this.props.name}</p></Col>      
         )
     }
 }
