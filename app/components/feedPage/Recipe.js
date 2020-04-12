@@ -146,9 +146,9 @@ class Recipe extends React.Component {
         {directions}
         <Container fluid>
           {comments}
-          <Row className="userActionRow">
+          <Row className="user-action-row">
             <Col />
-            <Col xs={1}>
+            <Col xs={2}>
               {selector}
             </Col>
             <Col xs={1} onClick={this.handleClickBookmark}>

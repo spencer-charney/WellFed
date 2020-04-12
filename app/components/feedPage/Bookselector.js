@@ -1,7 +1,4 @@
 import React from 'react';
-import Dropdown from 'react-bootstrap/Dropdown'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import  BookForSelector from './BookForSelector'
 
