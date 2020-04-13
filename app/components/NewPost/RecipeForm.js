@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import '../../css/feed.css'
-
+import { createRecipe } from "./apiPost";
+import { isAuthenticated } from "../landingPage/Auth";
 
 class RecipeForm extends React.Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class RecipeForm extends React.Component {
             serves: '',
             tags: '',
             ingredients: '',
-            directions: ''
+            directions: '',
+            error: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -28,16 +30,42 @@ class RecipeForm extends React.Component {
     }
 
     handleSubmit(event) {
-        //THis is where one would send a message to the server
-        console.log(this.state.title);
-        console.log(this.state.description);
-        console.log(this.state.totalTime);
-        console.log(this.state.serves);
-        console.log(this.state.tags);
-        console.log(this.state.ingredients);
-        console.log(this.state.directions);
+        const {title, description, totalTime, serves, tags, ingredients, directions} = this.state;
+        const type = "recipe";
+
+        const ing2 = ingredients.split("\n").join("<br />");
+        console.log("ingredients: " + ingredients);
+        const dir = directions.split("\n").join("<br />");
+        const recipe = {
+            title,
+            description,
+            totalTime,
+            serves,
+            tags,
+            ingredients: ing2,
+            directions: dir,
+            type
+        };
+
+
+        console.log(recipe);
+
+        const auth = isAuthenticated();
+
+        const userId = auth.user._id;
+        const token = auth.token;
+
+
+        createRecipe(userId, token, recipe).then(data => {
+            console.log("TEST : " +recipe)
+            if (data.error) {
+                this.setState({ error: data.error });
+                console.log(data.error)
+            }
+        });
+
         //See if one can remove the below line and still post to the server
-        event.preventDefault();
+        // event.preventDefault();
     }
 
     handleChangeTitle(event) {

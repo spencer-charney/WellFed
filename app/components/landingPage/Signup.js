@@ -51,16 +51,16 @@ class Signup extends React.Component {
 
         signup(user).then(data => {
             if (data.error) this.setState({ error: data.error });
-            else {
-                this.setState({
-                    name: '',
-                    username: '',
-                    diet: '',
-                    email: '',
-                    password:'',
-                    error: ''
-                });
-            }
+            // else {
+            //     this.setState({
+            //         name: '',
+            //         username: '',
+            //         diet: '',
+            //         email: '',
+            //         password:'',
+            //         error: ''
+            //     });
+            // }
         });
 
         if (this.state.error.length == 0) {

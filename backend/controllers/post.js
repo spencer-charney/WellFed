@@ -22,37 +22,18 @@ exports.getPosts = (req, res) => {
 	.populate('comments.postedBy', '_id name')
 	.select('_id type title description serves tags ingredients directions totalTime created')
 	.then((posts) => {
-		res.status(200).json({post: posts});
+		res.status(200).json({posts});
 	})
 	.catch(err => console.log(err));
 }
 
 exports.createPost = (req, res, next) => {
-    // let form = new formidable.IncomingForm();
-    // form.keepExtensions = true;
-    // form.parse(req, (err, fields, files) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             error: err
-    //         });
-    //     }
-    //     let post = new Post(fields);
 
-    //     req.profile.hashed_password = undefined;
-    //     req.profile.salt = undefined;
-    //     post.postedBy = req.profile;
-
-    //     post.save((err, result) => {
-    //         if (err) {
-    //             return res.status(400).json({
-    //                 error: err
-    //             });
-    //         }
-    //         res.json(result);
-    //     });
-	// });
+ 	console.log("EMPTY" + req.body);
 	const post = new Post(req.body);
+	console.log(post);
 	post.postedBy = req.profile;
+	
     post.save((err,result) => {
 		if (err) {
 			return res.status(400).json({

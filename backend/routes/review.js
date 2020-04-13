@@ -22,7 +22,7 @@ router.put("/review/uncomment", requireSignin, uncomment);
 
 router.get('/reviews', getReviews);
 //TODO: ADD BACK IN THE REQUIRE SIGN IN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.post('/post/new/:userId', createReview);
+router.post('/review/new/:userId', createReview);
 router.get('/reviews/by/:userId', requireSignin, reviewsByUser);
 router.delete('/review/:postId', requireSignin, isPoster, deleteReview);
 

@@ -71,6 +71,7 @@ class Recipe extends React.Component {
 
     let directions;
     if (this.state.directionsClicked) {
+      console.log("directions" + this.props.directions);
       directions = <Row>{this.props.directions}</Row>
       toggleD = <FaChevronUp />
     }

@@ -4,11 +4,9 @@ const {ObjectId} = mongoose.Schema;
 const postSchema = new mongoose.Schema({
 	type: {
 		type: String,
-		required: true
 	},
 	title: {
 		type: String,
-		required: true
 	},
 	postedBy: {
 		type: ObjectId,
@@ -16,13 +14,12 @@ const postSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-		required: true
 	},
 	totalTime: {
 		type: String
 	},
 	serves: {
-		type: Number
+		type: String
 	},
 	tags: {
 		type: String

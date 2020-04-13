@@ -62,6 +62,8 @@ app.use(function (err, req, res, next) {
 	}
 });
 
+app.disable('etag');
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`A node js api is listening on port: ${port}`)
