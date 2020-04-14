@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 import { IconContext } from "react-icons";
 
 
@@ -13,31 +14,24 @@ class CommentForm extends React.Component {
             comment: ""
         };
     }
-    handleSubmit(event) {
+    handleSubmit() {
         //Where you would send message to server
         console.log(this.state.comment);
-        event.preventDefault();
     }
     handleChangeComment(event) {
         this.setState({ comment: event.target.value });
     }
     render() {
-            return(
-                <form onSubmit={this.handleSubmit}>
-                    <Row className="form-group">
-                        <label>
-                            Comment:
-                    </label>
-                        <textarea value={this.state.comment} onChange={this.handleChangeComment} rows="3" className="form-control" placeholder="Your comment here" />
-                        <IconContext.Provider value={{ color: "blue", className: "icons global-class-name", size: '2em' }}>
-                                <div>
-                                <input type="submit" value="Post" className="btn btn-primary" />
-                                    <FaTelegramPlane />
-                                </div>
-                        </IconContext.Provider>
+        return (
+            <Container fluid className="comment-area">
+                <Row>
+                    Comment:
                     </Row>
-                </form>
-            ) 
+                <Row><textarea value={this.state.comment} onChange={this.handleChangeComment} rows="3" className="comment-textarea" placeholder="Your comment here" /></Row>
+                <Row onClick={this.handleSubmit} className="comment-submit"><p className="comment-submit-text">comment</p>
+                </Row>
+            </Container>
+        )
     }
 }
 

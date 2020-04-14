@@ -108,5 +108,23 @@
     text-align: center;
 }
 
+.comment-area{
+}
 
+.comment-textarea{
+    width: 100%;
+}
+.comment-submit{
+    margin: 1em;
+    background-color: rgb(114, 241, 114);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+}
 
+.comment-submit-text{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+}
