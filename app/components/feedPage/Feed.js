@@ -78,8 +78,8 @@ class Feed extends React.Component {
       search = 
         <Row className="search-area">
           <Col />
-          <Col xs={2}><input type="text" value={this.state.search} onChange={this.handleChangeSearch} className="search-text"/></Col>
-          <Col xs={1} onClick={this.sendSearch}><p className="search-button">search</p></Col>
+          <Col xs={5} md={3} lg={2}><input type="text" value={this.state.search} onChange={this.handleChangeSearch} className="search-text"/></Col>
+          <Col xs={3} md={2} lg={1}onClick={this.sendSearch}><p className="search-button">search</p></Col>
         </Row>
     }
     else {
