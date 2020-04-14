@@ -23,10 +23,8 @@ class AddBook extends React.Component {
         return (
             <Container fluid>
                 <Row>Add a New Book</Row>:
-                <Row><form onSubmit={this.handleSubmit}>
-                    <Col><input type="text" value={this.state.name} onChange={this.handleChangeName} placeholder="Name" /></Col>
-                    <Col><input type="submit" value="Add" className="btn btn-primary col" /></Col>
-                </form></Row>
+                <Row><input type="text" value={this.state.name} onChange={this.handleChangeName} placeholder="Name" className="add-search"/></Row>
+                <Row onClick={this.handleSubmit} className="add-button"><p className="add-button-string">Add</p></Row>
             </Container>
 
         )

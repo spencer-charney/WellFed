@@ -55,3 +55,23 @@
     font-size: 2em;
     padding : 1em;
 }
+
+.add-button{
+    margin: 1em;
+    text-align: center;
+    background-color: rgb(114, 241, 114);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+    font-size: 1em;
+}
+
+.add-search{
+    width:100%;
+}
+
+.add-button-string{
+    width: 100%;
+    text-align: center;
+}
