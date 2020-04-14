@@ -30,7 +30,7 @@ class RecipeForm extends React.Component {
     }
 
     handleSubmit(event) {
-        const {title, description, totalTime, serves, tags, ingredients, directions} = this.state;
+        const { title, description, totalTime, serves, tags, ingredients, directions } = this.state;
         const type = "recipe";
 
         const ing2 = ingredients.split("\n").join("<br />");
@@ -57,7 +57,7 @@ class RecipeForm extends React.Component {
 
 
         createRecipe(userId, token, recipe).then(data => {
-            console.log("TEST : " +recipe)
+            console.log("TEST : " + recipe)
             if (data.error) {
                 this.setState({ error: data.error });
                 console.log(data.error)
@@ -123,8 +123,8 @@ class RecipeForm extends React.Component {
 
                     <Row>Directions:</Row>
                     <Row><textarea value={this.state.directions} onChange={this.handleChangeDirections} rows="6" className="form-control" placeholder="Please number each direction and place it on a separate line" /></Row>
-                    <Row>
-                        <Button onClick={this.handleSubmit}>Post</Button>
+                    <Row onClick={this.handleSubmit} className="form-row-submit">
+                        <p className="form-row-submit-text">Post</p>
                     </Row>
                 </Container>
             </Container >

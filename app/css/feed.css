@@ -94,6 +94,19 @@
     padding : 1em;
 }
 
+.form-row-submit{
+    margin: 1em;
+    background-color: rgb(114, 241, 114);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+    font-size: 1em;
+}
+.form-row-submit-text{
+    width: 100%;
+    text-align: center;
+}
 
 
 

@@ -10,11 +10,11 @@ class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant:'',
-      dish:'',
-      rate:'',
-      tags:'',
-      review:''
+      restaurant: '',
+      dish: '',
+      rate: '',
+      tags: '',
+      review: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeRestaurant = this.handleChangeRestaurant.bind(this);
@@ -79,8 +79,8 @@ class ReviewForm extends React.Component {
         <Row><input type="text" value={this.state.tags} onChange={this.handleChangeTags} className="form-control" placeholder="Please separate values with a comma (eg. Vegan, Gluten Free, etc.)" /></Row>
         <Row>Review:</Row>
         <Row><textarea value={this.state.review} onChange={this.handleChangeReview} rows="6" className="form-control" /></Row>
-        <Row>
-          <Button onClick={this.handleSubmit}>Post</Button>
+        <Row onClick={this.handleSubmit} className="form-row-submit">
+          <p className="form-row-submit-text">Post</p>
         </Row>
       </Container>
     )
