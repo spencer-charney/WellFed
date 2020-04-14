@@ -5,10 +5,10 @@ import Row from 'react-bootstrap/Row';
 class Comment extends React.Component {
     render() {
         return (
-            <Container fluid>
+            <Container fluid className="comment">
                 <Row><i>{this.props.userName}</i></Row>
-                <Row>{this.props.comment}</Row>
                 <Row><i>{this.props.time}</i></Row>
+                <Row>{this.props.comment}</Row>
             </Container>
         )
     }

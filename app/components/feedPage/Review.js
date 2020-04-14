@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Comments from './Comments'
 import CommentForm from './CommentForm';
+import Bookselector from './Bookselector'
 
 import '../../css/feed.css'
 
@@ -39,13 +40,14 @@ class Review extends React.Component {
   }
   render() {
     let bookmark;
+    let selector;
     if (this.state.bookmarkClicked) {
       bookmark = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
         <div>
           <FaBookmark />
         </div>
-      </IconContext.Provider>
-      console.log("Bookmark Post");
+      </IconContext.Provider>;
+      selector = <Bookselector myBooks={["book1", "book2", "book3"]}/>;
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>
@@ -53,6 +55,7 @@ class Review extends React.Component {
           <FaBookmark />
         </div>
       </IconContext.Provider>
+      selector = <div></div>;
     }
     let comment;
     var comments;
@@ -86,8 +89,11 @@ class Review extends React.Component {
         <Row><p className="details">{this.props.review}</p></Row>
         <Container fluid>
           {comments}
-          <Row className="userActionRow">
-            <Col></Col>
+          <Row className="user-action-row">
+            <Col />
+            <Col xs={2}>
+              {selector}
+            </Col>
             <Col xs={1} onClick={this.handleClickBookmark}>
               {bookmark}
             </Col>

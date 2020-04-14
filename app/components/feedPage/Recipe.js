@@ -141,9 +141,9 @@ class Recipe extends React.Component {
 
         </Row>
         <Row><p className="details">{this.props.tags}</p></Row>
-        <Row onClick={this.handleClickIngredients} className="expandable"><Col xs={2}>Ingredients</Col><Col /><Col xs={1}>{toggleI}</Col></Row>
+        <Row onClick={this.handleClickIngredients} className="expandable"><Col xs={2}><p className="expandable-title">Ingredients</p></Col><Col /><Col xs={1}>{toggleI}</Col></Row>
         {ingredients}
-        <Row onClick={this.handleClickDirections} className="expandable"><Col xs={2}>Directions</Col><Col /><Col xs={1}>{toggleD}</Col></Row>
+        <Row onClick={this.handleClickDirections} className="expandable"><Col xs={2}><p className="expandable-title">Directions</p></Col><Col /><Col xs={1}>{toggleD}</Col></Row>
         {directions}
         <Container fluid>
           {comments}

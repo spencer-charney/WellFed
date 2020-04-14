@@ -34,8 +34,12 @@
 
 .expandable{
     background-color: rgb(114, 241, 114);
+    margin-bottom: .5em;
 }
 
+.expandable-title{
+    font-size: 1.5em;
+}
 .search-area{
     top:110px;
     position: fixed;
@@ -108,9 +112,6 @@
     text-align: center;
 }
 
-.comment-area{
-}
-
 .comment-textarea{
     width: 100%;
 }
@@ -127,4 +128,12 @@
     width: 100%;
     text-align: center;
     font-size: 1.5em;
+}
+
+.comment{
+    width: 100%;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+    margin-bottom: .5em;
 }
