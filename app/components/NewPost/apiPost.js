@@ -32,8 +32,7 @@ export const followingPosts = (token, following) => {
     
 }
 
-export const createPost= (userId, token, recipe) => {
-    console.log("recipe:    " + recipe);
+export const createPost= (userId, token, post) => {
     return fetch(`${process.env.API_URL}/post/new/${userId}`, {
         method: "POST",
         headers: {
@@ -41,7 +40,7 @@ export const createPost= (userId, token, recipe) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(recipe)
+        body: JSON.stringify(post)
     })
         .then(response => {
             return response.json();
@@ -113,3 +112,19 @@ export const uncomment = (userId, token, postId, comment) => {
         })
         .catch(err => console.log(err));
 };
+
+export const createBook = (userId, token, name) => {
+    return fetch(`${process.env.API_URL}/user/createBook`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ userId, name })
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+}

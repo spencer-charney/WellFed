@@ -8,11 +8,15 @@ const {
 	addFollowing,
 	addFollower,
 	removeFollower,
-	removeFollowing
+	removeFollowing,
+	createBook
 } = require('../controllers/user');
 const {requireSignin} = require('../controllers/auth');
 
 const router = express.Router();
+
+router.put('/user/createBook', requireSignin, createBook);
+
 
 router.put('/user/follow', requireSignin, addFollowing, addFollower);
 router.put('/user/unfollow', requireSignin, removeFollowing, removeFollower);

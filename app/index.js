@@ -5,7 +5,6 @@ import LandingPage from './components/landingPage/LandingPage'
 import App from './App'
 import './index.css'
 
-
 class Index extends React.Component {
     constructor(props) {
         super(props);

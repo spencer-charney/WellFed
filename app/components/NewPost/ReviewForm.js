@@ -30,6 +30,7 @@ class ReviewForm extends React.Component {
     const { restaurant, dish, rate, tags, review } = this.state;
     const type = "review";
     const recipe = {
+      type,
       restaurant,
       dish,
       rate,

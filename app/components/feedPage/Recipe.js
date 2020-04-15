@@ -18,6 +18,7 @@ class Recipe extends React.Component {
     this.handleClickDirections = this.handleClickDirections.bind(this);
     this.handleClickBookmark = this.handleClickBookmark.bind(this);
     this.handleClickComment = this.handleClickComment.bind(this);
+    this.updateComments = this.updateComments.bind(this);
     this.state = {
       ingredientsClicked: false,
       directionsClicked: false,
@@ -59,7 +60,7 @@ class Recipe extends React.Component {
     }
   }
 
-  updateComments = comments => {
+  updateComments(comments){
     this.setState({ comments });
   };
 
@@ -108,7 +109,7 @@ class Recipe extends React.Component {
     let comments;
     let toggleI;
     let toggleD;
-
+    
     if (this.state.commentClicked) {
       comment = <IconContext.Provider value={{ color: "green", className: "icons global-class-name", size: '2em' }}>
         <div>
@@ -128,10 +129,10 @@ class Recipe extends React.Component {
       </IconContext.Provider>;
       comments = <Comments commenting={false} comments={this.state.comments} />
     }
-    return (
+    return (      
       <Container fluid className="post-container">
         <Row><h1 className="details">{this.props.title}</h1></Row>
-        <Row><p className="details"><i>{this.props.author}</i></p></Row>
+        <Row><p className="details"><i>{this.props.username}</i></p></Row>
         <Row><p className="details">{this.props.description}</p></Row>
         <Row>
           <Col />

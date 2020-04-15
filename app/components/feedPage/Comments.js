@@ -18,7 +18,6 @@ class Comments extends React.Component {
 
     handleSubmit(event) {
         //Where you would send message to server
-        console.log(event.target.value);
         event.preventDefault();
     }
     handleChangeComment(event) {
@@ -30,7 +29,7 @@ class Comments extends React.Component {
             for (var i = 0; i < this.props.comments.length; i++) {
                 commentSpace.push(
                     <Row key={i}>
-                        <Comment userName={this.props.comments[i].userName} time={moment(this.props.comments[i].time).format('MM/DD/YYYY, HH:MM A')} comment={this.props.comments[i].comment} />
+                        <Comment username={this.props.comments[i].username} time={moment(this.props.comments[i].time).format('MM/DD/YYYY, HH:MM A')} comment={this.props.comments[i].comment} />
                     </Row>
                 );
             }

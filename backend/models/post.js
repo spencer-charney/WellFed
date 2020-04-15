@@ -41,11 +41,7 @@ const postSchema = new mongoose.Schema({
 				type: Date,
 				default: Date.now
 			},
-			userName: String
-			// user: {
-			// 	type: ObjectId,
-			// 	ref: "User"
-			// }
+			username: String
 		}
 	],
 	restaurant: {

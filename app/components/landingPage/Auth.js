@@ -14,6 +14,7 @@ export const signup = user => {
 };
 
 export const signin = user => {
+    if (typeof window !== 'undefined') localStorage.removeItem('jwt');
     return fetch(`${process.env.API_URL}/signin`, {
         method: 'POST',
         headers: {
@@ -37,7 +38,6 @@ export const authenticate = (jwt, next) => {
 
 export const signout = next => {
     if (typeof window !== 'undefined') localStorage.removeItem('jwt');
-    next();
     return fetch(`${process.env.API_URL}/signout`, {
         method: 'GET'
     })

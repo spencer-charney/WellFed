@@ -42,14 +42,16 @@ const userSchema = new mongoose.Schema({
 				required: true
 			},
 			user: {
-				type: ObjectId,
-				ref: 'User',
+				type: ObjectId, 
+				ref: "User"
 			},
-			post: {
-				type: ObjectId,
-				ref: 'Post'
+			username: {
+				type: String
 			},
-			created: {
+			message: {
+				type: String
+			},
+			time: {
 				type: Date,
 				default: Date.now,
 			}
@@ -57,10 +59,7 @@ const userSchema = new mongoose.Schema({
 	],
 	myBooks: [
 		{
-			name: {
-				type: String,
-				required: true
-			},
+			name:String,
 			posts: [
 				{
 					type: ObjectId,

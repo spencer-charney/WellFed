@@ -4,7 +4,7 @@ const Post = require('../models/post');
 
 exports.postById = (req, res, next, id) => {
 	Post.findById(id)
-	.populate("postedBy", "_id name")
+	.populate("postedBy", "_id username")
 	.exec((err, post) => {
 		if (err || !post) {
 			return res.status(400).json({
@@ -19,17 +19,19 @@ exports.postById = (req, res, next, id) => {
 
 exports.getPosts = (req, res) => {
 	Post.find()
-	.then((posts) => {
+	.populate('postedBy', '_id username')
+	.exec((err, posts) => {
+		if (err || !posts) {
+			return res.status(400).json({
+				error: err
+			});
+		}
 		res.status(200).json({posts});
-	})
-	.catch(err => console.log(err));
+	});
 }
 
 exports.createPost = (req, res, next) => {
-
- 	console.log("EMPTY" + req.body);
 	const post = new Post(req.body);
-	console.log(post);
 	post.postedBy = req.profile;
 	
     post.save((err,result) => {
@@ -46,7 +48,7 @@ exports.createPost = (req, res, next) => {
 
 exports.postsByUser = (req, res) => {
 	Post.find({postedBy: req.profile._id})
-		.populate("postedBy", "_id name")
+		.populate("postedBy", "_id username")
 		.sort("_created")
 		.exec((err, posts) => {
 			if (err) {
@@ -110,18 +112,18 @@ exports.comment = (req, res) => {
                     error: err
                 });
             } else {
+				const notification = {
+					type: "newComment",
+					username: req.body.comment.username,
+					message: req.body.comment.comment
+				}
+				addNotification(result.postedBy._id, notification);
                 res.json(result);
             }
 		});
 	
-		console.log("HERE WE GO");
-		console.log(res);
-	// const notification = {
-	// 	type: "newComment",
-	// 	user: req.body.userId,
-	// 	message: ""
-	// }
-	// this.addNotification(req.body.followId, notification);
+		
+	
 };
 
 exports.uncomment = (req, res) => {

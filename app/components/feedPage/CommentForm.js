@@ -21,7 +21,7 @@ class CommentForm extends React.Component {
         const self = this.props.self;
         const com = {
             comment: this.state.comment,
-            userName: self.username
+            username: self.username
         }
 
         newComment(self._id, token, postId, com).then(
@@ -30,15 +30,11 @@ class CommentForm extends React.Component {
                     console.log(data.error);
                 } else {
                     this.setState({ comment: "" });
-                    // dispatch fresh list of coments to parent (SinglePost)
-                    console.log(this.props)
+                    // dispatch fresh list of coments to parent
                     this.props.updateComments(data.comments);
                 }
             }
         );
-
-        //Where you would send message to server
-        console.log(this.state.comment);
     }
     handleChangeComment(event) {
         this.setState({ comment: event.target.value });

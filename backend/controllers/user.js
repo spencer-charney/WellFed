@@ -97,7 +97,7 @@ exports.addFollower = (req, res) => {
 
     const notification = {
         type: "newFollow",
-        user: req.body.userId,
+        username: req.body.userId,
         message: ""
     }
     this.addNotification(req.body.followId, notification);
@@ -128,7 +128,30 @@ exports.removeFollower = (req, res) => {
         });
 };
 
+exports.createBook = (req, res) => {
+    User.findByIdAndUpdate(req.body.userId, {$push: {
+        myBooks: {
+            name: req.body.name,
+            posts:[]
+        }
+    }}, { new: true }, (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log(result);
+        }
+    }); 
+}
+
+exports.populateBookmark = (req, res) => {
+
+}
+
+
 exports.addNotification = (userId, notification) => {
+    console.log("NOTIFICATION")
+    console.log(notification);
     User.findByIdAndUpdate(userId, { 
         $push: {
             notifications: notification
