@@ -19,7 +19,8 @@ class Review extends React.Component {
     this.handleClickComment = this.handleClickComment.bind(this);
     this.state = {
       bookmarkClicked: false,
-      commentClicked: false
+      commentClicked: false,
+      comments: this.props.comments
     };
   }
   handleClickBookmark() {
@@ -38,6 +39,12 @@ class Review extends React.Component {
       this.setState({ commentClicked: true });
     }
   }
+
+  updateComments = comments => {
+    console.log(comments)
+    this.setState({ comments });
+  };
+
   render() {
     let bookmark;
     let selector;
@@ -66,8 +73,8 @@ class Review extends React.Component {
         </div>
       </IconContext.Provider>
       comments = <div>
-        <Comments commenting={true} comments={this.props.comments}/>
-        <CommentForm />
+        <Comments commenting={true} comments={this.state.comments}/>
+        <CommentForm self={this.props.self} postId={this.props.postId} updateComments={this.updateComments}/>
         </div>
     }
     else {
@@ -76,7 +83,7 @@ class Review extends React.Component {
           <FaComment />
         </div>
       </IconContext.Provider>
-      comments = <Comments commenting={false} comments={this.props.comments}/>
+      comments = <Comments commenting={false} comments={this.state.comments}/>
 
     }
     return (

@@ -3,7 +3,8 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { IconContext } from "react-icons";
-
+import { isAuthenticated } from '../landingPage/Auth';
+import { newComment } from '../NewPost/apiPost';
 
 class CommentForm extends React.Component {
     constructor(props) {
@@ -15,6 +16,27 @@ class CommentForm extends React.Component {
         };
     }
     handleSubmit() {
+        const token = isAuthenticated().token;
+        const postId = this.props.postId;
+        const self = this.props.self;
+        const com = {
+            comment: this.state.comment,
+            userName: self.username
+        }
+
+        newComment(self._id, token, postId, com).then(
+            data => {
+                if (data.error) {
+                    console.log(data.error);
+                } else {
+                    this.setState({ comment: "" });
+                    // dispatch fresh list of coments to parent (SinglePost)
+                    console.log(this.props)
+                    this.props.updateComments(data.comments);
+                }
+            }
+        );
+
         //Where you would send message to server
         console.log(this.state.comment);
     }

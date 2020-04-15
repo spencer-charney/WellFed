@@ -61,16 +61,16 @@ class Feed extends React.Component {
   render() {
     let feedState;
     if (this.state.feed == "My Feed") {
-      feedState = <MyFeed posts={this.props.myFeedPosts} />;
+      feedState = <MyFeed self={this.props.self} posts={this.props.myFeedPosts} />;
 
     }
     else if (this.state.feed == "Discover") {
-      feedState = <Discover posts={this.props.discoverPosts} />;
+      feedState = <Discover self={this.props.self} posts={this.props.discoverPosts} />;
 
     }
     else {
 
-      feedState = <NewPost />;
+      feedState = <NewPost self={this.props.self}/>;
 
     }
     let search;

@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import '../../css/feed.css'
-import { createRecipe } from "./apiPost";
+import { createPost } from "./apiPost";
 import { isAuthenticated } from "../landingPage/Auth";
 
 class RecipeForm extends React.Component {
@@ -17,7 +17,8 @@ class RecipeForm extends React.Component {
             tags: '',
             ingredients: '',
             directions: '',
-            error: ''
+            error: '',
+            post: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -32,10 +33,8 @@ class RecipeForm extends React.Component {
     handleSubmit(event) {
         const { title, description, totalTime, serves, tags, ingredients, directions } = this.state;
         const type = "recipe";
-
-        const ing2 = ingredients.split("\n").join("<br />");
-        console.log("ingredients: " + ingredients);
-        const dir = directions.split("\n").join("<br />");
+        const ing2 = ingredients.split("\n").join("<br>");
+        const dir = directions.split("\n").join("<br>");
         const recipe = {
             title,
             description,
@@ -47,25 +46,21 @@ class RecipeForm extends React.Component {
             type
         };
 
-
-        console.log(recipe);
-
         const auth = isAuthenticated();
 
         const userId = auth.user._id;
         const token = auth.token;
 
-
-        createRecipe(userId, token, recipe).then(data => {
-            console.log("TEST : " + recipe)
+        createPost(userId, token, recipe).then(data => {
             if (data.error) {
                 this.setState({ error: data.error });
                 console.log(data.error)
+            } else {
+                this.setState({
+                    post: data,
+                });
             }
         });
-
-        //See if one can remove the below line and still post to the server
-        // event.preventDefault();
     }
 
     handleChangeTitle(event) {

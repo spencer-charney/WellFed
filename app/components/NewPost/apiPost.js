@@ -23,7 +23,16 @@ export const listByUser = (userId, token) => {
         .catch(err => console.log(err));
 };
 
-export const createRecipe = (userId, token, recipe) => {
+export const followingPosts = (token, following) => {
+    
+    let posts = []
+    for (var i = 0; i < following.length; i++) {
+        posts.push(listByUser(following[i], token));
+    }   
+    
+}
+
+export const createPost= (userId, token, recipe) => {
     console.log("recipe:    " + recipe);
     return fetch(`${process.env.API_URL}/post/new/${userId}`, {
         method: "POST",
@@ -73,7 +82,7 @@ export const unbookmark = (userId, token, postId) => {
         .catch(err => console.log(err));
 };
 
-export const comment = (userId, token, postId, comment) => {
+export const newComment = (userId, token, postId, comment) => {
     return fetch(`${process.env.API_URL}/post/comment`, {
         method: "PUT",
         headers: {

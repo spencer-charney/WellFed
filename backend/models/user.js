@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 		default: Date.now
 	},
 	updated: Date,
-	diet: [
+	restrictions: [
 		{
 			type: String
 		}
@@ -44,7 +44,6 @@ const userSchema = new mongoose.Schema({
 			user: {
 				type: ObjectId,
 				ref: 'User',
-				required: true
 			},
 			post: {
 				type: ObjectId,

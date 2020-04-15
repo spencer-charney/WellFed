@@ -11,7 +11,7 @@ exports.userById = (req, res, next, id) => {
 				error: "User not found"
 			});
 		}
-		req.profile = user; //adds profile object in req with user info
+        req.profile = user; //adds profile object in req with user info
 		next();
 	});
 };
@@ -82,18 +82,25 @@ exports.addFollowing = (req, res, next) => {
 
 exports.addFollower = (req, res) => {
     User.findByIdAndUpdate(req.body.followId, { $push: { followers: req.body.userId } }, { new: true })
-        .populate('following', '_id name')
-        .populate('followers', '_id name')
+        .populate('following', '_id username')
+        .populate('followers', '_id username')
         .exec((err, result) => {
             if (err) {
                 return res.status(400).json({
                     error: err
                 });
             }
-            result.hashed_password = undefined;
-            result.salt = undefined;
-            res.json(result);
-        });
+        result.hashed_password = undefined;
+        result.salt = undefined;
+        res.json(result);
+    });
+
+    const notification = {
+        type: "newFollow",
+        user: req.body.userId,
+        message: ""
+    }
+    this.addNotification(req.body.followId, notification);
 };
 
 exports.removeFollowing = (req, res, next) => {
@@ -121,38 +128,20 @@ exports.removeFollower = (req, res) => {
         });
 };
 
-exports.addNotification = (req, res) => {
-    let notification = req.body.notification;
-    
-
-    User.findByIdAndUpdate(req.body.userId, { 
+exports.addNotification = (userId, notification) => {
+    User.findByIdAndUpdate(userId, { 
         $push: {
-            notifications: {
-
-            } 
+            notifications: notification
         } 
-    }, 
-    (err, result) => {
+    })
+    .populate('notifications.user')
+    .populate('notifications.post')
+    .exec((err, result) => {
         if (err) {
             return res.status(400).json({ error: err });
         }
+        console.log(result);
     });
-};
-
-exports.getNotifications = (req, res) => {
-    let notification = req.body.notification;
     
-
-    User.findByIdAndUpdate(req.body.userId, { 
-        $push: {
-            notifications: {
-
-            } 
-        } 
-    }, 
-    (err, result) => {
-        if (err) {
-            return res.status(400).json({ error: err });
-        }
-    });
 };
+

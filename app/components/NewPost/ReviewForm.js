@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import '../../css/feed.css'
-
+import { createPost } from "./apiPost";
+import { isAuthenticated } from "../landingPage/Auth";
 
 class ReviewForm extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class ReviewForm extends React.Component {
       dish: '',
       rate: '',
       tags: '',
-      review: ''
+      review: '',
+      error: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeRestaurant = this.handleChangeRestaurant.bind(this);
@@ -25,14 +27,27 @@ class ReviewForm extends React.Component {
   }
 
   handleSubmit(event) {
-    //THis is where one would send a message to the server
-    console.log(this.state.restaurant);
-    console.log(this.state.dish);
-    console.log(this.state.rate);
-    console.log(this.state.tags);
-    console.log(this.state.review);
-    //See if one can remove the below line and still post to the server
-    event.preventDefault();
+    const { restaurant, dish, rate, tags, review } = this.state;
+    const type = "review";
+    const recipe = {
+      restaurant,
+      dish,
+      rate,
+      tags,
+      review
+    };
+
+    const auth = isAuthenticated();
+
+    const userId = auth.user._id;
+    const token = auth.token;
+
+    createPost(userId, token, recipe).then(data => {
+        if (data.error) {
+            this.setState({ error: data.error });
+            console.log(data.error)
+        }
+    });
   }
 
   handleChangeTitle(event) {

@@ -1,4 +1,6 @@
+const { addNotification } = require('./user');
 const Post = require('../models/post');
+
 
 exports.postById = (req, res, next, id) => {
 	Post.findById(id)
@@ -16,11 +18,7 @@ exports.postById = (req, res, next, id) => {
 }
 
 exports.getPosts = (req, res) => {
-	const posts = Post.find()
-	.populate("postedBy", "_id name")
-	.populate('comments', 'text created')
-	.populate('comments.postedBy', '_id name')
-	.select('_id type title description serves tags ingredients directions totalTime created')
+	Post.find()
 	.then((posts) => {
 		res.status(200).json({posts});
 	})
@@ -101,28 +99,36 @@ exports.deletePost = (req, res) => {
 };
 
 exports.comment = (req, res) => {
-    let comment = req.body.comment;
-    comment.postedBy = req.body.userId;
+	console.log(req.body);
 
-    Post.findByIdAndUpdate(req.body.postId, { $push: { comments: comment } }, { new: true })
-        .populate('comments.postedBy', '_id name')
-        .populate('postedBy', '_id name')
+    Post.findByIdAndUpdate(req.body.postId, { $push: { comments: req.body.comment } }, { new: true })
+		.populate('postedBy')
         .exec((err, result) => {
             if (err) {
+				console.log(err);
                 return res.status(400).json({
                     error: err
                 });
             } else {
                 res.json(result);
             }
-        });
+		});
+	
+		console.log("HERE WE GO");
+		console.log(res);
+	// const notification = {
+	// 	type: "newComment",
+	// 	user: req.body.userId,
+	// 	message: ""
+	// }
+	// this.addNotification(req.body.followId, notification);
 };
 
 exports.uncomment = (req, res) => {
     let comment = req.body.comment;
 
     Post.findByIdAndUpdate(req.body.postId, { $pull: { comments: { _id: comment._id } } }, { new: true })
-        .populate('comments.postedBy', '_id name')
+        .populate('comments.user', '_id name')
         .populate('postedBy', '_id name')
         .exec((err, result) => {
             if (err) {

@@ -36,17 +36,30 @@ const postSchema = new mongoose.Schema({
 	},
 	comments: [
 		{
-			text: String,
-			created: {
+			comment: String,
+			time: {
 				type: Date,
 				default: Date.now
 			},
-			postBy: {
-				type: ObjectId,
-				ref: "User"
-			}
+			userName: String
+			// user: {
+			// 	type: ObjectId,
+			// 	ref: "User"
+			// }
 		}
-	]
+	],
+	restaurant: {
+		type: String,
+	},
+	dish: {
+		type: String,
+	},
+	rate: {
+		type: String,
+	},
+    review: {
+        type: String, 
+    }
 });
 
 module.exports = mongoose.model("Post", postSchema);

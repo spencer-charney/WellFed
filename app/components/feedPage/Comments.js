@@ -2,6 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Comment from './Comment'
+import { isAuthenticated, getUser} from "../landingPage/Auth";
+var moment = require('moment');
 
 class Comments extends React.Component {
     constructor(props) {
@@ -13,6 +15,7 @@ class Comments extends React.Component {
             comment: ""
         };
     }
+
     handleSubmit(event) {
         //Where you would send message to server
         console.log(event.target.value);
@@ -27,7 +30,7 @@ class Comments extends React.Component {
             for (var i = 0; i < this.props.comments.length; i++) {
                 commentSpace.push(
                     <Row key={i}>
-                        <Comment userName={this.props.comments[i].userName} time={this.props.comments[i].time} comment={this.props.comments[i].comment} />
+                        <Comment userName={this.props.comments[i].userName} time={moment(this.props.comments[i].time).format('MM/DD/YYYY, HH:MM A')} comment={this.props.comments[i].comment} />
                     </Row>
                 );
             }

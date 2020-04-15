@@ -22,7 +22,8 @@ class Recipe extends React.Component {
       ingredientsClicked: false,
       directionsClicked: false,
       bookmarkClicked: false,
-      commentClicked: false
+      commentClicked: false,
+      comments: this.props.comments
     };
   }
   handleClickIngredients() {
@@ -57,11 +58,16 @@ class Recipe extends React.Component {
       this.setState({ commentClicked: true });
     }
   }
-  render() {
 
+  updateComments = comments => {
+    this.setState({ comments });
+  };
+
+  render() { 
+    let ingList = this.props.ingredients.replace(/<br>/g, '\n');
     let ingredients;
     if (this.state.ingredientsClicked) {
-      ingredients = <Row >{this.props.ingredients}</Row>
+      ingredients = <Row className="dropdownList">{ingList}</Row>
       toggleI = <FaChevronUp />
     }
     else {
@@ -69,10 +75,10 @@ class Recipe extends React.Component {
       toggleI = <FaChevronDown />
     }
 
+    let dirList = this.props.directions.replace(/<br>/g, '\n');
     let directions;
     if (this.state.directionsClicked) {
-      console.log("directions" + this.props.directions);
-      directions = <Row>{this.props.directions}</Row>
+      directions = <Row className="dropdownList">{dirList}</Row>
       toggleD = <FaChevronUp />
     }
     else {
@@ -110,8 +116,8 @@ class Recipe extends React.Component {
         </div>
       </IconContext.Provider>;
       comments = <div>
-        <Comments commenting={true} comments={this.props.comments} />
-        <CommentForm />
+        <Comments commenting={true} comments={this.state.comments} />
+        <CommentForm self={this.props.self} postId={this.props.postId} updateComments={this.updateComments}/>
       </div>
     }
     else {
@@ -120,7 +126,7 @@ class Recipe extends React.Component {
           <FaComment />
         </div>
       </IconContext.Provider>;
-      comments = <Comments commenting={false} comments={this.props.comments} />
+      comments = <Comments commenting={false} comments={this.state.comments} />
     }
     return (
       <Container fluid className="post-container">
