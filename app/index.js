@@ -12,8 +12,8 @@ class Index extends React.Component {
             clicked: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
+
     handleSubmit(event, email, password) {
         this.setState({ clicked: true });
         console.log(event + " " + email + " " + password);

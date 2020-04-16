@@ -141,3 +141,13 @@
 .dropdownList {
     white-space: pre-line;
 }
+
+.search-return-area{
+    float: right;
+    background-color: yellow;
+    top:110px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 20em;
+    width: 10em;
+}

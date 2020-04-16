@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {signup} from './Auth'
+import {signup, authenticate} from './Auth'
 
 class Signup extends React.Component {
     constructor(props) {
@@ -51,16 +51,11 @@ class Signup extends React.Component {
 
         signup(user).then(data => {
             if (data.error) this.setState({ error: data.error });
-            // else {
-            //     this.setState({
-            //         name: '',
-            //         username: '',
-            //         diet: '',
-            //         email: '',
-            //         password:'',
-            //         error: ''
-            //     });
-            // }
+            else {
+                authenticate(data, () => {
+
+                });
+            }
         });
 
         if (this.state.error.length == 0) {

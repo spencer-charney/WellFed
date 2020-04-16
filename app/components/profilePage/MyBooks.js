@@ -39,6 +39,7 @@ class MyBooks extends React.Component {
                 <BookBottom key={i} posts={this.props.myBooks[i].posts}></BookBottom>
             );
         }
+        console.log("Brian: "+arrayOfBottom.length)
         return (
             <Container fluid>
                 <Row className="my-books">

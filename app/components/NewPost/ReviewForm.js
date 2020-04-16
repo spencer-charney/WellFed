@@ -47,6 +47,8 @@ class ReviewForm extends React.Component {
         if (data.error) {
             this.setState({ error: data.error });
             console.log(data.error)
+        }else {
+          this.props.updatePosts();
         }
     });
   }

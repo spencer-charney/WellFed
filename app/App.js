@@ -31,7 +31,6 @@ class App extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             const auth = isAuthenticated();
-            if (auth) {
             const user = auth.user;
             const token = auth.token;
 
@@ -46,6 +45,7 @@ class App extends React.Component {
                         isLoaded: true,
                         discoverPosts: data.posts
                     });
+
                 }
             });
 
@@ -56,12 +56,14 @@ class App extends React.Component {
                         error: data.error,
                         isLoaded: false
                     });
+
                 }
                 else{
                 this.setState({ 
                     myPosts: data,
                     isLoaded: true
                 });
+
             }});
 
             this.updateUser(user._id, token);
@@ -74,20 +76,68 @@ class App extends React.Component {
                             error: data.error
                         })
                         console.log(data.error);
+
                     } else {
-                        console.log(data);
                         this.setState({ 
                             myFeedPosts: data,
                             isLoaded: true
                         });
+
                     }
                 });
-            }
-
-            
-        }
-        }, 1000);
+            }        
+        }, 500);
         
+    }
+
+    updatePosts() {
+        const auth = isAuthenticated();
+        list().then(data => {
+            if (data.error) {
+                this.setState({
+                    error
+                });
+                console.log(data.error);
+
+            } else {
+                this.setState({
+                    discoverPosts: data.posts
+                });
+
+            }
+        });
+
+        listByUser(auth.user._id, auth.token).then(data => {
+            if (data.error) {
+                this.setState({ 
+                    error: data.error
+                });
+                console.log(data.error);
+
+            }
+            else{
+            this.setState({ 
+                myPosts: data
+            });
+
+        }});
+
+        if (auth.user.following) {
+            followingPosts(auth.token, auth.user.following).then(data => {
+                if (data.error) {
+                    this.setState({
+                        error: data.error
+                    })
+                    console.log(data.error);
+
+                } else {
+                    this.setState({ 
+                        myFeedPosts: data
+                    });
+
+                }
+            });
+        } 
     }
 
     updateUser(userId, token) {
@@ -112,10 +162,10 @@ class App extends React.Component {
 
 
     handleClick(newPageState) {
+        this.updatePosts();
         const auth = isAuthenticated();
         this.updateUser(auth.user._id, auth.token);
         this.updateNotifications(this.state.self.notifications);
-
         this.setState({ pageState: newPageState })
     }
     render() {
@@ -134,7 +184,7 @@ class App extends React.Component {
             const pageState = this.state.pageState;
             let page;
             if (pageState == 'profile') {
-                page = <MyProfile self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
+                page = <MyProfile updatePosts={this.updatePosts} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
                 myBooks={[{
                     name: "Kid1", 
                     posts: [
@@ -164,9 +214,9 @@ class App extends React.Component {
             }
             else {
                 //pageState == feed
-                page = <Feed self={self}
+                page = <Feed updatePosts={this.updatePosts} self={self}
                     myFeedPosts= {myFeedPosts} discoverPosts={discoverPosts}
-                                        />;
+                    />;
             }
             return (
                 <Container fluid>

@@ -10,15 +10,22 @@ exports.signup = async (req, res) => {
 	});
 
 	const user = await new User(req.body);
-	await user.save();
+    await user.save();
+    
+    const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+    res.cookie('t', token, {expire: new Date() + 9999});
 
-	res.status(200).json({ message: 'Signup success! Please login.' });
+    const {_id, name, email} = user
+
+    return res.json({token, user: {_id, email, name}})
+
+	// res.status(200).json({ message: 'Signup success! Please login.' });
 };
 
-exports.signin = (req, res) => {
+exports.signin = async (req, res) => {
 	//get user from email
 	const {email, password} = req.body;
-	User.findOne({email}, (err, user) => {
+	await User.findOne({email}, (err, user) => {
 		//if error or no user matching
 		if (err || !user) {
 			return res.status(401).json({

@@ -51,11 +51,12 @@ class Feed extends React.Component {
   handleChangeSearch(event) {
     this.setState({ search: event.target.value });
   }
-  sendSearch(){
+  sendSearch() {
     //send to server 
     console.log(this.state.search);
     this.setState({
-      search: ''
+      search: '',
+      searchClicked: true
     })
   }
   render() {
@@ -70,20 +71,25 @@ class Feed extends React.Component {
     }
     else {
 
-      feedState = <NewPost self={this.props.self}/>;
+      feedState = <NewPost updatePosts={this.updatePosts} self={this.props.self} />;
 
     }
     let search;
+    let searchReturnArea;
     if (this.state.searchClicked) {
-      search = 
+      search =
         <Row className="search-area">
           <Col />
-          <Col xs={5} md={3} lg={2}><input type="text" value={this.state.search} onChange={this.handleChangeSearch} className="search-text"/></Col>
-          <Col xs={3} md={2} lg={1}onClick={this.sendSearch}><p className="search-button">search</p></Col>
+          <Col xs={5} md={3} lg={2}><input type="text" value={this.state.search} onChange={this.handleChangeSearch} className="search-text" /></Col>
+          <Col xs={3} md={2} lg={1} onClick={this.sendSearch}><p className="search-button">search</p></Col>
         </Row>
+      searchReturnArea = <Container fluid className="search-return-area">
+        <Row>Hello Brian</Row>
+      </Container>
     }
     else {
       search = <div></div>
+      searchReturnArea = <div></div>
     }
     return (
       <Container fluid>
@@ -113,12 +119,13 @@ class Feed extends React.Component {
           <Col xs={1} onClick={this.handleClickSearch} className="feed-button">
             <IconContext.Provider value={{ size: '2em' }}>
               <div>
-                <GoSearch />
+                <GoSearch onClick={this.sendSearch}/>
               </div>
             </IconContext.Provider>
           </Col>
         </Row>
         {search}
+        {searchReturnArea}
         <Row className="feed-state-row">
           <Col className="side" xs={1} />
           {feedState}

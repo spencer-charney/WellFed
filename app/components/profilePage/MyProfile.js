@@ -31,7 +31,7 @@ class MyProfile extends React.Component {
       book = <Container fluid>
         <Row><h4 className="details">My Posts</h4></Row>
         {
-          <MyPosts myPosts={this.props.myPosts} />
+          <MyPosts self={this.props.self} myPosts={this.props.myPosts} />
         }
       </Container>
       myPostsTab = <Col onClick={this.handleMyPostsClicked} className="book-clicked"><p>My Posts</p></Col>

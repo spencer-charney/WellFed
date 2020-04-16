@@ -28,7 +28,7 @@ class LandingPage extends React.Component {
             form = <Login sumbit={this.props.sumbit} />
         }
         else {
-            form = <Signup sumbit={this.props.sumbit}/>
+            form = <Signup sumbit={this.props.sumbit} />
         }
         return (
             <Container fluid className="landing">

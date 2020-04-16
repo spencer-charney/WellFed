@@ -59,6 +59,7 @@ class RecipeForm extends React.Component {
                 this.setState({
                     post: data,
                 });
+                this.props.updatePosts();
             }
         });
     }

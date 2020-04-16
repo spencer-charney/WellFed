@@ -101,8 +101,6 @@ exports.deletePost = (req, res) => {
 };
 
 exports.comment = (req, res) => {
-	console.log(req.body);
-
     Post.findByIdAndUpdate(req.body.postId, { $push: { comments: req.body.comment } }, { new: true })
 		.populate('postedBy')
         .exec((err, result) => {

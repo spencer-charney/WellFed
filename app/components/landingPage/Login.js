@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
-import {signin, authenticate} from './Auth'
+import {signin, authenticate, isAuthenticated} from './Auth'
 
 class Login extends React.Component {
     constructor(props) {
@@ -38,7 +38,6 @@ class Login extends React.Component {
             } else {
                 // authenticate
                 authenticate(data, () => {
-
                 });
             }
         });

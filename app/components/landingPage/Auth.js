@@ -1,4 +1,5 @@
 export const signup = user => {
+    if (typeof window !== 'undefined') localStorage.removeItem('jwt');
     return fetch(`${process.env.API_URL}/signup`, {
         method: 'POST',
         headers: {
@@ -49,10 +50,6 @@ export const signout = next => {
 };
 
 export const isAuthenticated = () => {
-    if (typeof window == 'undefined') {
-        return false;
-    }
-
     if (localStorage.getItem('jwt')) {
         return JSON.parse(localStorage.getItem('jwt'));
     } else {
