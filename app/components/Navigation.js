@@ -6,6 +6,7 @@ import { FaRegBell } from 'react-icons/fa';
 import { FiHome } from 'react-icons/fi';
 import { AiOutlineBook } from 'react-icons/ai';
 import { IconContext } from "react-icons";
+import { signout } from "./landingPage/Auth";
 
 import '../css/navigation.css'
 
@@ -18,6 +19,7 @@ class Navigation extends React.Component {
     this.onClickProfile = this.onClickProfile.bind(this);
     this.onClickNotification = this.onClickNotification.bind(this);
     this.onClickFeed = this.onClickFeed.bind(this);
+    this.onClickSignOut = this.onClickSignOut.bind(this);
 
   }
   onClickProfile() {
@@ -30,6 +32,11 @@ class Navigation extends React.Component {
   onClickFeed() {
     this.props.onComponentChange('feed');
 
+  }
+  onClickSignOut(){
+    signout().then(
+      window.location.reload(false)
+    );
   }
 
   render() {
@@ -57,6 +64,8 @@ class Navigation extends React.Component {
               </div>
             </IconContext.Provider>
           </Col>
+          <Col/>
+          <Col xs={1}><p onClick={this.onClickSignOut} className="navbar-sign-out">Sign Out</p></Col>
         </Row>
       </Container>
     )

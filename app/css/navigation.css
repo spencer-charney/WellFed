@@ -7,3 +7,12 @@
     opacity: 0.5;
     padding-top: .5em;
 }
+
+.navbar-sign-out{
+    background-color: rgb(189, 236, 189);
+    font-size: 1.5em;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+    text-align: center;
+}
