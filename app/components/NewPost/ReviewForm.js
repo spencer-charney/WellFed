@@ -50,7 +50,9 @@ class ReviewForm extends React.Component {
         }else {
           this.props.updatePosts();
         }
-    });
+    }).then(
+      window.location.reload(false)
+    );
   }
 
   handleChangeTitle(event) {

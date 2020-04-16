@@ -61,7 +61,9 @@ class RecipeForm extends React.Component {
                 });
                 this.props.updatePosts();
             }
-        });
+        }).then(
+            window.location.reload(false)
+          );
     }
 
     handleChangeTitle(event) {
