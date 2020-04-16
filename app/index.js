@@ -4,6 +4,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import LandingPage from './components/landingPage/LandingPage'
 import App from './App'
 import './index.css'
+import { isAuthenticated, getUser} from "./components/landingPage/Auth";
+
 
 class Index extends React.Component {
     constructor(props) {
@@ -20,11 +22,11 @@ class Index extends React.Component {
     }
     render() {
         let page;
-        if (this.state.clicked) {
+        if (this.state.clicked || isAuthenticated()) {
             page = <App />;
         }
         else {
-            page = <LandingPage sumbit={this.handleSubmit} />;
+            page = <LandingPage submit={this.handleSubmit} />;
         }
         return (
             <div className="index">

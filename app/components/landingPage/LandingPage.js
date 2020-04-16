@@ -25,10 +25,10 @@ class LandingPage extends React.Component {
     render() {
         let form;
         if (this.state.logOrSign == 'log') {
-            form = <Login sumbit={this.props.sumbit} />
+            form = <Login submit={this.props.submit}/>
         }
         else {
-            form = <Signup sumbit={this.props.sumbit} />
+            form = <Signup submit={this.props.submit}/>
         }
         return (
             <Container fluid className="landing">

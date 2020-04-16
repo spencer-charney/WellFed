@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
-import {signin, authenticate, isAuthenticated} from './Auth'
+import { signin, authenticate, isAuthenticated } from './Auth'
 
 class Login extends React.Component {
     constructor(props) {
@@ -34,17 +34,16 @@ class Login extends React.Component {
 
         signin(user).then(data => {
             if (data.error) {
-                this.setState({ error: data.error});
+                this.setState({ error: data.error });
             } else {
                 // authenticate
                 authenticate(data, () => {
                 });
             }
-        });
-        
-        
-        //Send to server
-        this.props.sumbit("Login", this.state.email, this.state.password);
+        }).then(
+            this.props.submit("Login", this.state.email, this.state.password)
+        );
+
     }
 
     render() {
