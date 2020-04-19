@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const User = require("../models/user");
+const Book = require('../models/book')
 
 exports.userById = (req, res, next, id) => {
 	User.findById(id)
@@ -129,23 +130,32 @@ exports.removeFollower = (req, res) => {
 };
 
 exports.createBook = (req, res) => {
-    User.findByIdAndUpdate(req.body.userId, {$push: {
-        myBooks: {
-            name: req.body.name,
-            posts:[]
-        }
-    }}, { new: true }, (err, result) => {
+    let book = new Book({name: req.body.name});
+    let bookId = book._id;
+    User.findByIdAndUpdate(req.body.userId, {$push: { myBooks: bookId }}, { new: true })
+    .populate('myBooks', '_id name')
+    .exec((err, result) => {
         if (err) {
-            console.log(err);
+            return res.status(400).json({
+                error: err
+            });
         }
-        else {
-            console.log(result);
-        }
+        result.hashed_password = undefined;
+        result.salt = undefined;
+        res.json(result);
     }); 
 }
 
-exports.populateBookmark = (req, res) => {
-
+exports.populateBook = (req, res) => {
+    Book.findByIdAndUpdate(req.body.bookId, {$push: { posts: req.body.postId }}, {new: true},
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(result);
+            }
+        });
 }
 
 

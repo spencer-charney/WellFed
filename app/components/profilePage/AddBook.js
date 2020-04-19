@@ -22,6 +22,9 @@ class AddBook extends React.Component {
                 if (data.error) {
                     console.log(data.error);
                 }
+                else {
+                    console.log(data);
+                }
             }
         )
         console.log(this.state.name);

@@ -95,7 +95,7 @@ class Recipe extends React.Component {
         </div>
       </IconContext.Provider>
       console.log("Bookmark Post");
-      selector = <Bookselector myBooks={["book1", "book2", "book3"]}/>
+      selector = <Bookselector postId={this.props.postId}  myBooks={["book1", "book2", "book3"]}/>
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>

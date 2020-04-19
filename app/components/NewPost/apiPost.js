@@ -128,3 +128,20 @@ export const createBook = (userId, token, name) => {
         })
         .catch(err => console.log(err));
 }
+
+export const populateBook = (userId, bookId, token, postId) => {
+    return fetch(`${process.env.API_URL}/user/populateBook`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ userId, bookId, postId })
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+}
+}

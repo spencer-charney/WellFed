@@ -28,11 +28,7 @@ const userSchema = new mongoose.Schema({
 		default: Date.now
 	},
 	updated: Date,
-	restrictions: [
-		{
-			type: String
-		}
-	],
+	restrictions: [String],
 	following: [{type: ObjectId, ref: "User"}],
 	followers: [{type: ObjectId, ref: "User"}],
 	notifications: [
@@ -57,17 +53,7 @@ const userSchema = new mongoose.Schema({
 			}
 		}
 	],
-	myBooks: [
-		{
-			name:String,
-			posts: [
-				{
-					type: ObjectId,
-					ref: 'Post'
-				}
-			]
-		}
-	]
+	myBooks: [{type: ObjectId, ref: 'Book'}]
 })
 
 //virtual field for password
