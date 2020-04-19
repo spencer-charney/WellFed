@@ -141,13 +141,59 @@
 .dropdownList {
     white-space: pre-line;
 }
-
+.search-return-container{
+    position: fixed;
+    top:165px;
+    width: 100%;
+    margin-right: 12em;
+}
 .search-return-area{
-    float: right;
-    background-color: yellow;
-    top:110px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 20em;
-    width: 10em;
+    height: 15em;
+}
+
+.search-return-row{
+    width: 100%;
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 1px;
+    margin-bottom: .5em;
+    background-color: rgb(189, 236, 189);
+}
+
+.search-return-row-username{
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    padding-top: 1em;
+
+}
+
+.search-return-row-button{
+    margin: .5em;
+    background-color: rgb(114, 241, 114);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+}
+
+.search-return-row-button-name{
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    padding-top: .5em;
+}
+
+.search-chevron-row{
+    background-color: rgb(114, 241, 114);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+}
+
+.search-chevron-row-label{
+    font-size: 1em;
 }

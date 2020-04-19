@@ -144,4 +144,3 @@ export const populateBook = (userId, bookId, token, postId) => {
         })
         .catch(err => console.log(err));
 }
-}

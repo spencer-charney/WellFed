@@ -9,6 +9,7 @@ import { IconContext } from "react-icons";
 import { IoIosPerson, IoIosPeople } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoSearch } from "react-icons/go";
+import SearchReturnArea from "./SearchReturnArea"
 
 
 import '../../css/feed.css'
@@ -22,11 +23,13 @@ class Feed extends React.Component {
     this.handleClickCreate = this.handleClickCreate.bind(this);
     this.handleClickSearch = this.handleClickSearch.bind(this);
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
+    this.collapseClicked = this.collapseClicked.bind(this);
     this.sendSearch = this.sendSearch.bind(this);
     this.state = {
       feed: 'Discover',
       searchClicked: false,
-      search: ''
+      search: '',
+      sendSearch: false
     }
   }
   handleClickMyFeed() {
@@ -42,7 +45,8 @@ class Feed extends React.Component {
     if (this.state.searchClicked) {
       this.setState({
         searchClicked: false,
-        search: ''
+        search: '',
+        sendSearch: false
       })
     }
     else
@@ -53,10 +57,13 @@ class Feed extends React.Component {
   }
   sendSearch() {
     //send to server 
-    console.log(this.state.search);
     this.setState({
-      search: '',
-      searchClicked: true
+      sendSearch: true
+    })
+  }
+  collapseClicked(){
+    this.setState({
+      sendSearch: false
     })
   }
   render() {
@@ -75,7 +82,6 @@ class Feed extends React.Component {
 
     }
     let search;
-    let searchReturnArea;
     if (this.state.searchClicked) {
       search =
         <Row className="search-area">
@@ -83,13 +89,18 @@ class Feed extends React.Component {
           <Col xs={5} md={3} lg={2}><input type="text" value={this.state.search} onChange={this.handleChangeSearch} className="search-text" /></Col>
           <Col xs={3} md={2} lg={1} onClick={this.sendSearch}><p className="search-button">search</p></Col>
         </Row>
-      searchReturnArea = <Container fluid className="search-return-area">
-        <Row>Hello Brian</Row>
-      </Container>
+
     }
     else {
       search = <div></div>
+    }
+    let searchReturnArea;
+    if (this.state.sendSearch) {
+      searchReturnArea = <SearchReturnArea collapseClicked={this.collapseClicked}/>
+    }
+    else {
       searchReturnArea = <div></div>
+
     }
     return (
       <Container fluid>
@@ -119,7 +130,7 @@ class Feed extends React.Component {
           <Col xs={1} onClick={this.handleClickSearch} className="feed-button">
             <IconContext.Provider value={{ size: '2em' }}>
               <div>
-                <GoSearch onClick={this.sendSearch}/>
+                <GoSearch />
               </div>
             </IconContext.Provider>
           </Col>
