@@ -23,13 +23,19 @@ export const listByUser = (userId, token) => {
         .catch(err => console.log(err));
 };
 
-export const followingPosts = (token, following) => {
-    
-    let posts = []
-    for (var i = 0; i < following.length; i++) {
-        posts.push(listByUser(following[i], token));
-    }   
-    
+export const followingPosts = (userId, token) => {
+    return fetch(`${process.env.API_URL}/posts/for/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
 }
 
 export const createPost= (userId, token, post) => {

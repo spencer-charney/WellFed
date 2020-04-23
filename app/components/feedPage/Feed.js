@@ -10,6 +10,7 @@ import { IoIosPerson, IoIosPeople } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoSearch } from "react-icons/go";
 import SearchReturnArea from "./SearchReturnArea"
+import {searchUser, isAuthenticated} from '../landingPage/Auth'
 
 
 import '../../css/feed.css'
@@ -33,9 +34,11 @@ class Feed extends React.Component {
     }
   }
   handleClickMyFeed() {
+    this.props.updatePosts();
     this.setState({ feed: 'My Feed' })
   }
   handleClickDiscover() {
+    this.props.updatePosts();
     this.setState({ feed: 'Discover' })
   }
   handleClickCreate() {
@@ -46,7 +49,8 @@ class Feed extends React.Component {
       this.setState({
         searchClicked: false,
         search: '',
-        sendSearch: false
+        sendSearch: false,
+        resultArray: []
       })
     }
     else
@@ -56,12 +60,23 @@ class Feed extends React.Component {
     this.setState({ search: event.target.value });
   }
   sendSearch() {
-    //send to server 
+    const auth = isAuthenticated();
+    searchUser(this.state.search, auth.token).then(
+      data => {
+        if (data.error) {
+          console.log(data.error);
+        }
+        else {
+          this.setState({resultArray: data})
+        }
+      }
+    )
     this.setState({
       sendSearch: true
     })
   }
   collapseClicked(){
+    this.props.updatePosts();
     this.setState({
       sendSearch: false
     })
@@ -78,7 +93,7 @@ class Feed extends React.Component {
     }
     else {
 
-      feedState = <NewPost updatePosts={this.updatePosts} self={this.props.self} />;
+      feedState = <NewPost updatePosts={this.props.updatePosts} self={this.props.self} />;
 
     }
     let search;
@@ -96,7 +111,7 @@ class Feed extends React.Component {
     }
     let searchReturnArea;
     if (this.state.sendSearch) {
-      searchReturnArea = <SearchReturnArea collapseClicked={this.collapseClicked}/>
+      searchReturnArea = <SearchReturnArea resultArray={this.state.resultArray} collapseClicked={this.collapseClicked}/>
     }
     else {
       searchReturnArea = <div></div>

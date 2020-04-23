@@ -4,4 +4,16 @@ body{
     overflow-x: hidden;
 }
 
+.no-content{
 
+    margin-top: 2em;
+
+}
+
+.no-content-text{
+    width: 100%;
+    text-align: center;
+    padding-top: 1em;
+    font-size: 2em;
+    color: grey;
+}

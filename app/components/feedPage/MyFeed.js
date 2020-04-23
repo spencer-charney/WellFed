@@ -24,14 +24,24 @@ class MyFeed extends React.Component {
         post = <Review self={this.props.self} postId={this.props.posts[i]._id} restaurant={this.props.posts[i].restaurant} username={this.props.posts[i].postedBy.username} dish={this.props.posts[i].dish} user={this.props.posts[i].postedBy.username} rate={this.props.posts[i].rate} tags={this.props.posts[i].tags} review={this.props.posts[i].review} comments={this.props.posts[i].comments} />;
 
       }
-      console.log("MY FEED LENGTH ON START" + len)
       postArray.push(
         <Row key={i}>{post}</Row>
       );
     }
+    if (len == 0) {
+      postArray = <Container fluid>
+        <Row>
+          <Col />
+          <Col className="no-content">
+            <p className="no-content-text">There are no posts in My Feed yet! Here you can view posts from accounts you follow. To follow an account, search the accounts username using the search feature </p>
+          </Col>
+          <Col />
+        </Row>
+      </Container>
+    }
     return (
       <Container fluid>
-          {postArray}
+        {postArray}
       </Container>
     )
   }

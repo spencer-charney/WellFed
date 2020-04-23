@@ -57,7 +57,6 @@ export const isAuthenticated = () => {
     }
 };
 
-
 export const getUser = (userId, token) => {
     return fetch(`${process.env.API_URL}/user/${userId}`, {
         method: 'GET',
@@ -71,4 +70,37 @@ export const getUser = (userId, token) => {
             return response.json();
         })
         .catch(err => console.log(err));
+}
+
+export const searchUser = (username, token) => {
+    console.log("SEARCHING FOR USER: "+ username);
+    return fetch(`${process.env.API_URL}/user/search`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({username})
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+export const followUser = (userId, followId, token, username) => {
+    return fetch(`${process.env.API_URL}/user/follow`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({userId, followId, username})
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
 }

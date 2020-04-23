@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Comments from './Comments'
 import CommentForm from './CommentForm';
 import Bookselector from './Bookselector'
-
+import {populateBook} from '../NewPost/ApiPost'
 import '../../css/feed.css'
 
 
@@ -45,6 +45,16 @@ class Review extends React.Component {
     this.setState({ comments });
   };
 
+  addToBook(userId, bookId, token, postId) {
+    populateBook(userId, bookId, token, postId).then(
+      data => {
+        if (data.error) {
+          console.log(data.error);
+        }
+      }
+    )
+  }
+
   render() {
     let bookmark;
     let selector;
@@ -54,7 +64,7 @@ class Review extends React.Component {
           <FaBookmark />
         </div>
       </IconContext.Provider>;
-      selector = <Bookselector postId={this.props.postId} myBooks={["book1", "book2", "book3"]}/>;
+      selector = <Bookselector postId={this.props.postId} myBooks={this.props.self.myBooks} addToBook={this.addToBook}/>;
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>

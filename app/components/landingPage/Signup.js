@@ -57,7 +57,7 @@ class Signup extends React.Component {
                 });
             }
         }).then(
-            this.props.sumbit("Sign Up", this.state.email, this.state.password)
+            this.props.submit("Sign Up", this.state.email, this.state.password)
         );
 
         if (this.state.error.length == 0) {

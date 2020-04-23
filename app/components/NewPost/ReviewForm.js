@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import '../../css/feed.css'
-import { createPost } from "./apiPost";
+import { createPost } from "./ApiPost";
 import { isAuthenticated } from "../landingPage/Auth";
 
 class ReviewForm extends React.Component {
@@ -42,17 +42,16 @@ class ReviewForm extends React.Component {
 
     const userId = auth.user._id;
     const token = auth.token;
-
-    createPost(userId, token, recipe).then(data => {
+    createPost(userId, token, recipe).then(
+      data => {
         if (data.error) {
             this.setState({ error: data.error });
             console.log(data.error)
         }else {
           this.props.updatePosts();
+          window.location.reload(false)
         }
-    }).then(
-      window.location.reload(false)
-    );
+    })
   }
 
   handleChangeTitle(event) {

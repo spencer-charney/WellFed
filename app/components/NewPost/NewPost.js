@@ -24,13 +24,13 @@ class NewPost extends React.Component {
         let recipeTab;
         let reviewTab;
         if (this.state.feed == 'recipe') {
-            formState = <RecipeForm updatePosts={this.updatePosts}/>;
+            formState = <RecipeForm updatePosts={this.props.updatePosts}/>;
             recipeTab = <Col onClick={this.handleClickRecipe} className="tab-clicked">Create New Recipe</Col>;
             reviewTab = <Col onClick={this.handleClickReview} className="tab-not-clicked">Create New Review</Col>
 
         }
         else {
-            formState = <ReviewForm updatePosts={this.updatePosts}/>;
+            formState = <ReviewForm updatePosts={this.props.updatePosts}/>;
             recipeTab = <Col onClick={this.handleClickRecipe} className="tab-not-clicked">Create New Recipe</Col>;
             reviewTab = <Col onClick={this.handleClickReview} className="tab-clicked">Create New Review</Col>
 

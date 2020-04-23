@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { isAuthenticated } from '../landingPage/Auth';
-import {createBook} from '../NewPost/apiPost'
+import {createBook} from '../NewPost/ApiPost'
 
 class AddBook extends React.Component {
     constructor(props) {
@@ -23,11 +23,10 @@ class AddBook extends React.Component {
                     console.log(data.error);
                 }
                 else {
-                    console.log(data);
+                    this.props.updateUser(userId, auth.token);
                 }
             }
         )
-        console.log(this.state.name);
         event.preventDefault();
     }
     handleChangeName(event) {
@@ -38,7 +37,7 @@ class AddBook extends React.Component {
             <Container fluid>
                 <Row>Add a New Book</Row>:
                 <Row><input type="text" value={this.state.name} onChange={this.handleChangeName} placeholder="Name" className="add-search"/></Row>
-                <Row onClick={this.handleSubmit} className="add-button"><p className="add-button-string">Add</p></Row>
+                <Row onClick={this.handleSubmit} className="add-button"><p className="add-button-string">Create Book</p></Row>
             </Container>
 
         )

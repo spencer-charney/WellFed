@@ -39,11 +39,22 @@ class MyBooks extends React.Component {
                 <BookBottom key={i} posts={this.props.myBooks[i].posts}></BookBottom>
             );
         }
-        console.log("Brian: "+arrayOfBottom.length)
+        if (len == 0) {
+            arrayOfBottom.push(<Container fluid>
+                <Row>
+                    <Col />
+                    <Col className="no-content">
+                        <p className="no-content-text">There are no books in My Books yet! Create a book for you, a family memeber, or a friend.</p>
+                    </Col>
+                    <Col />
+                </Row>
+            </Container>);
+        }
         return (
             <Container fluid>
-                <Row className="my-books">
-                    <Col className="book-col"><AddBook /></Col>
+                <Row className="book-col"><AddBook updateUser={this.props.updateUser}/></Row>
+
+                <Row className="my-books" lg={8}>
                     {arrayOfTop}
                 </Row>
                 <Container fluid>

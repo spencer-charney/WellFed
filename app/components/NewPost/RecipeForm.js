@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import '../../css/feed.css'
-import { createPost } from "./apiPost";
+import { createPost } from "./ApiPost";
 import { isAuthenticated } from "../landingPage/Auth";
 
 class RecipeForm extends React.Component {
@@ -17,8 +17,7 @@ class RecipeForm extends React.Component {
             tags: '',
             ingredients: '',
             directions: '',
-            error: '',
-            post: ''
+            error: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -56,14 +55,10 @@ class RecipeForm extends React.Component {
                 this.setState({ error: data.error });
                 console.log(data.error)
             } else {
-                this.setState({
-                    post: data,
-                });
+                window.location.reload(false)
                 this.props.updatePosts();
             }
-        }).then(
-            window.location.reload(false)
-          );
+        })
     }
 
     handleChangeTitle(event) {

@@ -12,12 +12,12 @@ exports.signup = async (req, res) => {
     const user = await new User(req.body);
     await user.save();
 
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ _id: user._id, username: user.username }, process.env.JWT_SECRET);
     res.cookie('t', token, { expire: new Date() + 9999 });
 
-    const { _id, name, email } = user
+    const { _id, name, email, username } = user
 
-    return res.json({ token, user: { _id, email, name } })
+    return res.json({ token, user: { _id, email, name, username } })
 
     // res.status(200).json({ message: 'Signup success! Please login.' });
 };
@@ -39,12 +39,12 @@ exports.signin = async (req, res) => {
             })
         }
 
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+        const token = jwt.sign({ _id: user._id, username: user.username }, process.env.JWT_SECRET);
         res.cookie('t', token, { expire: new Date() + 9999 });
 
-        const { _id, name, email } = user
+        const { _id, name, email, username } = user
 
-        return res.json({ token, user: { _id, email, name } })
+        return res.json({ token, user: { _id, email, name, username} })
     });
 };
 

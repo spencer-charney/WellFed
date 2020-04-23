@@ -9,7 +9,6 @@ import Comments from './Comments'
 import CommentForm from './CommentForm';
 import Bookselector from './Bookselector'
 import SearchReturnRow from './SearchReturnRow'
-
 import '../../css/feed.css'
 
 
@@ -21,17 +20,20 @@ class SearchReturnArea extends React.Component {
     }
 
     render() {
-
+        console.log(this.props.resultArray);
+        let searchList = [];
+        if (this.props.resultArray) {
+            for (let i = 0; i < this.props.resultArray.length; i++) {
+                let user = this.props.resultArray[i];
+                searchList.push(<SearchReturnRow username={user.username} followId={user._id}/>)
+            }
+        }
         return (
             <Row className="search-return-container">
                 <Col />
                 <Col xs={3}>
                     <Container fluid className="search-return-area">
-                        <SearchReturnRow username="Tom" />
-                        <SearchReturnRow username="Austin" />
-                        <SearchReturnRow username="Austin" />
-                        <SearchReturnRow username="Austin" />
-                        <SearchReturnRow username="Austin" />
+                        {searchList}
                     </Container>
                     <Row>
                         <Col />

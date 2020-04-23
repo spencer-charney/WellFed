@@ -5,7 +5,11 @@ const Book = require('../models/book')
 exports.userById = (req, res, next, id) => {
 	User.findById(id)
 	.populate('following', '_id name')
-	.populate('followers', '_id name')
+    .populate('followers', '_id name')
+    .populate({
+        path: 'myBooks',
+        populate: { path: 'posts' }
+    })
 	.exec((err, user) => {
 		if (err || !user) {
 			return res.status(400).json({
@@ -16,6 +20,21 @@ exports.userById = (req, res, next, id) => {
 		next();
 	});
 };
+
+exports.searchUsers = (req, res) => {
+    let username = req.body.username;
+    console.log(req.body);
+    User.find({'username': new RegExp(username, 'i')}, 'username _id', function(err, data) {
+        if (err) {
+            return res.status(400).json({
+                error: "Users not found"
+            })
+        }
+        else {
+            res.json(data);
+        }
+    });
+}
 
 exports.hasAuthorization = (req, res, next) => {
 	const authorized = req.profile && req.auth && req.profile._id === req.auth._id;
@@ -73,7 +92,8 @@ exports.deleteUser = (req, res, next) => {
 };
 
 exports.addFollowing = (req, res, next) => {
-    User.findByIdAndUpdate(req.body.userId, { $push: { following: req.body.followId } }, (err, result) => {
+    console.log(req.body);
+    User.findByIdAndUpdate(req.body.userId, { $addToSet: { following: req.body.followId } }, (err, result) => {
         if (err) {
             return res.status(400).json({ error: err });
         }
@@ -82,7 +102,7 @@ exports.addFollowing = (req, res, next) => {
 };
 
 exports.addFollower = (req, res) => {
-    User.findByIdAndUpdate(req.body.followId, { $push: { followers: req.body.userId } }, { new: true })
+    User.findByIdAndUpdate(req.body.followId, { $addToSet: { followers: req.body.userId } }, { new: true })
         .populate('following', '_id username')
         .populate('followers', '_id username')
         .exec((err, result) => {
@@ -91,17 +111,21 @@ exports.addFollower = (req, res) => {
                     error: err
                 });
             }
+            console.log("HELLO HERE")
+            console.log(req.body);
+        const notification = {
+            type: "newFollow",
+            username: req.body.username,
+            message: ""
+        }
+        this.addNotification(req.body.followId, notification);
+
         result.hashed_password = undefined;
         result.salt = undefined;
         res.json(result);
     });
 
-    const notification = {
-        type: "newFollow",
-        username: req.body.userId,
-        message: ""
-    }
-    this.addNotification(req.body.followId, notification);
+
 };
 
 exports.removeFollowing = (req, res, next) => {
@@ -131,9 +155,9 @@ exports.removeFollower = (req, res) => {
 
 exports.createBook = (req, res) => {
     let book = new Book({name: req.body.name});
+    book.save();
     let bookId = book._id;
     User.findByIdAndUpdate(req.body.userId, {$push: { myBooks: bookId }}, { new: true })
-    .populate('myBooks', '_id name')
     .exec((err, result) => {
         if (err) {
             return res.status(400).json({
@@ -147,21 +171,27 @@ exports.createBook = (req, res) => {
 }
 
 exports.populateBook = (req, res) => {
-    Book.findByIdAndUpdate(req.body.bookId, {$push: { posts: req.body.postId }}, {new: true},
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(result);
-            }
-        });
+    Book.findByIdAndUpdate(req.body.bookId, {$addToSet: { posts: req.body.postId }}, {new: true})
+    .exec((err, result) => {
+        if (err) {
+            return res.status(400).json({
+                error: err
+            })
+        }
+        else {
+            res.json(result);
+        }
+    });
+
+    // const notification = {
+    //     type: "newBookmark",
+    //     username: req.body.username,
+    //     message: 
+    // }
+    // this.addNotification(req.body.followId, notification);
 }
 
-
 exports.addNotification = (userId, notification) => {
-    console.log("NOTIFICATION")
-    console.log(notification);
     User.findByIdAndUpdate(userId, { 
         $push: {
             notifications: notification

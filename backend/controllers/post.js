@@ -1,5 +1,6 @@
 const { addNotification } = require('./user');
 const Post = require('../models/post');
+const User = require('../models/user')
 
 
 exports.postById = (req, res, next, id) => {
@@ -31,18 +32,21 @@ exports.getPosts = (req, res) => {
 }
 
 exports.createPost = (req, res, next) => {
+	console.log("HELOO")
 	const post = new Post(req.body);
 	post.postedBy = req.profile;
-	
+	console.log(req.body);
     post.save((err,result) => {
 		if (err) {
 			return res.status(400).json({
 				error: err
 			});
 		}
-        res.json({
-            post: result
-        });
+		else {
+			res.json({
+				post: result
+			});
+		}
     });
 }
 
@@ -119,9 +123,6 @@ exports.comment = (req, res) => {
                 res.json(result);
             }
 		});
-	
-		
-	
 };
 
 exports.uncomment = (req, res) => {
@@ -140,3 +141,31 @@ exports.uncomment = (req, res) => {
             }
         });
 };
+
+
+
+exports.postsForUser = (req, res) => {
+	let following = req.profile.following;
+	let posts = [];
+
+	var prom = new Promise((resolve, reject) => {
+		following.forEach((user, index, array) => {
+			Post.find({postedBy: user._id})
+			.populate('postedBy', '_id username')
+			.exec((err, post) => {
+				if (err) {
+					return res.status(400).json({
+						error: err
+					});
+				}
+				posts.push(...post);
+				if (index == array.length -1) resolve();
+			})
+		})
+	});
+	
+	prom.then(() => {
+		posts.sort((a,b) => (a.created > b.created) ? -1 : 1);
+		res.json(posts);
+	})
+}

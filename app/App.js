@@ -6,7 +6,7 @@ import Feed from './components/feedPage/Feed'
 import MyProfile from './components/profilePage/MyProfile'
 import NotificationsPage from './components/notificationsPage/NotificationsPage'
 import Container from 'react-bootstrap/Container'
-import { followingPosts, list, listByUser } from "./components/NewPost/apiPost";
+import { followingPosts, list, listByUser } from "./components/NewPost/ApiPost";
 import { isAuthenticated, getUser} from "./components/landingPage/Auth";
 
 
@@ -16,6 +16,7 @@ class App extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.updateNotifications = this.updateNotifications.bind(this);
         this.updateUser = this.updateUser.bind(this);
+        this.updatePosts = this.updatePosts.bind(this);
         this.state = {
             pageState: 'feed',
             error: null,
@@ -23,6 +24,7 @@ class App extends React.Component {
             myPosts: [],
             myFeedPosts: [],
             discoverPosts: [],
+            myBooks: '',
             self: '',
             notifications: []
         }
@@ -40,6 +42,8 @@ class App extends React.Component {
                         isLoaded: false,
                         error
                     });
+                    console.log(data.error)
+
                 } else {
                     this.setState({
                         isLoaded: true,
@@ -48,7 +52,6 @@ class App extends React.Component {
 
                 }
             });
-
             
             listByUser(user._id, token).then(data => {
                 if (data.error) {
@@ -56,7 +59,7 @@ class App extends React.Component {
                         error: data.error,
                         isLoaded: false
                     });
-
+                    console.log(data.error)
                 }
                 else{
                 this.setState({ 
@@ -68,24 +71,20 @@ class App extends React.Component {
 
             this.updateUser(user._id, token);
 
-            if (user.following) {
-                followingPosts(token, user.following).then(data => {
-                    if (data.error) {
-                        this.setState({
-                            isLoaded: false,
-                            error: data.error
-                        })
-                        console.log(data.error);
+            // followingPosts(auth.user._id, auth.token).then(data => {
+            //     if (data.error) {
+            //         this.setState({
+            //             error: data.error
+            //         })
+            //         console.log(data.error);
 
-                    } else {
-                        this.setState({ 
-                            myFeedPosts: data,
-                            isLoaded: true
-                        });
-
-                    }
-                });
-            }        
+            //     } else {
+            //         this.setState({ 
+            //             myFeedPosts: data
+            //         });
+            //     }
+            // });
+            
         }, 500);
         
     }
@@ -103,7 +102,6 @@ class App extends React.Component {
                 this.setState({
                     discoverPosts: data.posts
                 });
-
             }
         });
 
@@ -122,22 +120,22 @@ class App extends React.Component {
 
         }});
 
-        if (auth.user.following) {
-            followingPosts(auth.token, auth.user.following).then(data => {
-                if (data.error) {
-                    this.setState({
-                        error: data.error
-                    })
-                    console.log(data.error);
+    
+        followingPosts(auth.user._id, auth.token).then(data => {
+            if (data.error) {
+                this.setState({
+                    error: data.error
+                })
+                console.log(data.error);
 
-                } else {
-                    this.setState({ 
-                        myFeedPosts: data
-                    });
+            } else {
+                this.setState({ 
+                    myFeedPosts: data
+                });
 
-                }
-            });
-        } 
+            }
+        });
+        
     }
 
     updateUser(userId, token) {
@@ -170,7 +168,6 @@ class App extends React.Component {
     }
     render() {
         const { self, error, isLoaded, myPosts, discoverPosts, myFeedPosts, notifications } = this.state;
-        
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -184,31 +181,15 @@ class App extends React.Component {
             const pageState = this.state.pageState;
             let page;
             if (pageState == 'profile') {
-                page = <MyProfile updatePosts={this.updatePosts} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
-                myBooks={[{
-                    name: "Kid1", 
-                    posts: [
-                        { type: "review", restaurant: "Krusty Krab", dish: "Pretty Patty", user: "Plankton", rate: "5", tags: "Vegan", review: "This is the most beautiful and tasty veggie patty I've ever had. I wish I had the recipe >:D", comments: [{ userName: "Spencer Charney", time: "16:20:00", comment: "L O L" }, { userName: "Karen Charney", time: "16:20:00", comment: "OMG" }] },
-                        { type: "recipe", title: "Easy Vegan Tacos", author: "Sonja and Ryan", description: "Looking for easy vegan tacos? These “verde” vegan tacos are color-themed, featuring green lentils, green cabbage, and a bright green cilantro sauce.", totalTime: "30 minutes", serves: "4", tags: "Vegan,  Gluten Free", ingredients: "1 1/2 cups green lentils \r 2 tablespoons olive oil \r 1 teaspoon cumin\r 1 teaspoon garlic powder\r 3/4 teaspoon kosher salt \r Fresh ground pepper \r 8 One Degree sprouted organic corn tortillas \r 2 green onions\r1/2 small green cabbage\rSalsa verde (purchased or homemade) \r Creamy Cilantro Sauce, to serve\r Avocado or pickled jalapenos, optional", directions: "1. Soak the cashews for the Creamy Cilantro Sauce for at least 30 minutes while making the remainder of the recipe (for a high speed blender), or soak them overnight or the morning of if you think of it. The longer the better! (You also can make the sauce ahead — see instructions in the cilantro sauce recipe!). \r 2. Place the lentils in a pot with 6 cups warm water. Bring to a low boil, then boil for about 15 to 20 minutes until just al dente (taste often to assess doneness). Drain, then stir in the olive oil, cumin, garlic powder, and kosher salt. \r3. Thinly slice the green onions. Thinly slice the cabbage. If using, chop the avocado. \r4. Meanwhile, make the Creamy Cilantro Sauce.\r 5. Warm the tortillas according to the package instructions*. (We typically char ours on an open flame, but that’s not the preferred method with the One Degree tortillas.) To serve, top the tortillas with lentils, green onions, green cabbage, salsa verde, torn cilantro leaves, and cilantro drizzle.", comments: [{ userName: "Spencer Charney", time: "16:20:00", comment: "L O L" }, { userName: "Karen Charney", time: "16:20:00", comment: "OMG" }] }
-                    ]
-                }, {
-                    name: "Kids2", 
-                    posts: [
-                        { type: "recipe", title: "Easy Vegan Tacos", author: "Sonja and Ryan", description: "Looking for easy vegan tacos? These “verde” vegan tacos are color-themed, featuring green lentils, green cabbage, and a bright green cilantro sauce.", totalTime: "30 minutes", serves: "4", tags: "Vegan,  Gluten Free", ingredients: "1 1/2 cups green lentils \r 2 tablespoons olive oil \r 1 teaspoon cumin\r 1 teaspoon garlic powder\r 3/4 teaspoon kosher salt \r Fresh ground pepper \r 8 One Degree sprouted organic corn tortillas \r 2 green onions\r1/2 small green cabbage\rSalsa verde (purchased or homemade) \r Creamy Cilantro Sauce, to serve\r Avocado or pickled jalapenos, optional", directions: "1. Soak the cashews for the Creamy Cilantro Sauce for at least 30 minutes while making the remainder of the recipe (for a high speed blender), or soak them overnight or the morning of if you think of it. The longer the better! (You also can make the sauce ahead — see instructions in the cilantro sauce recipe!). \r 2. Place the lentils in a pot with 6 cups warm water. Bring to a low boil, then boil for about 15 to 20 minutes until just al dente (taste often to assess doneness). Drain, then stir in the olive oil, cumin, garlic powder, and kosher salt. \r3. Thinly slice the green onions. Thinly slice the cabbage. If using, chop the avocado. \r4. Meanwhile, make the Creamy Cilantro Sauce.\r 5. Warm the tortillas according to the package instructions*. (We typically char ours on an open flame, but that’s not the preferred method with the One Degree tortillas.) To serve, top the tortillas with lentils, green onions, green cabbage, salsa verde, torn cilantro leaves, and cilantro drizzle.", comments: [] },
-                        { type: "review", restaurant: "Krusty Krab", dish: "Pretty Patty", user: "Plankton", rate: "5", tags: "Vegan", review: "This is the most beautiful and tasty veggie patty I've ever had. I wish I had the recipe >:D", comments: [] }
-                    ]
-                }]}
-                    myPosts={myPosts}
-                    />;
+                page = <MyProfile updatePosts={this.updatePosts} updateUser={this.updateUser} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
+                myBooks={self.myBooks}
+                myPosts={myPosts}
+                />;
             }
             else if (pageState == 'notifications') {
-                page = <NotificationsPage notifications={this.state.notifications}
+                page = <NotificationsPage notifications={notifications}
                 // {[
-                //     { type: "newComment", username: "user1", time: "16:20:00", message: "Looks Great!" },
-                //     { type: "newBookmark", username: "user2", time: "16:20:00", message: "This is the title of the post" },
-                //     { type: "newFollow", username: "user3", time: "16:20:00", message: "" },
-                //     { type: "newFollow", username: "user1", time: "16:20:00", message: "" },
-                //     { type: "newFollow", username: "user1", time: "16:20:00", message: "" }
+                // { type: "newBookmark", username: "user2", time: "16:20:00", message: "This is the title of the post" },
                 // ]} 
                 />;
             }

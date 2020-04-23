@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { IconContext } from "react-icons";
 import { isAuthenticated } from '../landingPage/Auth';
-import { newComment } from '../NewPost/apiPost';
+import { newComment } from '../NewPost/ApiPost';
 
 class CommentForm extends React.Component {
     constructor(props) {
