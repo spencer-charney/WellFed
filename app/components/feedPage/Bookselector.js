@@ -18,7 +18,7 @@ class Bookselector extends React.Component {
         let items = [];
         for(var i = 0; i < len; i++){
             items.push(
-                <BookForSelector key={i} name={this.props.myBooks[i].name} addToBook={this.props.addToBook} postId={this.props.postId} book={this.props.myBooks[i]} dropdownSelected={this.dropdownSelected}/>
+                <BookForSelector key={i} postTitle={this.props.postTitle} name={this.props.myBooks[i].name} addToBook={this.props.addToBook} postId={this.props.postId} book={this.props.myBooks[i]} dropdownSelected={this.dropdownSelected}/>
             );
         }
         return (

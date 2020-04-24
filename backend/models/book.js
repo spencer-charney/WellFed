@@ -3,12 +3,7 @@ const {ObjectId} = mongoose.Schema;
 
 const bookSchema = new mongoose.Schema({
     name: String,
-    posts: [
-        {
-            type: ObjectId,
-            ref: 'Post'
-        }
-    ]
+    posts: [{type: ObjectId, ref: 'Post'}]
 })
 
 

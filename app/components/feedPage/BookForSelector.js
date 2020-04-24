@@ -10,7 +10,7 @@ class BookForSelector extends React.Component {
     handleSelect(){
         const auth = isAuthenticated();
         this.props.dropdownSelected(this.props.name);
-        this.props.addToBook(auth.user._id, this.props.book, auth.token, this.props.postId);
+        this.props.addToBook(auth.user._id, this.props.book, auth.token, this.props.postId, this.props.postTitle);
     }
     render() {
         return (

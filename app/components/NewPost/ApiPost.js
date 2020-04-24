@@ -1,3 +1,5 @@
+import { isAuthenticated } from "../landingPage/Auth";
+
 export const list = () => {
     return fetch(`${process.env.API_URL}/posts`, {
         method: "GET"
@@ -135,7 +137,8 @@ export const createBook = (userId, token, name) => {
         .catch(err => console.log(err));
 }
 
-export const populateBook = (userId, bookId, token, postId) => {
+export const populateBook = (userId, bookId, token, postId, postTitle) => {
+    let username = isAuthenticated().user.username;
     return fetch(`${process.env.API_URL}/user/populateBook`, {
         method: "PUT",
         headers: {
@@ -143,7 +146,7 @@ export const populateBook = (userId, bookId, token, postId) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ userId, bookId, postId })
+        body: JSON.stringify({ userId, username, bookId, postId, postTitle })
     })
         .then(response => {
             return response.json();

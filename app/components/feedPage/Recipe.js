@@ -65,8 +65,8 @@ class Recipe extends React.Component {
   };
 
 
-  addToBook(userId, bookId, token, postId) {
-    populateBook(userId, bookId, token, postId).then(
+  addToBook(userId, bookId, token, postId, postTitle) {
+    populateBook(userId, bookId, token, postId, postTitle).then(
       data => {
         if (data.error) {
           console.log(data.error);
@@ -108,7 +108,7 @@ class Recipe extends React.Component {
           <FaBookmark />
         </div>
       </IconContext.Provider>
-      selector = <Bookselector postId={this.props.postId} myBooks={this.props.self.myBooks} addToBook={this.addToBook}/>
+      selector = <Bookselector postTitle={this.props.title} postId={this.props.postId} myBooks={this.props.self.myBooks} addToBook={this.addToBook}/>
     }
     else {
       bookmark = <IconContext.Provider value={{ color: "gray", className: "icons global-class-name", size: '2em' }}>

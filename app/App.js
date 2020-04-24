@@ -7,7 +7,7 @@ import MyProfile from './components/profilePage/MyProfile'
 import NotificationsPage from './components/notificationsPage/NotificationsPage'
 import Container from 'react-bootstrap/Container'
 import { followingPosts, list, listByUser } from "./components/NewPost/ApiPost";
-import { isAuthenticated, getUser} from "./components/landingPage/Auth";
+import { isAuthenticated, getUser, getUsername} from "./components/landingPage/Auth";
 import OtherProfile from './components/profilePage/OtherProfile';
 
 
@@ -28,7 +28,9 @@ class App extends React.Component {
             discoverPosts: [],
             myBooks: '',
             self: '',
-            notifications: []
+            notifications: [],
+            otherUser: '',
+            otherPosts: []
         }
     }
 
@@ -169,24 +171,53 @@ class App extends React.Component {
         this.setState({ pageState: newPageState })
     }
     clickUser(username){
-        this.setState({pageState:'clickUser'})
+        const token = isAuthenticated().token;
+        getUsername(username, token).then(data => {
+            if (data.error) {
+                this.setState({
+                    error: data.error
+                })
+            }
+            else {
+                listByUser(data._id, token).then(posts => {
+                    if (posts.error) {
+                        this.setState({
+                            error: posts.error
+                        })
+                    }
+                    else {
+                        this.setState({
+                            otherUser: data,
+                            otherPosts: posts,
+                            pageState:'clickUser'
+                        })
+                    }
+                })
+                
+            }
+        })
+
+        
     }
     render() {
-        const { self, error, isLoaded, myPosts, discoverPosts, myFeedPosts, notifications } = this.state;
+        const { self, error, isLoaded, myPosts, discoverPosts, myFeedPosts, notifications, otherUser, otherPosts } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
-            var followersLength = 0;
-            var followingLength = 0;
+            let followersLength, followingLength = 0;
             if (self.followers) followersLength = self.followers.length;
             if (self.following) followingLength = self.following.length;
+
+            let otherFollowersLength, otherFollowingLength = 0;
+            if (otherUser.followers) otherFollowersLength = otherUser.followers.length;
+            if (otherUser.following) otherFollowingLength = otherUser.following.length;
 
             const pageState = this.state.pageState;
             let page;
             if (pageState == 'profile') {
-                page = <MyProfile updatePosts={this.updatePosts} updateUser={this.updateUser} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
+                page = <MyProfile clickUser={this.clickUser} updatePosts={this.updatePosts} updateUser={this.updateUser} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
                 myBooks={self.myBooks}
                 myPosts={myPosts}
                 />;
@@ -200,9 +231,8 @@ class App extends React.Component {
             }
             else if(pageState == 'clickUser'){
                 
-                page = <OtherProfile updatePosts={this.updatePosts} updateUser={this.updateUser} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
-                myBooks={self.myBooks}
-                myPosts={myPosts}
+                page = <OtherProfile updatePosts={this.updatePosts} updateUser={this.updateUser} clickUser={this.clickUser} self={self} otherUser={otherUser} name={otherUser.name} username={otherUser.username} followers={otherFollowersLength} following={otherFollowingLength} restrictions={otherUser.restrictions} 
+                myPosts={otherPosts}
                 />
             }
             else {

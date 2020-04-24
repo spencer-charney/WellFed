@@ -24,7 +24,7 @@ exports.userById = (req, res, next, id) => {
 exports.searchUsers = (req, res) => {
     let username = req.body.username;
     console.log(req.body);
-    User.find({'username': new RegExp(username, 'i')}, 'username _id', function(err, data) {
+    User.find({'username': new RegExp(username, 'i')}, 'username _id', (err, data) => {
         if (err) {
             return res.status(400).json({
                 error: "Users not found"
@@ -64,7 +64,18 @@ exports.getUser = (req, res) => {
 };
 
 exports.getUsername = (req, res) => {
-    
+    User.findOne({'username': req.body.username}, (err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: "User not found"
+            })
+        }
+        else {
+            data.hashed_password = undefined;
+            data.salt = undefined;
+            res.json(data);
+        }
+    })
 }
 
 exports.updateUser = (req, res, next) => {
@@ -176,6 +187,10 @@ exports.createBook = (req, res) => {
 
 exports.populateBook = (req, res) => {
     Book.findByIdAndUpdate(req.body.bookId, {$addToSet: { posts: req.body.postId }}, {new: true})
+    .populate({
+        path: 'posts',
+        populate: { path: 'postedBy' }
+    })
     .exec((err, result) => {
         if (err) {
             return res.status(400).json({
@@ -183,16 +198,19 @@ exports.populateBook = (req, res) => {
             })
         }
         else {
+            result.posts.forEach(post => {
+                if (post._id == req.body.postId) {
+                    const notification = {
+                        type: "newBookmark",
+                        username: req.body.username,
+                        message: req.body.postTitle
+                    }
+                    this.addNotification(post.postedBy._id, notification);
+                }
+            })
             res.json(result);
         }
     });
-
-    // const notification = {
-    //     type: "newBookmark",
-    //     username: req.body.username,
-    //     message: 
-    // }
-    // this.addNotification(req.body.followId, notification);
 }
 
 exports.addNotification = (userId, notification) => {
@@ -211,4 +229,3 @@ exports.addNotification = (userId, notification) => {
     });
     
 };
-

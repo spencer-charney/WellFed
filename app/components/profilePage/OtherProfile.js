@@ -5,30 +5,60 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'
 import MyBooks from './MyBooks';
 import MyPosts from './MyPosts';
+import {followUser, unfollowUser, isAuthenticated} from '../landingPage/Auth'
 
 import '../../css/profile.css'
 
 class OtherProfile extends React.Component {
   constructor(props) {
     super(props);
+    let isFollowing = false;
+    if (this.props.otherUser.followers) isFollowing = this.props.otherUser.followers.includes(this.props.self._id);
     this.state = {
-      clicked:false
+      clicked:isFollowing
     }
     this.handleFollow = this.handleFollow.bind(this);
   }
   handleFollow() {
+    const auth = isAuthenticated();
+
     if(this.state.clicked){
-      this.setState({clicked:true})
+      unfollowUser(auth.user._id, this.props.otherUser._id, auth.token).then(
+        data => {
+            if (data.error) {
+                console.log(data.error);
+            }
+            else {
+              this.props.clickUser(this.props.username)
+              this.setState({clicked:false})
+                console.log(data);
+            }
+        }
+    )
+
     }
     else {
-      this.setState({clicked:false})
+      followUser(auth.user._id, this.props.otherUser._id, auth.token, auth.user.username).then(
+        data => {
+            if (data.error) {
+                console.log(data.error);
+            }
+            else {
+              this.props.clickUser(this.props.username)
+              this.setState({clicked:true})
+                console.log(data);
+            }
+        }
+    )
     }
+
+
   }
 
   render() {
     let followButton;
     if(this.state.clicked){
-      followButton = <Button className="button-clicked">Following</Button>
+      followButton = <Button className="button-clicked" onClick={this.handleFollow}>Following</Button>
     }
     else {
       followButton = <Button className="button-not-clicked" onClick={this.handleFollow}>Follow</Button>

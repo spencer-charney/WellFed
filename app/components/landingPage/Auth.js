@@ -120,3 +120,19 @@ export const followUser = (userId, followId, token, username) => {
     })
     .catch(err => console.log(err));
 }
+
+export const unfollowUser = (userId, unfollowId, token) => {
+    return fetch(`${process.env.API_URL}/user/unfollow`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({userId, unfollowId})
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+}
