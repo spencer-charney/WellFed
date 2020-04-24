@@ -18,6 +18,7 @@ class Review extends React.Component {
     this.handleClickBookmark = this.handleClickBookmark.bind(this);
     this.handleClickComment = this.handleClickComment.bind(this);
     this.updateComments = this.updateComments.bind(this);
+    this.clickUser = this.clickUser.bind(this);
     this.state = {
       bookmarkClicked: false,
       commentClicked: false,
@@ -54,7 +55,9 @@ class Review extends React.Component {
       }
     )
   }
-
+  clickUser(){
+    this.props.clickUser(this.props.username)
+  }
   render() {
     let bookmark;
     let selector;
@@ -100,7 +103,7 @@ class Review extends React.Component {
       <Container fluid className="post-container">
         <Row><h1 className="details">{this.props.restaurant}</h1></Row>
         <Row><h2 className="details">Dish: {this.props.dish}</h2></Row>
-        <Row><p className="details"><i>{this.props.username}</i></p></Row>
+        <Row><p className="details"><i onClick={this.clickUser}>{this.props.username}</i></p></Row>
         <Row><p className="details">{this.props.rate} of 5 stars</p></Row>
         <Row><p className="details">{this.props.tags}</p></Row>
         <Row><p className="details">{this.props.review}</p></Row>

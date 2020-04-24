@@ -8,6 +8,7 @@ import NotificationsPage from './components/notificationsPage/NotificationsPage'
 import Container from 'react-bootstrap/Container'
 import { followingPosts, list, listByUser } from "./components/NewPost/ApiPost";
 import { isAuthenticated, getUser} from "./components/landingPage/Auth";
+import OtherProfile from './components/profilePage/OtherProfile';
 
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
         this.updateNotifications = this.updateNotifications.bind(this);
         this.updateUser = this.updateUser.bind(this);
         this.updatePosts = this.updatePosts.bind(this);
+        this.clickUser = this.clickUser.bind(this);
         this.state = {
             pageState: 'feed',
             error: null,
@@ -166,6 +168,9 @@ class App extends React.Component {
         this.updateNotifications(this.state.self.notifications);
         this.setState({ pageState: newPageState })
     }
+    clickUser(username){
+        this.setState({pageState:'clickUser'})
+    }
     render() {
         const { self, error, isLoaded, myPosts, discoverPosts, myFeedPosts, notifications } = this.state;
         if (error) {
@@ -193,9 +198,16 @@ class App extends React.Component {
                 // ]} 
                 />;
             }
+            else if(pageState == 'clickUser'){
+                
+                page = <OtherProfile updatePosts={this.updatePosts} updateUser={this.updateUser} self={self} name={self.name} username={self.username} followers={followersLength} following={followingLength} restrictions={self.restrictions} 
+                myBooks={self.myBooks}
+                myPosts={myPosts}
+                />
+            }
             else {
                 //pageState == feed
-                page = <Feed updatePosts={this.updatePosts} self={self}
+                page = <Feed clickUser={this.clickUser} updatePosts={this.updatePosts} self={self}
                     myFeedPosts= {myFeedPosts} discoverPosts={discoverPosts}
                     />;
             }

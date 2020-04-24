@@ -18,6 +18,7 @@ class Recipe extends React.Component {
     this.handleClickBookmark = this.handleClickBookmark.bind(this);
     this.handleClickComment = this.handleClickComment.bind(this);
     this.updateComments = this.updateComments.bind(this);
+    this.clickUser = this.clickUser.bind(this);
     this.state = {
       ingredientsClicked: false,
       directionsClicked: false,
@@ -74,6 +75,9 @@ class Recipe extends React.Component {
     )
   }
 
+  clickUser(){
+    this.props.clickUser(this.props.username)
+  }
   render() { 
     let ingList = this.props.ingredients.replace(/<br>/g, '\n');
     let ingredients;
@@ -141,7 +145,7 @@ class Recipe extends React.Component {
     return (      
       <Container fluid className="post-container">
         <Row><h1 className="details">{this.props.title}</h1></Row>
-        <Row><p className="details"><i>{this.props.username}</i></p></Row>
+        <Row><p className="details"><i clickUser={this.clickUser}>{this.props.username}</i></p></Row>
         <Row><p className="details">{this.props.description}</p></Row>
         <Row>
           <Col />

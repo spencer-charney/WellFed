@@ -84,11 +84,11 @@ class Feed extends React.Component {
   render() {
     let feedState;
     if (this.state.feed == "My Feed") {
-      feedState = <MyFeed self={this.props.self} posts={this.props.myFeedPosts} />;
+      feedState = <MyFeed clickUser={this.props.clickUser} self={this.props.self} posts={this.props.myFeedPosts} />;
 
     }
     else if (this.state.feed == "Discover") {
-      feedState = <Discover self={this.props.self} posts={this.props.discoverPosts} />;
+      feedState = <Discover clickUser={this.props.clickUser} self={this.props.self} posts={this.props.discoverPosts} />;
 
     }
     else {

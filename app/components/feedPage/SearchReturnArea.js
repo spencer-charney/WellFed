@@ -25,7 +25,7 @@ class SearchReturnArea extends React.Component {
         if (this.props.resultArray) {
             for (let i = 0; i < this.props.resultArray.length; i++) {
                 let user = this.props.resultArray[i];
-                searchList.push(<SearchReturnRow username={user.username} followId={user._id}/>)
+                searchList.push(<SearchReturnRow key={i} username={user.username} followId={user._id}/>)
             }
         }
         return (

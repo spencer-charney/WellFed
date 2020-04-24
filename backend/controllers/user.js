@@ -63,6 +63,10 @@ exports.getUser = (req, res) => {
 	return res.json(req.profile);
 };
 
+exports.getUsername = (req, res) => {
+    
+}
+
 exports.updateUser = (req, res, next) => {
 	let user = req.profile;
 	user = _.extend(user, req.body);

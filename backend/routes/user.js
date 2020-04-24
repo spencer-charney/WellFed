@@ -11,7 +11,8 @@ const {
 	removeFollowing,
 	createBook,
 	populateBook,
-	searchUsers
+	searchUsers,
+	getUsername
 } = require('../controllers/user');
 const {requireSignin} = require('../controllers/auth');
 
@@ -25,6 +26,7 @@ router.put('/user/follow', requireSignin, addFollowing, addFollower);
 router.put('/user/unfollow', requireSignin, removeFollowing, removeFollower);
 
 router.get('/users', allUsers);
+router.put('/user/username', requireSignin, getUsername);
 router.get('/user/:userId', requireSignin, getUser);
 router.put('/user/:userId', requireSignin, updateUser);
 router.delete('/user/:userId', requireSignin, deleteUser);
