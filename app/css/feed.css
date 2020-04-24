@@ -31,7 +31,14 @@
     text-align: center;
     width: 100%;
 }
-
+.details-user{
+    text-align: center;
+}
+.details-user:hover{
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .expandable{
     background-color: rgb(114, 241, 114);
     margin-bottom: .5em;
@@ -107,6 +114,9 @@
     color: rgb(61, 28, 0);
     font-size: 1em;
 }
+.form-row-submit:hover{
+    cursor: pointer;
+}
 .form-row-submit-text{
     width: 100%;
     text-align: center;
@@ -151,6 +161,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     height: 15em;
+    background-color: rgba(165, 53, 1, 0.76);
 }
 
 .search-return-row{
@@ -178,7 +189,17 @@
     border-width: 10%;
     color: rgb(61, 28, 0);
 }
-
+.search-return-row-button:hover{
+    cursor: pointer;
+}
+.search-return-row-button-clicked{
+    margin: .5em;
+    background-color: rgb(103, 109, 103);
+    border-style: solid;
+    border-color: rgb(7, 20, 0);
+    border-width: 10%;
+    color: rgb(61, 28, 0);
+}
 .search-return-row-button-name{
     width: 100%;
     text-align: center;
@@ -196,4 +217,8 @@
 
 .search-chevron-row-label{
     font-size: 1em;
+}
+
+.search-chevron-row-label:hover{
+    cursor: pointer;
 }

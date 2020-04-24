@@ -145,7 +145,7 @@ class Recipe extends React.Component {
     return (      
       <Container fluid className="post-container">
         <Row><h1 className="details">{this.props.title}</h1></Row>
-        <Row><p className="details"><i clickUser={this.clickUser}>{this.props.username}</i></p></Row>
+        <Row><i className="details" ><p className="details-user" onClick={this.clickUser}>{this.props.username}</p></i></Row>
         <Row><p className="details">{this.props.description}</p></Row>
         <Row>
           <Col />

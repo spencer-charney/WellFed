@@ -103,7 +103,7 @@ class Review extends React.Component {
       <Container fluid className="post-container">
         <Row><h1 className="details">{this.props.restaurant}</h1></Row>
         <Row><h2 className="details">Dish: {this.props.dish}</h2></Row>
-        <Row><p className="details"><i onClick={this.clickUser}>{this.props.username}</i></p></Row>
+        <Row><i className="details" ><p className="details-user" onClick={this.clickUser}>{this.props.username}</p></i></Row>
         <Row><p className="details">{this.props.rate} of 5 stars</p></Row>
         <Row><p className="details">{this.props.tags}</p></Row>
         <Row><p className="details">{this.props.review}</p></Row>

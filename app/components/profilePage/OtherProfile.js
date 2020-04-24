@@ -67,7 +67,7 @@ class OtherProfile extends React.Component {
       <Container fluid className="profile-page">
         <Row><h1 className="details">{this.props.name}</h1></Row>
         <Row><p className="details"><i>{this.props.username}</i></p></Row>
-        <Row><Col><p className="details"><i>followers: {this.props.followers} following:{this.props.following}</i></p></Col><Col>{followButton}</Col></Row>
+        <Row><Col><p className="follows"><i>followers: {this.props.followers} following:{this.props.following}</i></p></Col><Col className="follow-button">{followButton}</Col></Row>
         <Row><h4 className="details">{this.props.restrictions}</h4></Row>
 
         <Container fluid>

@@ -16,3 +16,7 @@
     border-width: 1px;
     text-align: center;
 }
+
+.navbar-sign-out:hover{
+    cursor: pointer;
+}

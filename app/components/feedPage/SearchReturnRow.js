@@ -17,6 +17,7 @@ class SearchReturnRow extends React.Component {
         super(props);
         this.follow = this.follow.bind(this);
         this.state = {
+            following:false
         };
     }
 
@@ -26,25 +27,35 @@ class SearchReturnRow extends React.Component {
             data => {
                 if (data.error) {
                     console.log(data.error);
+                    this.setState({following:false})
                 }
                 else {
                     console.log(data);
+                    this.setState({following:true})
                 }
             }
         )
     }
 
     render() {
-
+        let button;
+        if(this.state.following){
+            button=<Col className="search-return-row-button-clicked">
+            <p className="search-return-row-button-name">following</p>
+        </Col>
+        }
+        else {
+            button=<Col className="search-return-row-button" onClick={this.follow}>
+            <p className="search-return-row-button-name">follow</p>
+        </Col>
+        }
         return (
             <Container fluid className="search-return-row">
                 <Row>
                     <Col>
                         <p className="search-return-row-username">{this.props.username}</p>
                     </Col>
-                    <Col className="search-return-row-button" onClick={this.follow}>
-                        <p className="search-return-row-button-name">follow</p>
-                    </Col>
+                    {button}
                 </Row>
             </Container>
         )
