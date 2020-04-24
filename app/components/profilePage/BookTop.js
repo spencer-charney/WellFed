@@ -18,7 +18,7 @@ class BookTop extends React.Component {
 
     render() {
         return (
-        <Col onClick={this.handleChange} className="book-col"><p className="book-title">{this.props.name}</p></Col>      
+        <Col onClick={this.handleChange} className="book-col-top"><p className="book-title">{this.props.name}</p></Col>      
         )
     }
 }

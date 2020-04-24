@@ -16,7 +16,7 @@ class BookBottom extends React.Component {
 
     render() {
         let arrayRows = [];
-        if (!this.props.posts) {
+        if (this.props.posts.length == 0) {
             arrayRows = <Container fluid>
                 <Row>
                     <Col />

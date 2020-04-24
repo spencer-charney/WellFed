@@ -8,7 +8,9 @@
 }
 .feed-button{
     padding-top:.5em;
+    cursor: pointer;
 }
+
 .feed-state-row{
     width:100%;
     margin-top: 110px;
@@ -63,6 +65,7 @@
     border-width: 10%;
     color: rgb(61, 28, 0);
     font-size: 1em;
+    cursor: pointer;
 }
 
 .search-text{
@@ -90,6 +93,7 @@
     border-style: solid;
     border-color: rgb(7, 20, 0);
     border-width: 1px;
+    cursor: pointer;
 }
 
 .create-title{
@@ -213,12 +217,9 @@
     border-color: rgb(7, 20, 0);
     border-width: 10%;
     color: rgb(61, 28, 0);
+    cursor: pointer;
 }
 
 .search-chevron-row-label{
     font-size: 1em;
-}
-
-.search-chevron-row-label:hover{
-    cursor: pointer;
 }
