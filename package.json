@@ -11,7 +11,7 @@
   },
   "scripts": {
     "create": "webpack",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --public 3.22.175.211:8080",
     "dev": "nodemon backend/app.js"
   },
   "keywords": [],
