@@ -104,36 +104,36 @@
 
 **Backend folder**
 
-├── app.js
+├── app.js - Runs the backend server and connects to the database
 
 ├── controllers
 
-│   ├── auth.js
+│   ├── auth.js - Methods for signing in and out as well as signing up a new user
 
-│   ├── post.js
+│   ├── post.js - Methods for interactions with posts in the database
 
-│   └── user.js
+│   └── user.js - Methods to interact with users in the database
 
 ├── docs
 
-│   └── apiDocs.json
+│   └── apiDocs.json - JSON object returned to inform developers about available API calls
 
 ├── models
 
-│   ├── book.js
+│   ├── book.js - Book object schema
 
-│   ├── post.js
+│   ├── post.js - Post object schema
 
-│   └── user.js
+│   └── user.js - User object schema
 
 ├── routes
 
-│   ├── auth.js
+│   ├── auth.js - Middleware for signing in/out/up methods
 
-│   ├── post.js
+│   ├── post.js - Middleware for post methods
 
-│   └── user.js
+│   └── user.js - Middleware for user methods
 
 └── validator
 
-└── index.js
+|   └── index.js - Signup validation tool
